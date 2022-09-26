@@ -4,10 +4,6 @@
  * and open the template in the editor.
  */
 package InterfazJuego;
-import Logica_Juego.Batalla;
-import Logica_Juego.FileManager;
-import Logica_Juego.Personajes;
-import Logica_Juego.Usuario;
 import java.awt.Image;
 import java.io.Serializable;
 import java.text.DateFormat;
@@ -23,32 +19,25 @@ import javax.swing.JOptionPane;
  * @author monic
  */
 public class campoBatalla_Juego extends javax.swing.JFrame implements Serializable {
-    protected Personajes listaPersonajesUsuario;
-    public Batalla batalla;
-    protected Usuario nuevo;
     
     /**
      * Creates new form campoBatalla_Juego
      */
   
-   public campoBatalla_Juego(Personajes listaPersonajesUsuario,Usuario nuevo) {
-        this.listaPersonajesUsuario=listaPersonajesUsuario;
-        batalla = new Batalla(this,listaPersonajesUsuario, nuevo);
-        this.nuevo=nuevo;
-        initComponents();
+   public campoBatalla_Juego() {
     }
    public void mostrarGanador(String ganador){
         JOptionPane.showMessageDialog(fondo_Juego,"Ganador: "+ganador,"Resultado de la batalla",JOptionPane.OK_OPTION);
         if(ganador.equalsIgnoreCase("Aliados")){
-            nuevo.subirNivel();
+            
         }
         
         this.setVisible(false);
-        escogerPersonajes_Juego frame = new escogerPersonajes_Juego(nuevo);
+        /*escogerPersonajes_Juego frame = new escogerPersonajes_Juego(nuevo);
         frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
         frame.pack();
         frame.setLocation(290, 150);
-        frame.setVisible(true);
+        frame.setVisible(true);*/
     } 
    
     public JLabel generateLabel(String imagen, int xTripulante, int limit){
@@ -249,41 +238,26 @@ public class campoBatalla_Juego extends javax.swing.JFrame implements Serializab
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_StartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_StartActionPerformed
-        batalla.generateArmy();
-        batalla.generateEnemy();
-        batalla.startArmy();
-        batalla.startEnemy();
+
 
     }//GEN-LAST:event_btn_StartActionPerformed
 
     private void btn_StopActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_StopActionPerformed
-        batalla.stopArmy();
+
     }//GEN-LAST:event_btn_StopActionPerformed
 
     private void btn_PauseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_PauseActionPerformed
-        batalla.pauseArmy();
+
     }//GEN-LAST:event_btn_PauseActionPerformed
 
     private void btn_GuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_GuardarActionPerformed
         // TODO add your handling code here:
-        JOptionPane.showMessageDialog(fondo_Juego,"Partida guardada.","Guardar",JOptionPane.OK_OPTION);
-        Date date = new Date();
-        DateFormat hourdateFormat = new SimpleDateFormat("HH.mm.ss dd-MM-yyyy");
-        String juego = hourdateFormat.format(date);
-        FileManager.writeObject(nuevo, "C:\\Users\\monic\\OneDrive - Estudiantes ITCR\\Documentos\\NetBeansProjects\\proyecto_HerenciaALTrono\\src\\archivosSerializados\\Partidas\\"+juego+".juego");
+ 
     }//GEN-LAST:event_btn_GuardarActionPerformed
 
     private void btn_NextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_NextActionPerformed
         // TODO add your handling code here:
-        batalla.stopArmy();
-        JOptionPane.showMessageDialog(fondo_Juego,"Ganador: Aliados","Resultado de la batalla",JOptionPane.OK_OPTION);
-        nuevo.subirNivel();
-        this.setVisible(false);
-        escogerPersonajes_Juego frame = new escogerPersonajes_Juego(nuevo);
-        frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
-        frame.pack();
-        frame.setLocation(290, 150);
-        frame.setVisible(true);
+
     }//GEN-LAST:event_btn_NextActionPerformed
                         
     /**
