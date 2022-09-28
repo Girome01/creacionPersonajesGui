@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 package LogicaJuego;
-import Interfaz_Juego.campoBatalla_Juego;
 import java.io.Serializable;
 import java.util.ArrayList;
 import javax.swing.JLabel;
@@ -14,44 +13,15 @@ import java.util.concurrent.ThreadLocalRandom;
  * @author Jennifer
  */
 public class Batalla implements Serializable{
-    protected campoBatalla_Juego refPantalla;
-    protected ArrayList<HiloBatalla> army;
-    protected ArrayList<HiloBatalla> enemies;
-    protected ArrayList<Guerrero> defensas;
-    protected Personajes listaEscogida;
-    protected Usuario nuevo;
     
-    public Batalla(campoBatalla_Juego refPantalla, Personajes listaPersonajesUsuario, Usuario nuevo) {
-        this.refPantalla = refPantalla;
-        this.listaEscogida=listaPersonajesUsuario;
-        this.nuevo=nuevo;
-        army = new ArrayList<HiloBatalla>();
-        enemies = new ArrayList<HiloBatalla>();
+    public Batalla() {
        
     }
-     public ArrayList generateDefensas(){
-        Aereos aereod=new Aereos();
-        Bombas bombad=new Bombas();
-        Canon canond=new Canon();
-        Mortero morterod=new Mortero();
-        Muro murod=new Muro();
-        for (int j=1; j<nuevo.getNivelUsuario();j++){
-             aereod.crecerNivel();
-             bombad.crecerNivel();
-             canond.crecerNivel();
-             morterod.crecerNivel();
-             murod.crecerNivel();
-         }
-        
-        defensas = new ArrayList<Guerrero>();
-        defensas.add(aereod);
-        defensas.add(bombad);
-        defensas.add(canond);
-        defensas.add(morterod);
-        defensas.add(murod);
-        return defensas;
+    
+    public ArrayList generateDefensas(){
         
     }
+    
     public void generateArmy(){
         ArrayList<Guerrero> defensas = generateDefensas();
         int largo= ThreadLocalRandom.current().nextInt(1,listaEscogida.listaPersonajes.size() + 1);
@@ -70,49 +40,14 @@ public class Batalla implements Serializable{
         }
     }
     
-    public void subirNivelEnemy(Personajes listaPersonajes){
-        for (int j=1; j<nuevo.getNivelUsuario();j++){
-            if(!listaPersonajes.getListaPersonajesA().isEmpty()){
-                for(int i=0;i<listaPersonajes.getListaPersonajesA().size();i++){
-                    listaPersonajes.getListaPersonajesA().get(i).crecerNivel();
-                }
-            }
-            if(!listaPersonajes.getListaPersonajesC().isEmpty()){
-                for(int i=0;i<listaPersonajes.getListaPersonajesC().size();i++){
-                    listaPersonajes.getListaPersonajesC().get(i).crecerNivel();
-                }
-            }
-            if(!listaPersonajes.getListaPersonajesM().isEmpty()){
-                for(int i=0;i<listaPersonajes.getListaPersonajesM().size();i++){
-                    listaPersonajes.getListaPersonajesM().get(i).crecerNivel();
-                }
-            }
-        }
+    public void subirNivelEnemy(){
+        
     }
     
     public void generateEnemy(){
-       ArrayList<Guerrero> defensas = generateDefensas();
-       Personajes enemigos=(Personajes) FileManager.readObject("C:\\Users\\monic\\OneDrive - Estudiantes ITCR\\Documentos\\NetBeansProjects\\proyecto_HerenciaALTrono\\src\\archivosSerializados\\personajes.juego");
-       subirNivelEnemy(enemigos);
- 
-       int largo= ThreadLocalRandom.current().nextInt(1,enemigos.listaPersonajes.size() + 1);
-         for(int i = 0; i <=largo; i++) {  
-            int indice= (int) (Math.random() *(Math.random() * (defensas.size()-1)+1));
-            if(defensas.get(indice).lvlAparicion<=nuevo.nivelUsuario){
-               String nombreArchivoE=defensas.get(indice).rutaImagenE;
-               JLabel labelForThread = refPantalla.generateLabel(nombreArchivoE, 580,330);
-               enemies.add(new HiloBatalla(refPantalla, labelForThread, (i+1), defensas.get(indice)));
-            }
-         }
-        for(int i = 0; i <=largo; i++) {  
-            int indice= (int) (Math.random() *(Math.random() * (enemigos.listaPersonajes.size()-1)+1));
-            if(enemigos.listaPersonajes.get(indice).lvlAparicion<=nuevo.nivelUsuario){
-               String nombreArchivoE=enemigos.listaPersonajes.get(indice).rutaImagenE;
-               JLabel labelForThread = refPantalla.generateLabel(nombreArchivoE, 580,330);
-               enemies.add(new HiloBatalla(refPantalla, labelForThread, (i+1), enemigos.listaPersonajes.get(indice)));
-            }
-        }
+       
     }
+    
     public void startArmy(){
         for (int i = 0; i < army.size(); i++) {
             army.get(i).start();
@@ -177,31 +112,8 @@ public class Batalla implements Serializable{
         refPantalla.mostrarGanador(ganador);
         return null;
     }
+    
     public boolean enRangoDefensa(HiloBatalla guerrero, int cercano, int num){   
-        if (guerrero.guerrero.nombre.equalsIgnoreCase("Bomba")){
-            Bombas bomba = new Bombas();
-            if (cercano/num <= bomba.alcance)
-                return true;
-        }
-        else if (guerrero.guerrero.nombre.equalsIgnoreCase("Aereo")){
-            Aereos aereo = new Aereos();
-            if (cercano/num <= aereo.alcance)
-                return true;
-        }
-        else if (guerrero.guerrero.nombre.equalsIgnoreCase("Canon")){
-            Canon canon = new Canon();
-            if (cercano/num <= canon.alcance)
-                return true;
-        }
-        else if (guerrero.guerrero.nombre.equalsIgnoreCase("Torre Arqueros")){
-           TorreArqueros torreArqueros = new TorreArqueros();
-            if (cercano/num <= torreArqueros.alcance)
-                return true;
-        }
-        else{
-            if (cercano==0)
-                return true;
-        }
         return false;
     } 
     
