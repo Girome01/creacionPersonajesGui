@@ -46,7 +46,7 @@ public class Character implements iPrototype {
             if(this.cLife>=damage){
                 this.setcLife(this.cLife-damage);      
             }
-        }else{
+        }else if(this.cLife-damage<=0){
             this.cLife=0;
         }
     }
@@ -69,7 +69,7 @@ public class Character implements iPrototype {
             gearList.add(entry.getValue());
         });
         return gearList;
-            //System.out.println("clave=" + entry.getKey() + ", valor=" + entry.getValue());
+        //System.out.println("clave=" + entry.getKey() + ", valor=" + entry.getValue());
     }
         
     @Override

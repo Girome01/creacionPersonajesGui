@@ -10,7 +10,8 @@ package LogicaJuego;
  * @author monic
  */
 public interface CharacterAction {
-    public void cMove();
-    public void cDamage(int damage);
-    public int cAttack(Character enemyCharacter);
+    public void cMoveU(); //Arriba
+    public void cMoveD(); //Abajo
+    public void cMoveL(); //Izq
+    public void cMoveR(); //Der
 }
