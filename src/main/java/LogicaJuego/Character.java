@@ -65,9 +65,9 @@ public class Character implements iPrototype {
     
     public ArrayList<Gear> cShowGearList(){
         ArrayList<Gear> gearList = new ArrayList<>();
-        for (Map.Entry<String, Gear> entry : cGear.entrySet()) {
+        cGear.entrySet().forEach(entry -> {
             gearList.add(entry.getValue());
-        }
+        });
         return gearList;
             //System.out.println("clave=" + entry.getKey() + ", valor=" + entry.getValue());
     }
@@ -222,8 +222,5 @@ public class Character implements iPrototype {
     public void setcGear(HashMap<String, Gear> cGear) {
         this.cGear = cGear;
     }
-
-    
-    
 
 }
