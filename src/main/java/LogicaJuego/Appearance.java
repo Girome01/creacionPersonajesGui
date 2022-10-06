@@ -1,3 +1,5 @@
+package LogicaJuego;
+
 import java.util.HashMap;
 
 public class Appearance {

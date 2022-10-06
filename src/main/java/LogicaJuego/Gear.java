@@ -1,3 +1,5 @@
+package LogicaJuego;
+
 public class Gear implements iPrototype{
     private String gName;
     private int gRange;

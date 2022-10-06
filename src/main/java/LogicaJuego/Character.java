@@ -1,3 +1,5 @@
+package LogicaJuego;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -6,7 +8,7 @@ public class Character implements iPrototype {
     private String cName; 
     private HashMap<Integer, Appearance> cAppearance;
     private int cSpawnLevel;
-    private int cHitPS;
+    int cHitPS;
     private int cLife;
     //private int[][] cStorageSpace;
     private int cStorageSpace;
@@ -28,37 +30,39 @@ public class Character implements iPrototype {
         }
 
     public void cLevelUp(){
-        cLevel+=1;
+        this.cLevel+=1;
     }
     
-    public void cMove(){
-        //Cambia la imagen establecida en personaje cuando se mueve
-    }
-
-    public void cDamage(int damage){
-        //Ademas setear la imagen cuando recibe daño
-        this.setcLife(cLife-damage);
-
-    }
-
-    public int attack(Character enemyCharacter){
-        //Cambiar para tomar en cuenta las armas de los personajes
-        enemyCharacter.cDamage(cHitPS);
-
-        return cHitPS;
-    }
-    
- 
     public void cAddGear(String name, Gear newGear){
-        cGear.put(name.toUpperCase().strip(), newGear);
-
+        this.cGear.put(name.toUpperCase().strip(), newGear);
     }
 
     public void cActiveDisableGear(String gearName, boolean state){
-        cGear.get(gearName.toUpperCase().strip()).setgActive(state);  
-        
+        this.cGear.get(gearName.toUpperCase().strip()).setgActive(state);  
     }
+    
+    public void cDamage(int damage){
+        if(this.cLife>0){
+            if(this.cLife>=damage){
+                this.setcLife(this.cLife-damage);      
+            }
+        }else{
+            this.cLife=0;
+        }
+    }
+    
+    public int cAttack(Character enemyCharacter){
+        //Este método se usa sólo si el character está en el range del atacante.
+        for(int i=0; i<enemyCharacter.cShowGearList().size(); i++){
+            if(enemyCharacter.cShowGearList().get(i).isgActive()){
+                this.cHitPS+=enemyCharacter.cShowGearList().get(i).getgDamage(); 
+            }
+        }
+        enemyCharacter.cDamage(this.cHitPS);
 
+        return this.cHitPS;
+    }  
+    
     public ArrayList<Gear> cShowGearList(){
         ArrayList<Gear> gearList = new ArrayList<>();
         for (Map.Entry<String, Gear> entry : cGear.entrySet()) {
@@ -75,7 +79,7 @@ public class Character implements iPrototype {
     }
     @Override
     public iPrototype deepClone() {
-        //Revisar cuando se necesite una playlist con nuevas armas
+        //Revisar cuando se necesite una list con nuevas armas
         return clone();
     }
 
@@ -211,6 +215,15 @@ public class Character implements iPrototype {
         this.cLevel = cLevel;
     }
 
+    public HashMap<String, Gear> getcGear() {
+        return cGear;
+    }
+
+    public void setcGear(HashMap<String, Gear> cGear) {
+        this.cGear = cGear;
+    }
+
+    
     
 
 }

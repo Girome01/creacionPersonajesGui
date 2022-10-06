@@ -1,3 +1,4 @@
+import LogicaJuego.Character;
 import java.util.ArrayList;
 import java.util.HashMap;
 
