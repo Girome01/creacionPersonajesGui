@@ -2,22 +2,32 @@ package LogicaJuego;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Map;
 
-public class Character implements iPrototype {
-    private String cName; 
-    private HashMap<Integer, Appearance> cAppearance;
-    private int cSpawnLevel;
-    int cHitPS;
-    private int cLife;
+
+public class CharacterGame implements iPrototype {
+    protected String cName; 
+    protected HashMap<Integer, Appearance> cAppearance;
+    protected int cSpawnLevel;
+    protected int cHitPS;
+    protected int cLife;
     //private int[][] cStorageSpace;
-    private int cStorageSpace;
-    private double cCost;
-    private int cLevel;
-    private HashMap<String, Gear> cGear = new HashMap<>();
+    protected int cStorageSpace;
+    protected double cCost;
+    protected int cLevel;
+    protected HashMap<String, Gear> cGear = new HashMap<>();
 
-
-    public Character(String cName, HashMap<Integer, Appearance> cAppearance, int cSpawnLevel, int cHitPS, int cLife,
+     public CharacterGame(CharacterBuilder<?> builder) {
+            this.cName = builder.cName;
+            this.cAppearance = builder.cAppearance;
+            this.cSpawnLevel = builder.cSpawnLevel;
+            this.cHitPS = builder.cHitPS;
+            this.cLife = builder.cLife;
+            this.cStorageSpace = builder.cStorageSpace;
+            this.cCost = builder.cCost;
+            this.cLevel = builder.cLevel;
+        }
+    
+    public CharacterGame(String cName, HashMap<Integer, Appearance> cAppearance, int cSpawnLevel, int cHitPS, int cLife,
                 int cStorageSpace, double cCost, int cLevel) {
             this.cName = cName;
             this.cAppearance = cAppearance;
@@ -46,16 +56,18 @@ public class Character implements iPrototype {
             if(this.cLife>=damage){
                 this.setcLife(this.cLife-damage);      
             }
-        }else if(this.cLife-damage<=0){
-            this.cLife=0;
+            else if(this.cLife-damage<=0){
+                this.cLife=0;
+            }
         }
+        
     }
     
-    public int cAttack(Character enemyCharacter){
+    public int cAttack(CharacterGame enemyCharacter){
         //Este método se usa sólo si el character está en el range del atacante.
         for(int i=0; i<enemyCharacter.cShowGearList().size(); i++){
             if(enemyCharacter.cShowGearList().get(i).isgActive()){
-                this.cHitPS+=enemyCharacter.cShowGearList().get(i).getgDamage(); 
+                this.cHitPS=enemyCharacter.cShowGearList().get(i).getgDamage(); 
             }
         }
         enemyCharacter.cDamage(this.cHitPS);
@@ -75,7 +87,7 @@ public class Character implements iPrototype {
     @Override
     public iPrototype clone() {
         
-        return new Character(cName, cAppearance, cSpawnLevel, cHitPS, cLife, cStorageSpace, cCost, cLevel);
+        return new CharacterGame(cName, cAppearance, cSpawnLevel, cHitPS, cLife, cStorageSpace, cCost, cLevel);
     }
     @Override
     public iPrototype deepClone() {
@@ -83,7 +95,7 @@ public class Character implements iPrototype {
         return clone();
     }
 
-    private static class CharacterBuilder implements iBuilder{
+    public static class CharacterBuilder <T extends CharacterBuilder<T>> {
         private String cName; 
         private HashMap<Integer, Appearance> cAppearance;
         private int cSpawnLevel;
@@ -95,10 +107,9 @@ public class Character implements iPrototype {
         private int cLevel;
         private HashMap<String, Gear> cGear;
 
-        @Override
-        public Character build() {
-            
-            return new Character(cName, cAppearance, cSpawnLevel, cHitPS, cLife, cStorageSpace, cCost, cLevel);
+       // @Override
+        public CharacterGame build() {
+            return new CharacterGame(this);
         }
 
 

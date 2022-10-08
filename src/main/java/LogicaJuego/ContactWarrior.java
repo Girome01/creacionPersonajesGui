@@ -10,7 +10,7 @@ import java.util.HashMap;
  *
  * @author monic
  */
-public class ContactWarrior extends Character implements CharacterAction{
+public class ContactWarrior extends CharacterGame implements CharacterAction{
 
     public ContactWarrior(String cName, HashMap<Integer, Appearance> cAppearance, int cSpawnLevel, int cHitPS, int cLife, int cStorageSpace, double cCost, int cLevel) {
         super(cName, cAppearance, cSpawnLevel, cHitPS, cLife, cStorageSpace, cCost, cLevel);
