@@ -19,6 +19,7 @@ public class AerialWarrior extends CharacterGame implements CharacterAction{
         super(cName, cAppearance, cSpawnLevel, cHitPS, cLife, cStorageSpace, cCost, cLevel);
     }
     
+  
     //++++++++++IMPORTANTE++++++++++
     //Lógica de movimiento podría ir aquí, pero también podría mantenerse en el archivo del campo de batalla.
     //Implementé la interfaz CharacterAction por si ocupamos métodos abstractos para los personajes, por ejemplo MOVE. 
