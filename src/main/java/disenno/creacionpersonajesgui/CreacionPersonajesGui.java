@@ -6,6 +6,7 @@
 package disenno.creacionpersonajesgui;
 import LogicaJuego.*;
 import java.util.HashMap;
+import InterfazJuego.*;
 /**
  *
  * @author Usuario
@@ -14,6 +15,8 @@ public class CreacionPersonajesGui {
 
     public static void main(String[] args) {
         
+        //PRUEBA BUILDER
+        /*
         Appearance aBarbara = new Appearance();
         aBarbara.addAppearance("MOVE", "https://");
         
@@ -30,6 +33,9 @@ public class CreacionPersonajesGui {
                 .setcStorageSpace(0)
                 .setcHitPS(0)
                 .build();
+        */
+        escogerPersonajes_Juego seleccion = new escogerPersonajes_Juego();
+        seleccion.setVisible(true);
         
       
     }

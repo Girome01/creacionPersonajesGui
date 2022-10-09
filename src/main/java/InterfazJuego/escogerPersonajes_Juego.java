@@ -8,20 +8,28 @@ import java.awt.Component;
 import java.awt.Image;
 import javax.swing.*;
 import javax.swing.table.*;
+import LogicaJuego.*;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  *
  * @author monic
  */
 public class escogerPersonajes_Juego extends javax.swing.JFrame {
+        protected PFCharacter listaPersonajes;
+        protected ArrayList<CharacterGame> listaPersonajesUsuario;
+        protected CharacterGame guerrero;
     /**
      * Creates new form escogerPersonajes_Juego
      
      */
     public escogerPersonajes_Juego() {
-       
+        initComponents();
+        crearPersonajesBase();
+        tabla();
     }
-    
+    /*
     public boolean creceNivel(String tipoGuerrero){
         if(tipoGuerrero.equalsIgnoreCase("Guerrero de Contacto") || tipoGuerrero.equalsIgnoreCase("Guerrero de mediano alcance") || tipoGuerrero.equalsIgnoreCase("Guerrero aéreo")){
             return true;
@@ -29,10 +37,7 @@ public class escogerPersonajes_Juego extends javax.swing.JFrame {
             return false;
         }
     }
-    
-    public void tabla(){
-        
-     }
+    */
     
     class CellRenderer implements TableCellRenderer {
  
@@ -55,11 +60,114 @@ public class escogerPersonajes_Juego extends javax.swing.JFrame {
 
     }
     
+    public void tabla(){
+        DefaultTableModel model;
+        model = (DefaultTableModel) table_Personajes.getModel();
+        table_Personajes.getColumn("Imagen").setCellRenderer(new CellRenderer());
+         for(int i=0;i<PFCharacter.CharacterList().size();i++){
+            String nombre=PFCharacter.CharacterList().get(i).getcName();
+            int aparicion=PFCharacter.CharacterList().get(i).getcSpawnLevel();
+            int campos=PFCharacter.CharacterList().get(i).getcStorageSpace();
+            int ataque=PFCharacter.CharacterList().get(i).getcHitPS();
+            int vida=PFCharacter.CharacterList().get(i).getcLife();  
+         
+         
+         JLabel imageLabel = new JLabel();
+        //ImageIcon imageicon = new ImageIcon(listaPersonajes.getListaPersonajes().get(i).getRutaImagenA());
+        //Image img = imageicon.getImage().getScaledInstance(60, 60, Image.SCALE_SMOOTH);
+        //imageLabel.setIcon(new ImageIcon(img));
+        //if(listaPersonajes.getListaPersonajes().get(i).getLvlAparicion()<=nuevo.getNivelUsuario())           //AGREGRAR LUEGO
+            model.addRow(new Object[]{nombre,imageLabel, ataque,vida,campos,0,false});
+
+        }   
+     }
+         
+   
+    
+    
     public void subirNivel(){
         
     }
     
+    public void crearArmas(){
+        /*
+            private String gName;
+            private int gRange;
+            private int gDamage;
+            private int gLevel;
+            private int gGearBLast;
+            private String gAppearanceURL;
+            private boolean gActive; 
+        */
+        Gear espada = new Gear("espada",1, 10, 1, 0, "", true);
+        Gear bomba = new Gear("bomba",2, 20, 1,4 , "", true);
+        Gear arco = new Gear("arco",5,5,1,0, "", true);
+        
+        PFGear.addPrototype("espada", espada);
+        PFGear.addPrototype("bomba", bomba);
+        PFGear.addPrototype("arco", arco);
+        
+    }
+    
+    public void crearPersonajesBase(){
+        
+        crearArmas();
+        /*
+            protected String cName; 
+            protected HashMap<Integer, Appearance> cAppearance;
+            protected int cSpawnLevel;
+            protected int cHitPS;
+            protected int cLife;
+            //private int[][] cStorageSpace;
+            protected int cStorageSpace;
+            protected double cCost;
+            protected int cLevel;
+            protected HashMap<String, Gear> cGear = new HashMap<>();
+        */
+        
+        //Barbaro Aspects
+        Appearance cAppearance = new Appearance();
+        HashMap<Integer, Appearance> barbaroAppearance = new HashMap<>();
+        barbaroAppearance.put(1, cAppearance);
+
+        //fin Barbaro aspects
+        ContactWarrior barbaro = new ContactWarrior("barbaro", barbaroAppearance, 1, 5, 100, 2, 3, 1);
+        barbaro.cAddGear("espada", PFGear.getPrototype("espada"));
+        
+        //Arquera
+        HalfRangeWarrior arquera = new HalfRangeWarrior("arquera", barbaroAppearance, 1, 3, 80, 2, 2, 1);
+        barbaro.cAddGear("arco", PFGear.getPrototype("arco"));
+        
+        //Bombardera
+        AerialWarrior bombardera = new AerialWarrior("bombardera", barbaroAppearance, 1, 10, 100, 6, 4, 1);
+        barbaro.cAddGear("bomba", PFGear.getPrototype("bomba"));
+        
+        PFCharacter.addPrototype("barbaro", barbaro);
+        PFCharacter.addPrototype("arquera", arquera);
+        PFCharacter.addPrototype("bombardera", bombardera);
+    }
+    
     public boolean getValues(){
+        listaPersonajesUsuario = new ArrayList<>();
+        
+        for(int i=0;i<table_Personajes.getModel().getRowCount();i++){
+            if ((Boolean) table_Personajes.getModel().getValueAt(i,6)){
+              String nombre=table_Personajes.getModel().getValueAt(i, 0).toString();
+              int cantidad = (int) table_Personajes.getModel().getValueAt(i,5);
+              ArrayList<CharacterGame> guerreros = PFCharacter.getPrototype(nombre,cantidad);
+              if(guerreros!=null){
+                  for (int j = 0; j < guerreros.size(); j++) {
+                      listaPersonajesUsuario.add(guerreros.get(j));
+                  }
+                  
+                  //nuevo.agregarColeccion(listaPersonajesUsuario);
+                  //if(!listaPersonajesUsuario.sumatoriaCampos(nuevo)){ //nuevo da error
+                  //    return false;
+                  }
+              }
+              
+            } 
+        return true;
         
     }        
  
@@ -92,14 +200,14 @@ public class escogerPersonajes_Juego extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Nombre", "Imagen", "Ataque", "Vida", "Tipo Guerrero", "Campos", "Escogido"
+                "Nombre", "Imagen", "Ataque", "Vida", "Campos", "Cantidad", "Escogido"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.Object.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.String.class, java.lang.Integer.class, java.lang.Boolean.class
+                java.lang.String.class, java.lang.Object.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Boolean.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, true
+                false, false, false, false, false, true, true
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -119,7 +227,6 @@ public class escogerPersonajes_Juego extends javax.swing.JFrame {
         btn_Escoger.setFont(new java.awt.Font("VCR OSD Mono", 0, 18)); // NOI18N
         btn_Escoger.setForeground(new java.awt.Color(102, 0, 102));
         btn_Escoger.setText("Escoger personajes");
-        btn_Escoger.setOpaque(false);
         btn_Escoger.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_EscogerActionPerformed(evt);
@@ -135,8 +242,6 @@ public class escogerPersonajes_Juego extends javax.swing.JFrame {
         lbl_userLevel.setOpaque(true);
         panel_Fondo.add(lbl_userLevel);
         lbl_userLevel.setBounds(580, 10, 160, 30);
-
-        lbl_Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/herenciaAlTrono/imagenes_Juego/fondo_Juego.jpg"))); // NOI18N
         panel_Fondo.add(lbl_Fondo);
         lbl_Fondo.setBounds(-260, -150, 0, 600);
 
@@ -155,7 +260,9 @@ public class escogerPersonajes_Juego extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_EscogerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_EscogerActionPerformed
-
+        getValues();
+        System.out.println(listaPersonajesUsuario);
+                
     }//GEN-LAST:event_btn_EscogerActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

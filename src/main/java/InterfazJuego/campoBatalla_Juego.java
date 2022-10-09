@@ -60,7 +60,7 @@ public class campoBatalla_Juego extends javax.swing.JFrame implements Serializab
         return imageLabel;
     
     }
-    
+    /*
     public void moveLabel (JLabel label){
         int direccion = (new Random()).nextInt(4);
         int x = label.getLocation().x;
@@ -81,6 +81,7 @@ public class campoBatalla_Juego extends javax.swing.JFrame implements Serializab
 
               
     }
+    */
     public void escribirHilos(String texto){
         
     }

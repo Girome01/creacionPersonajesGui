@@ -17,7 +17,7 @@ public class Batalla implements Serializable{
     public Batalla() {
        
     }
-    
+    /*
     public ArrayList generateDefensas(){
         
     }
@@ -257,5 +257,5 @@ public class Batalla implements Serializable{
     }
     return null;
 }
- 
+ */
 }
