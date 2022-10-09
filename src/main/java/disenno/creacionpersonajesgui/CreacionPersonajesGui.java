@@ -37,6 +37,9 @@ public class CreacionPersonajesGui {
                 .setcHitPS(2)
                 .build();
         */
+        
+        //PRUEBA BATALLA
+        /*
         escogerPersonajes_Juego seleccion = new escogerPersonajes_Juego();
         seleccion.setVisible(true);
         
@@ -51,6 +54,7 @@ public class CreacionPersonajesGui {
         frame.pack();
         frame.setLocation(290, 50);
         frame.setVisible(true);
+*/
 
     }
 }
