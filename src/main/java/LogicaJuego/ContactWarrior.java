@@ -4,7 +4,10 @@
  * and open the template in the editor.
  */
 package LogicaJuego;
+import LogicaBatalla.Batalla;
 import java.util.HashMap;
+import java.util.Random;
+import javax.swing.JLabel;
 
 /**
  *

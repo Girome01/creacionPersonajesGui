@@ -60,7 +60,7 @@ public class escogerPersonajes_Juego extends javax.swing.JFrame {
     }
     
     public boolean getValues(){
-        
+        return true;
     }        
  
     /**

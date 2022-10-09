@@ -65,13 +65,13 @@ public class CharacterGame implements iPrototype {
     
     public int cAttack(CharacterGame enemyCharacter){
         //Este método se usa sólo si el character está en el range del atacante.
-        for(int i=0; i<enemyCharacter.cShowGearList().size(); i++){
-            if(enemyCharacter.cShowGearList().get(i).isgActive()){
-                this.cHitPS=enemyCharacter.cShowGearList().get(i).getgDamage(); 
+        for(int i=0; i< this.cShowGearList().size(); i++){
+            if(this.cShowGearList().get(i).isgActive()){
+                enemyCharacter.cDamage(this.cShowGearList().get(i).getgDamage());
+                return this.cShowGearList().get(i).getgDamage();
             }
         }
         enemyCharacter.cDamage(this.cHitPS);
-
         return this.cHitPS;
     }  
     
@@ -93,6 +93,15 @@ public class CharacterGame implements iPrototype {
     public iPrototype deepClone() {
         //Revisar cuando se necesite una list con nuevas armas
         return clone();
+    }
+    
+    public int cgetRange(){
+        for(int i=0; i< this.cShowGearList().size(); i++){
+            if(this.cShowGearList().get(i).isgActive()){
+                return this.cShowGearList().get(i).getgRange(); 
+            }
+        }
+        return 0;
     }
 
     public static class CharacterBuilder <T extends CharacterBuilder<T>> {
@@ -170,8 +179,8 @@ public class CharacterGame implements iPrototype {
         this.cName = cName;
     }
 
-    public HashMap<Integer, Appearance> getcAppearance() {
-        return cAppearance;
+    public String getcAppearance(int lvl, String actApearance) {
+        return cAppearance.get(lvl).getAppearance(actApearance);
     }
 
     public void setcAppearance(HashMap<Integer, Appearance> cAppearance) {

@@ -3,7 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package LogicaJuego;
+package LogicaBatalla;
+import InterfazJuego.campoBatalla_Juego;
+import LogicaJuego.AerialWarrior;
+import LogicaJuego.CharacterGame;
 import java.io.Serializable;
 import java.util.ArrayList;
 import javax.swing.JLabel;
@@ -13,39 +16,43 @@ import java.util.concurrent.ThreadLocalRandom;
  * @author Jennifer
  */
 public class Batalla implements Serializable{
+    protected campoBatalla_Juego refPantalla;
+    protected ArrayList<HiloBatalla> army;
+    protected ArrayList<HiloBatalla> enemies;
+    protected ArrayList<CharacterGame> defensas;
+    //protected Personajes listaEscogida;
+    protected ArrayList<CharacterGame> listaEscogida;
     
-    public Batalla() {
-       
-    }
-    
-    public ArrayList generateDefensas(){
-        
+    public Batalla(campoBatalla_Juego refPantalla, ArrayList<CharacterGame> personajes) {
+       this.refPantalla = refPantalla;
+       this.listaEscogida = personajes;
+       army = new ArrayList<HiloBatalla>();
+       enemies = new ArrayList<HiloBatalla>();
     }
     
     public void generateArmy(){
-        ArrayList<Guerrero> defensas = generateDefensas();
-        int largo= ThreadLocalRandom.current().nextInt(1,listaEscogida.listaPersonajes.size() + 1);
-         for(int i = 0; i <=largo; i++) {  
-            int indice= (int) (Math.random() *(Math.random() * (defensas.size()-1)+1));
-            if(defensas.get(indice).lvlAparicion<=nuevo.nivelUsuario){
-               String nombreArchivoA=defensas.get(indice).rutaImagenA;
-               JLabel labelForThread = refPantalla.generateLabel(nombreArchivoA, 270,20);
-               army.add(new HiloBatalla(refPantalla, labelForThread, (i+1), defensas.get(indice)));
-            }
-         }
-        for (int i = 0; i < listaEscogida.listaPersonajes.size(); i++) {
-            String nombreArchivo=listaEscogida.listaPersonajes.get(i).rutaImagenA;
+        //Recordar cambiar la listaEscogida para que este adeacuerdo con la clase Personajes
+        //Utilizar el ArrayList de la calse Personajes solo si la calse existe
+        for (int i = 0; i < listaEscogida.size(); i++) {
+            String nombreArchivo = listaEscogida.get(i).getcAppearance(1,"STOP");
             JLabel labelForThread = refPantalla.generateLabel(nombreArchivo, 270, 20);
-            army.add(new HiloBatalla(refPantalla, labelForThread, (i+1), listaEscogida.listaPersonajes.get(i)));
+            army.add(new HiloBatalla(refPantalla, labelForThread, (i+1), listaEscogida.get(i)));
         }
     }
     
     public void subirNivelEnemy(){
-        
+        //implementar si existe la clase personajes.
     }
     
     public void generateEnemy(){
-       
+        //Por el momento los enemigos seran los mismos que los del usuario
+        //Si se genera Personajes esto cambia
+        
+       for (int i = 0; i < listaEscogida.size(); i++) {
+            String nombreArchivo = listaEscogida.get(i).getcAppearance(1,"Stop");
+            JLabel labelForThread = refPantalla.generateLabel(nombreArchivo, 270, 20);
+            enemies.add(new HiloBatalla(refPantalla, labelForThread, (i+1), listaEscogida.get(i)));
+        }
     }
     
     public void startArmy(){
@@ -95,7 +102,7 @@ public class Batalla implements Serializable{
         boolean esArmy = army.contains(guerrero);
         if (esArmy){
             for (int i = 0; i < army.size(); i++) {
-                if (army.get(i).guerrero.vida > 0 && !(army.get(i).guerrero.tipoGuerrero.equalsIgnoreCase("Defensa")))
+                if (army.get(i).guerrero.getcLife() > 0)
                     return null;
             }
             ganador="Enemigos";
@@ -103,7 +110,7 @@ public class Batalla implements Serializable{
             
             }else {
             for (int i = 0; i < enemies.size(); i++) {
-                if(enemies.get(i).guerrero.vida > 0 && !(enemies.get(i).guerrero.tipoGuerrero.equalsIgnoreCase("Defensa")))
+                if(enemies.get(i).guerrero.getcLife() > 0 )
                     return null;
             }
            ganador="Aliados";
@@ -118,8 +125,11 @@ public class Batalla implements Serializable{
     } 
     
    public boolean enRango(HiloBatalla guerrero, int cercano, int num) {
-        if (guerrero.guerrero.tipoGuerrero.equalsIgnoreCase("Guerrero aéreo")){
-            GuerreroAereo guerreroA = new GuerreroAereo(guerrero.guerrero.nombre, guerrero.guerrero.vida, guerrero.guerrero.golpes, guerrero.guerrero.lvlAparicion, guerrero.guerrero.espacios, guerrero.guerrero.nivel, guerrero.guerrero.rutaImagenA, guerrero.guerrero.rutaImagenE, guerrero.guerrero.tipoGuerrero);
+       //Cambiar getName por get tipo de guerrero si se agrega
+       // Se necesita que se devuelva el rango de ataque 
+       return (cercano/num <= guerrero.guerrero.cgetRange());
+       /*if (guerrero.guerrero.tipoGuerrero.equalsIgnoreCase("Guerrero aéreo")){
+            AerialWarrior guerreroA = new GuerreroAereo(guerrero.guerrero.nombre, guerrero.guerrero.vida, guerrero.guerrero.golpes, guerrero.guerrero.lvlAparicion, guerrero.guerrero.espacios, guerrero.guerrero.nivel, guerrero.guerrero.rutaImagenA, guerrero.guerrero.rutaImagenE, guerrero.guerrero.tipoGuerrero);
             guerreroA.sonarGuerrero();
             if (cercano/num <= guerreroA.alcance){
                 return true;}
@@ -146,7 +156,7 @@ public class Batalla implements Serializable{
                 }
             return true;
         }}
-        return false;
+        return false;*/
     }
     
     public HiloBatalla getEnemy(HiloBatalla guerrero) {
@@ -192,15 +202,10 @@ public class Batalla implements Serializable{
             }
             for (int i = 0; i < enemies.size(); i++){
                 if (enemies.get(i).refLabel.getLocation().x == xEnemigo && enemies.get(i).refLabel.getLocation().y == yEnemigo ){
-                    if (enemies.get(i).guerrero.getVida() > 0){
-                        if (guerrero.guerrero.tipoGuerrero.equalsIgnoreCase("Defensa")){
-                            if (enRangoDefensa(guerrero, cercano, num)){
-                                guerrero.guerrero.atacar(enemies.get(i).guerrero);
-                            }
-                        }else{
-                            if (enRango(guerrero, cercano, num)){
-                                guerrero.guerrero.atacar(enemies.get(i).guerrero);
-                            }
+                    if (enemies.get(i).guerrero.getcLife() > 0){
+                        
+                        if (enRango(guerrero, cercano, num)){
+                            guerrero.guerrero.cAttack(enemies.get(i).guerrero);
                         }
                     return null;
                 }
@@ -240,16 +245,10 @@ public class Batalla implements Serializable{
             }
             for (int i = 0; i < army.size(); i++){
                 if (army.get(i).refLabel.getLocation().x == xEnemigo && army.get(i).refLabel.getLocation().y == yEnemigo ){
-                    if (army.get(i).guerrero.getVida() > 0){
-                         if (guerrero.guerrero.tipoGuerrero.equalsIgnoreCase("Defensa")){
-                            if (enRangoDefensa(guerrero, cercano, num)){
-                                guerrero.guerrero.atacar(army.get(i).guerrero);
-                            }
-                        }else{
-                            if (enRango(guerrero, cercano, num)){
-                                guerrero.guerrero.atacar(army.get(i).guerrero);
-                            }
-                         }
+                    if (army.get(i).guerrero.getcLife() > 0){
+                        if (enRango(guerrero, cercano, num)){
+                            guerrero.guerrero.cAttack(army.get(i).guerrero);
+                        }
                     return null;
                 }
             }

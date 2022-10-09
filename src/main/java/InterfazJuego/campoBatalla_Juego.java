@@ -4,11 +4,11 @@
  * and open the template in the editor.
  */
 package InterfazJuego;
+import LogicaBatalla.*;
+import LogicaJuego.CharacterGame;
 import java.awt.Image;
 import java.io.Serializable;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.util.ArrayList;
 import java.util.Random;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
@@ -19,12 +19,18 @@ import javax.swing.JOptionPane;
  * @author monic
  */
 public class campoBatalla_Juego extends javax.swing.JFrame implements Serializable {
-    
-    /**
-     * Creates new form campoBatalla_Juego
-     */
+    //protected Personajes listaPersonajesUsuario;
+    // Si javi agrega la clase personajes descomentar eso y pasarla por referencia en el contructor
+    public Batalla batalla;
+    public ArrayList<CharacterGame> listaPersonajesUsuario;
+
   
-   public campoBatalla_Juego() {
+   public campoBatalla_Juego(ArrayList<CharacterGame> listaPersonajesUsuario) {
+       this.listaPersonajesUsuario = listaPersonajesUsuario;
+        batalla = new Batalla(this,listaPersonajesUsuario);
+        //Agregar una referencia a personajes aqui
+        
+        initComponents();
     }
    public void mostrarGanador(String ganador){
         JOptionPane.showMessageDialog(fondo_Juego,"Ganador: "+ganador,"Resultado de la batalla",JOptionPane.OK_OPTION);
@@ -81,8 +87,10 @@ public class campoBatalla_Juego extends javax.swing.JFrame implements Serializab
 
               
     }
+    
+    
     public void escribirHilos(String texto){
-        
+        txtArea_hilos.append(texto+" \n");
     }
     
     
@@ -145,7 +153,7 @@ public class campoBatalla_Juego extends javax.swing.JFrame implements Serializab
 
         panelEscenario.setBackground(new java.awt.Color(204, 204, 204));
 
-        lbl_FondoBatalla.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenesJuego/fondoBatalla_1.png"))); // NOI18N
+        lbl_FondoBatalla.setIcon(new javax.swing.ImageIcon("C:\\Users\\Usuario\\Desktop\\TEC\\VI_semestre\\Diseno Software\\Proyecto 1\\ProyectoGui\\creacionPersonajesGui\\src\\main\\java\\imagenesJuego\\fondoBatalla_1.png")); // NOI18N
 
         javax.swing.GroupLayout panelEscenarioLayout = new javax.swing.GroupLayout(panelEscenario);
         panelEscenario.setLayout(panelEscenarioLayout);
@@ -238,16 +246,19 @@ public class campoBatalla_Juego extends javax.swing.JFrame implements Serializab
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_StartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_StartActionPerformed
-
+        batalla.generateArmy();
+        batalla.generateEnemy();
+        batalla.startArmy();
+        batalla.startEnemy();
 
     }//GEN-LAST:event_btn_StartActionPerformed
 
     private void btn_StopActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_StopActionPerformed
-
+        batalla.stopArmy();
     }//GEN-LAST:event_btn_StopActionPerformed
 
     private void btn_PauseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_PauseActionPerformed
-
+        batalla.pauseArmy();
     }//GEN-LAST:event_btn_PauseActionPerformed
 
     private void btn_GuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_GuardarActionPerformed
@@ -256,7 +267,15 @@ public class campoBatalla_Juego extends javax.swing.JFrame implements Serializab
     }//GEN-LAST:event_btn_GuardarActionPerformed
 
     private void btn_NextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_NextActionPerformed
-        // TODO add your handling code here:
+        batalla.stopArmy();
+        /*JOptionPane.showMessageDialog(fondo_Juego,"Ganador: Aliados","Resultado de la batalla",JOptionPane.OK_OPTION);
+        nuevo.subirNivel();
+        this.setVisible(false);
+        escogerPersonajes_Juego frame = new escogerPersonajes_Juego(nuevo);
+        frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        frame.pack();
+        frame.setLocation(290, 150);
+        frame.setVisible(true);*/
 
     }//GEN-LAST:event_btn_NextActionPerformed
                         
