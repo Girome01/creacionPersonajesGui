@@ -17,17 +17,19 @@ import java.util.HashMap;
  * @author monic
  */
 public class escogerPersonajes_Juego extends javax.swing.JFrame {
-        protected PFCharacter listaPersonajes;
         protected ArrayList<CharacterGame> listaPersonajesUsuario;
-        protected CharacterGame guerrero;
+        protected User usuario;
     /**
      * Creates new form escogerPersonajes_Juego
      
      */
-    public escogerPersonajes_Juego() {
+    public escogerPersonajes_Juego(User user) {
         initComponents();
+        this.usuario = user;
         crearPersonajesBase();
+        subirNivel(user);
         tabla();
+        
     }
     /*
     public boolean creceNivel(String tipoGuerrero){
@@ -85,7 +87,10 @@ public class escogerPersonajes_Juego extends javax.swing.JFrame {
    
     
     
-    public void subirNivel(){
+    public void subirNivel(User user){
+        
+        //SOLO AUMENTA EL NIVEL, ACTUALIZAR SI SE OCUPA SUBIR OTRAS ESTADISTICAS EN CharacterGame
+        PFCharacter.setLevels(user.getuLevel());
         
     }
     
@@ -261,7 +266,9 @@ public class escogerPersonajes_Juego extends javax.swing.JFrame {
 
     private void btn_EscogerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_EscogerActionPerformed
         getValues();
+        this.usuario.setWarriors(listaPersonajesUsuario);
         System.out.println(listaPersonajesUsuario);
+        
                 
     }//GEN-LAST:event_btn_EscogerActionPerformed
 

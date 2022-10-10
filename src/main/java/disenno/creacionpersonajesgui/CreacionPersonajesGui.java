@@ -26,7 +26,7 @@ public class CreacionPersonajesGui {
         HashMap<Integer, Appearance> cAppearance = new HashMap<>();
         cAppearance.put(1, aBarbara);
         
-        HalfRangeWarrior arquera = (HalfRangeWarrior) new HalfRangeWarrior.HalfRangeWarriorBuilder()
+        ContactWarrior arquera = new ContactWarrior.CharacterBuilder<ContactWarrior>
                 .setcName("arquera")
                 .setcCost(0)
                 .setcAppearance(cAppearance)
@@ -36,7 +36,7 @@ public class CreacionPersonajesGui {
                 .setcStorageSpace(0)
                 .setcHitPS(2)
                 .build();
-        */
+       
         
         //PRUEBA BATALLA
         /*

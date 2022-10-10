@@ -27,5 +27,12 @@ public class PFCharacter {
         //System.out.println("clave=" + entry.getKey() + ", valor=" + entry.getValue());
     }
     
+    public static void setLevels(int lvl){
+
+        for (CharacterGame character : pfCharacters.values()) {
+            character.setcLevel(lvl);
+        }    
+    }
+    
     
 }
