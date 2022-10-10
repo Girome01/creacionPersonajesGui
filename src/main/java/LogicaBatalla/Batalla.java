@@ -36,7 +36,20 @@ public class Batalla implements Serializable{
         for (int i = 0; i < listaEscogida.size(); i++) {
             String nombreArchivo = listaEscogida.get(i).getcAppearance(1,"STOP");
             JLabel labelForThread = refPantalla.generateLabel(nombreArchivo, 270, 20);
-            army.add(new HiloBatalla(refPantalla, labelForThread, (i+1), listaEscogida.get(i)));
+            JLabel labelForArma = null;
+            for(int j=0; j< listaEscogida.get(i).cShowGearList().size(); j++){
+                if(listaEscogida.get(i).cShowGearList().get(j).isgActive()){
+                    String nombreArma = listaEscogida.get(i).cShowGearList().get(j).getgAppearanceURL();
+                    labelForArma = refPantalla.generateLabel(nombreArma, 135, 20);
+                }
+            }
+            if(labelForArma == null){
+                labelForArma = refPantalla.generateLabel("C:\\Users\\Usuario\\Desktop\\TEC\\VI_semestre\\Diseno Software\\Proyecto 1\\ProyectoGui\\creacionPersonajesGui\\src\\main\\java\\imagenesJuego\\puño.png", 135, 20);
+            }
+            int x = labelForThread.getLocation().x;
+            int y = labelForThread.getLocation().y;
+            labelForArma.setLocation(x+20, y);
+            army.add(new HiloBatalla(refPantalla, labelForThread, labelForArma, (i+1), listaEscogida.get(i)));
         }
     }
     
@@ -51,7 +64,20 @@ public class Batalla implements Serializable{
        for (int i = 0; i < listaEscogida.size(); i++) {
             String nombreArchivo = listaEscogida.get(i).getcAppearance(1,"Stop");
             JLabel labelForThread = refPantalla.generateLabel(nombreArchivo, 270, 20);
-            enemies.add(new HiloBatalla(refPantalla, labelForThread, (i+1), listaEscogida.get(i)));
+            JLabel labelForArma = null;
+            for(int j=0; j< listaEscogida.get(i).cShowGearList().size(); j++){
+                if(listaEscogida.get(i).cShowGearList().get(j).isgActive()){
+                    String nombreArma = listaEscogida.get(i).cShowGearList().get(j).getgAppearanceURL();
+                    labelForArma = refPantalla.generateLabel(nombreArma, 135, 20);
+                }
+            }
+            if(labelForArma == null){
+                labelForArma = refPantalla.generateLabel("C:\\Users\\Usuario\\Desktop\\TEC\\VI_semestre\\Diseno Software\\Proyecto 1\\ProyectoGui\\creacionPersonajesGui\\src\\main\\java\\imagenesJuego\\puño.png", 135, 20);
+            }
+            int x = labelForThread.getLocation().x;
+            int y = labelForThread.getLocation().y;
+            labelForArma.setLocation(x+20, y);
+            enemies.add(new HiloBatalla(refPantalla, labelForThread, labelForArma, (i+1), (CharacterGame)listaEscogida.get(i).clone()));
         }
     }
     

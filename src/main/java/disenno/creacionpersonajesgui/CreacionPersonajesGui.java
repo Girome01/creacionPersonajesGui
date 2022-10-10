@@ -27,17 +27,19 @@ public class CreacionPersonajesGui {
                 .setcName("arquera")
                 .setcCost(0)
                 .setcAppearance(cAppearance)
-                .setcLife(10)
+                .setcLife(20)
                 .setcLevel(0)
                 .setcSpawnLevel(0)
                 .setcStorageSpace(0)
                 .setcHitPS(2)
                 .build();
         
-        Gear newGear = new Gear("Arco", 4, 2, 0, 0, "http:\\", true);
-        arquera.cAddGear("Arco", newGear);
+        Gear newGear = new Gear("Arco", 3, 2, 0, 0, "C:\\Users\\Usuario\\Desktop\\TEC\\VI_semestre\\Diseno Software\\Proyecto 1\\ProyectoGui\\creacionPersonajesGui\\src\\main\\java\\imagenesJuego\\arco.png", true);
+        //arquera.cAddGear("Arco", newGear);
         
         ArrayList<CharacterGame> listaPersonajesUsuario = new ArrayList<>();
+        listaPersonajesUsuario.add(arquera);
+        listaPersonajesUsuario.add(arquera);
         listaPersonajesUsuario.add(arquera);
         
         campoBatalla_Juego frame = new campoBatalla_Juego(listaPersonajesUsuario);
