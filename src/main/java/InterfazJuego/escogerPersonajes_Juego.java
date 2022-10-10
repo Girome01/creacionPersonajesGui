@@ -21,7 +21,7 @@ public class escogerPersonajes_Juego extends javax.swing.JFrame {
         protected User usuario;
     /**
      * Creates new form escogerPersonajes_Juego
-     
+     * @param user     
      */
     public escogerPersonajes_Juego(User user) {
         initComponents();
@@ -136,18 +136,18 @@ public class escogerPersonajes_Juego extends javax.swing.JFrame {
         barbaroAppearance.put(1, cAppearance);
 
         //fin Barbaro aspects
-        ContactWarrior barbaro = new ContactWarrior("barbaro", barbaroAppearance, 1, 5, 100, 2, 3, 1);
-        barbaro.cAddGear("espada", PFGear.getPrototype("espada"));
+       // ContactWarrior barbaro = new ContactWarrior("barbaro", barbaroAppearance, 1, 5, 100, 2, 3, 1);
+       // barbaro.cAddGear("espada", PFGear.getPrototype("espada"));
         
         //Arquera
         HalfRangeWarrior arquera = new HalfRangeWarrior("arquera", barbaroAppearance, 1, 3, 80, 2, 2, 1);
-        barbaro.cAddGear("arco", PFGear.getPrototype("arco"));
+        arquera.cAddGear("arco", PFGear.getPrototype("arco"));
         
         //Bombardera
         AerialWarrior bombardera = new AerialWarrior("bombardera", barbaroAppearance, 1, 10, 100, 6, 4, 1);
-        barbaro.cAddGear("bomba", PFGear.getPrototype("bomba"));
+        bombardera.cAddGear("bomba", PFGear.getPrototype("bomba"));
         
-        PFCharacter.addPrototype("barbaro", barbaro);
+        //PFCharacter.addPrototype("barbaro", barbaro);
         PFCharacter.addPrototype("arquera", arquera);
         PFCharacter.addPrototype("bombardera", bombardera);
     }
@@ -269,6 +269,13 @@ public class escogerPersonajes_Juego extends javax.swing.JFrame {
         this.usuario.setWarriors(listaPersonajesUsuario);
         System.out.println(listaPersonajesUsuario);
         
+        this.setVisible(false);
+        
+        campoBatalla_Juego frame = new campoBatalla_Juego(listaPersonajesUsuario);
+        frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        frame.pack();
+        frame.setLocation(290, 50);
+        frame.setVisible(true);
                 
     }//GEN-LAST:event_btn_EscogerActionPerformed
 

@@ -39,24 +39,16 @@ public class CreacionPersonajesGui {
        
         
         //PRUEBA BATALLA
-        /*
-        escogerPersonajes_Juego seleccion = new escogerPersonajes_Juego();
+        */
+        
+        User usuario = new User();
+        escogerPersonajes_Juego seleccion = new escogerPersonajes_Juego(usuario);
         seleccion.setVisible(true);
         
-        Gear newGear = new Gear("Arco", 3, 2, 0, 0, "C:\\Users\\Usuario\\Desktop\\TEC\\VI_semestre\\Diseno Software\\Proyecto 1\\ProyectoGui\\creacionPersonajesGui\\src\\main\\java\\imagenesJuego\\arco.png", true);
-        //arquera.cAddGear("Arco", newGear);
         
-        ArrayList<CharacterGame> listaPersonajesUsuario = new ArrayList<>();
-        listaPersonajesUsuario.add(arquera);
-        listaPersonajesUsuario.add(arquera);
-        listaPersonajesUsuario.add(arquera);
         
-        campoBatalla_Juego frame = new campoBatalla_Juego(listaPersonajesUsuario);
-        frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
-        frame.pack();
-        frame.setLocation(290, 50);
-        frame.setVisible(true);
-*/
+        
+
 
     }
 }
