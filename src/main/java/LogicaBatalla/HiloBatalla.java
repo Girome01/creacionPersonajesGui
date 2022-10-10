@@ -23,15 +23,17 @@ import javax.swing.JLabel;
 public class HiloBatalla extends Thread implements Serializable{
     private campoBatalla_Juego refPantalla;
     public JLabel refLabel;
+    public JLabel refArma;
     int numero;
     private boolean running = true;
     private boolean paused = false;
     public CharacterGame guerrero;
     HiloBatalla enemigo ;
 
-    public HiloBatalla(campoBatalla_Juego refPantalla, JLabel refLabel, int numero, CharacterGame guerrero) {
+    public HiloBatalla(campoBatalla_Juego refPantalla, JLabel refLabel, JLabel refArma, int numero, CharacterGame guerrero) {
         this.refPantalla = refPantalla;
         this.refLabel = refLabel;
+        this.refArma = refArma;
         this.numero = numero;
         this.guerrero = guerrero;
     }
@@ -45,13 +47,13 @@ public class HiloBatalla extends Thread implements Serializable{
                     //if(this.guerrero.tipoGuerrero.equalsIgnoreCase("Guerrero aéreo"){
                     if(this.guerrero.getcName().equalsIgnoreCase("Guerrero aéreo")){
                       
-                    }else{  refPantalla.moveLabel(refLabel);}
+                    }else{  refPantalla.moveLabel(refLabel, refArma);}
                     enemigo = refPantalla.batalla.getEnemy(this);
                     refPantalla.escribirHilos("Soy "+this.guerrero.getcName()+" y lucho por mi bando con vida "+this.guerrero.getcLife()+" y ataque "+this.guerrero.getcHitPS());
                 }else{
                     enemigo = refPantalla.batalla.getGanador(this);
                     
-                    String imagen="C:\\Users\\monic\\OneDrive - Estudiantes ITCR\\Documentos\\NetBeansProjects\\proyecto_HerenciaALTrono\\src\\herenciaAlTrono\\imagenes_Juego\\lapida.png";
+                    String imagen="C:\\Users\\Usuario\\Desktop\\TEC\\VI_semestre\\Diseno Software\\Proyecto 1\\ProyectoGui\\creacionPersonajesGui\\src\\main\\java\\imagenesJuego\\lapida.png";
                     ImageIcon imageicon = new ImageIcon(imagen);
                     int ancho=imageicon.getIconWidth();
                     int alto=imageicon.getIconHeight();

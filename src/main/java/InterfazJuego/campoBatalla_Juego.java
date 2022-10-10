@@ -66,8 +66,8 @@ public class campoBatalla_Juego extends javax.swing.JFrame implements Serializab
         return imageLabel;
     
     }
-    /*
-    public void moveLabel (JLabel label){
+    
+    public void moveLabel (JLabel label, JLabel arma){
         int direccion = (new Random()).nextInt(4);
         int x = label.getLocation().x;
         int y = label.getLocation().y;
@@ -82,9 +82,10 @@ public class campoBatalla_Juego extends javax.swing.JFrame implements Serializab
             default: //derecha
                 if (x-23 >= 0) x = x-23; break; 
         }
-        if (batalla.isAvailable(x, y))
+        if (batalla.isAvailable(x, y)){
             label.setLocation(x, y);
-
+            arma.setLocation(x+20, y);
+        }
               
     }
     
