@@ -15,6 +15,12 @@ public class User {
     private ArrayList<CharacterGame> warriors;
     private int uLevel;
 
+    public User(String name, int uLevel) {
+        this.name = name;
+        this.uLevel = uLevel;
+    }
+    
+    
     public String getName() {
         return name;
     }

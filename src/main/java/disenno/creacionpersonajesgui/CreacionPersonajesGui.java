@@ -18,7 +18,7 @@ public class CreacionPersonajesGui {
 
     public static void main(String[] args) {
 
-        User usuario = new User();
+        User usuario = new User("Gil", 1);
         escogerPersonajes_Juego seleccion = new escogerPersonajes_Juego(usuario);
         seleccion.setVisible(true);
 

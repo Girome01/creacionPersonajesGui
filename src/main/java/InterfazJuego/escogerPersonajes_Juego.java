@@ -11,6 +11,7 @@ import javax.swing.table.*;
 import LogicaJuego.*;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 
 /**
  *
@@ -20,8 +21,9 @@ public class escogerPersonajes_Juego extends javax.swing.JFrame {
     protected ArrayList<CharacterGame> listaPersonajesUsuario;
     protected User usuario;
 
-    String imageDir = ("C:\\Users\\anagu\\OneDrive\\Documentos\\TEC\\SemestreII2022\\DiseñoAlgoritmos\\creacionPersonajesGui\\src\\main\\java\\imagenesJuego\\") ;
-
+    //String imageDir = ("C:\\Users\\anagu\\OneDrive\\Documentos\\TEC\\SemestreII2022\\DiseñoAlgoritmos\\creacionPersonajesGui\\src\\main\\java\\imagenesJuego\\") ;
+    
+    String imageDir = "C:\\Users\\Usuario\\Desktop\\TEC\\VI_semestre\\Diseno Software\\Proyecto 1\\ProyectoGui\\creacionPersonajesGui\\src\\main\\java\\imagenesJuego\\";
     /**
      * Creates new form escogerPersonajes_Juego
      * @param user     
@@ -135,7 +137,7 @@ public class escogerPersonajes_Juego extends javax.swing.JFrame {
         
         //Barbaro Aspects
         Appearance cAppearance = new Appearance();
-        cAppearance.addAppearance("stop", imageDir+"rojoD.png");
+        cAppearance.addAppearance("STOP", imageDir+"rojoD.png");
         cAppearance.addAppearance("walking", imageDir+"dragonI.png");
         cAppearance.addAppearance("attacking", imageDir+"heroeD.png");
 
@@ -156,7 +158,7 @@ public class escogerPersonajes_Juego extends javax.swing.JFrame {
         //fin Barbaro aspects
         ContactWarrior barbaro = new ContactWarrior("barbaro", barbaroAppearance, 1, 5, 100, 2, 3, 1);
         barbaro.cAddGear("espada", PFGear.getPrototype("espada"));
-        
+
         //Arquera
         /*HalfRangeWarrior arquera = new HalfRangeWarrior("arquera", barbaroAppearance, 1, 3, 80, 2, 2, 1);
         arquera.cAddGear("arco", PFGear.getPrototype("arco"));*/

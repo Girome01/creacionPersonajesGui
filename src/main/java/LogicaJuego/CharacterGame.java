@@ -87,8 +87,9 @@ public class CharacterGame implements iPrototype {
         
     @Override
     public iPrototype clone() {
-        
-        return new CharacterGame(cName, cAppearance, cSpawnLevel, cHitPS, cLife, cStorageSpace, cCost, cLevel);
+        CharacterGame character = new CharacterGame(cName, cAppearance, cSpawnLevel, cHitPS, cLife, cStorageSpace, cCost, cLevel);
+        character.setcGear(cGear);
+        return character;
     }
     @Override
     public iPrototype deepClone() {

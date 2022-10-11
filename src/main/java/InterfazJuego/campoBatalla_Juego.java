@@ -9,6 +9,7 @@ import LogicaJuego.CharacterGame;
 import java.awt.Image;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.Random;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
@@ -29,7 +30,6 @@ public class campoBatalla_Juego extends javax.swing.JFrame implements Serializab
        this.listaPersonajesUsuario = listaPersonajesUsuario;
         batalla = new Batalla(this,listaPersonajesUsuario);
         //Agregar una referencia a personajes aqui
-        
         initComponents();
     }
    public void mostrarGanador(String ganador){
@@ -154,7 +154,7 @@ public class campoBatalla_Juego extends javax.swing.JFrame implements Serializab
         });
 
         panelEscenario.setBackground(new java.awt.Color(204, 204, 204));
-        String imageDir = ("C:\\Users\\anagu\\OneDrive\\Documentos\\TEC\\SemestreII2022\\DiseñoAlgoritmos\\creacionPersonajesGui\\src\\main\\java\\imagenesJuego\\fondoBatalla_1.png") ;
+        String imageDir = ("C:\\Users\\Usuario\\Desktop\\TEC\\VI_semestre\\Diseno Software\\Proyecto 1\\ProyectoGui\\creacionPersonajesGui\\src\\main\\java\\imagenesJuego\\fondoBatalla_1.png") ;
         lbl_FondoBatalla.setIcon(new javax.swing.ImageIcon(imageDir)); // NOI18N
 
         javax.swing.GroupLayout panelEscenarioLayout = new javax.swing.GroupLayout(panelEscenario);
