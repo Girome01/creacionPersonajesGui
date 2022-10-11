@@ -11,7 +11,7 @@ public class PFGear {
     }
     
     public static Gear getPrototype(String gearName){
-       return pfGear.get(gearName);
+       return (Gear)pfGear.get(gearName.toUpperCase().strip()).clone();
     }
     
     public static ArrayList<Gear> getPrototypes(ArrayList<String> gearList) {

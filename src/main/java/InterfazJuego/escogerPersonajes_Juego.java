@@ -17,8 +17,11 @@ import java.util.HashMap;
  * @author monic
  */
 public class escogerPersonajes_Juego extends javax.swing.JFrame {
-        protected ArrayList<CharacterGame> listaPersonajesUsuario;
-        protected User usuario;
+    protected ArrayList<CharacterGame> listaPersonajesUsuario;
+    protected User usuario;
+
+    String imageDir = ("C:\\Users\\anagu\\OneDrive\\Documentos\\TEC\\SemestreII2022\\DiseñoAlgoritmos\\creacionPersonajesGui\\src\\main\\java\\imagenesJuego\\") ;
+
     /**
      * Creates new form escogerPersonajes_Juego
      * @param user     
@@ -104,7 +107,7 @@ public class escogerPersonajes_Juego extends javax.swing.JFrame {
             private String gAppearanceURL;
             private boolean gActive; 
         */
-        Gear espada = new Gear("espada",1, 10, 1, 0, "", true);
+        Gear espada = new Gear("espada",1, 10, 1, 0, imageDir+"arco.png", true);
         Gear bomba = new Gear("bomba",2, 20, 1,4 , "", true);
         Gear arco = new Gear("arco",5,5,1,0, "", true);
         
@@ -132,24 +135,39 @@ public class escogerPersonajes_Juego extends javax.swing.JFrame {
         
         //Barbaro Aspects
         Appearance cAppearance = new Appearance();
+        cAppearance.addAppearance("stop", imageDir+"rojoD.png");
+        cAppearance.addAppearance("walking", imageDir+"dragonI.png");
+        cAppearance.addAppearance("attacking", imageDir+"heroeD.png");
+
+        Appearance defaultAppearance = new Appearance();
+        defaultAppearance.addAppearance("lapida", imageDir+"lapida.png");
+        defaultAppearance.addAppearance("puño", imageDir+"puño.png");
+
+/*
+        Appearance arqueraAppearance = new Appearance();
+        arqueraAppearance.addAppearance("lapida", imageDir+"lapida.png");
+        arqueraAppearance.addAppearance("puño", imageDir+"puño.png");*/
+
         HashMap<Integer, Appearance> barbaroAppearance = new HashMap<>();
         barbaroAppearance.put(1, cAppearance);
+        barbaroAppearance.put(0, defaultAppearance);
+
 
         //fin Barbaro aspects
-       // ContactWarrior barbaro = new ContactWarrior("barbaro", barbaroAppearance, 1, 5, 100, 2, 3, 1);
-       // barbaro.cAddGear("espada", PFGear.getPrototype("espada"));
+        ContactWarrior barbaro = new ContactWarrior("barbaro", barbaroAppearance, 1, 5, 100, 2, 3, 1);
+        barbaro.cAddGear("espada", PFGear.getPrototype("espada"));
         
         //Arquera
-        HalfRangeWarrior arquera = new HalfRangeWarrior("arquera", barbaroAppearance, 1, 3, 80, 2, 2, 1);
-        arquera.cAddGear("arco", PFGear.getPrototype("arco"));
+        /*HalfRangeWarrior arquera = new HalfRangeWarrior("arquera", barbaroAppearance, 1, 3, 80, 2, 2, 1);
+        arquera.cAddGear("arco", PFGear.getPrototype("arco"));*/
         
         //Bombardera
-        AerialWarrior bombardera = new AerialWarrior("bombardera", barbaroAppearance, 1, 10, 100, 6, 4, 1);
-        bombardera.cAddGear("bomba", PFGear.getPrototype("bomba"));
+        /*AerialWarrior bombardera = new AerialWarrior("bombardera", barbaroAppearance, 1, 10, 100, 6, 4, 1);
+        bombardera.cAddGear("bomba", PFGear.getPrototype("bomba"));*/
         
-        //PFCharacter.addPrototype("barbaro", barbaro);
-        PFCharacter.addPrototype("arquera", arquera);
-        PFCharacter.addPrototype("bombardera", bombardera);
+        PFCharacter.addPrototype("barbaro", barbaro);
+        /*PFCharacter.addPrototype("arquera", arquera);
+        PFCharacter.addPrototype("bombardera", bombardera);*/
     }
     
     public boolean getValues(){
