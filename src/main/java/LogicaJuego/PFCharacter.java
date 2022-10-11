@@ -1,4 +1,4 @@
-import LogicaJuego.CharacterGame;
+package LogicaJuego;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -17,4 +17,22 @@ public class PFCharacter {
         }
         return newCharacters;
     }
+    
+    public static ArrayList<CharacterGame> CharacterList(){
+        ArrayList<CharacterGame> characterList = new ArrayList<>();
+        pfCharacters.entrySet().forEach(entry -> {
+            characterList.add(entry.getValue());
+        });
+        return characterList;
+        //System.out.println("clave=" + entry.getKey() + ", valor=" + entry.getValue());
+    }
+    
+    public static void setLevels(int lvl){
+
+        for (CharacterGame character : pfCharacters.values()) {
+            character.setcLevel(lvl);
+        }    
+    }
+    
+    
 }

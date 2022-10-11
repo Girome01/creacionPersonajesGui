@@ -8,6 +8,7 @@ import InterfazJuego.campoBatalla_Juego;
 import LogicaJuego.*;
 import java.util.ArrayList;
 import java.util.HashMap;
+import InterfazJuego.*;
 import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
 /**
  *
@@ -16,44 +17,10 @@ import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
 public class CreacionPersonajesGui {
 
     public static void main(String[] args) {
-        
-        Appearance aBarbara = new Appearance();
-        aBarbara.addAppearance("STOP", "C:\\Users\\Usuario\\Desktop\\TEC\\VI_semestre\\Diseno Software\\Proyecto 1\\ProyectoGui\\creacionPersonajesGui\\src\\main\\java\\imagenesJuego\\rojoD.png");
-        aBarbara.addAppearance("WALKING", "C:\\Users\\Usuario\\Desktop\\TEC\\VI_semestre\\Diseno Software\\Proyecto 1\\ProyectoGui\\creacionPersonajesGui\\src\\main\\java\\imagenesJuego\\dragonI.png");
-        aBarbara.addAppearance("ATTACK", "C:\\Users\\Usuario\\Desktop\\TEC\\VI_semestre\\Diseno Software\\Proyecto 1\\ProyectoGui\\creacionPersonajesGui\\src\\main\\java\\imagenesJuego\\heroeD.png");
-        
-        Appearance defAppearance = new Appearance();
-        defAppearance.addAppearance("LAPIDA", "C:\\Users\\Usuario\\Desktop\\TEC\\VI_semestre\\Diseno Software\\Proyecto 1\\ProyectoGui\\creacionPersonajesGui\\src\\main\\java\\imagenesJuego\\lapida.png");
-        defAppearance.addAppearance("PUÑO", "C:\\Users\\Usuario\\Desktop\\TEC\\VI_semestre\\Diseno Software\\Proyecto 1\\ProyectoGui\\creacionPersonajesGui\\src\\main\\java\\imagenesJuego\\puño.png");
-        
-        HashMap<Integer, Appearance> cAppearance = new HashMap<>();
-        cAppearance.put(0,defAppearance);
-        cAppearance.put(1, aBarbara);
-        
-        HalfRangeWarrior arquera = (HalfRangeWarrior) new HalfRangeWarrior.HalfRangeWarriorBuilder()
-                .setcName("arquera")
-                .setcCost(0)
-                .setcAppearance(cAppearance)
-                .setcLife(20)
-                .setcLevel(1)
-                .setcSpawnLevel(0)
-                .setcStorageSpace(0)
-                .setcHitPS(2)
-                .build();
-        
-        Gear newGear = new Gear("Arco", 3, 2, 0, 0, "C:\\Users\\Usuario\\Desktop\\TEC\\VI_semestre\\Diseno Software\\Proyecto 1\\ProyectoGui\\creacionPersonajesGui\\src\\main\\java\\imagenesJuego\\arco.png", true);
-        arquera.cAddGear("Arco", newGear);
-        
-        ArrayList<CharacterGame> listaPersonajesUsuario = new ArrayList<>();
-        listaPersonajesUsuario.add(arquera);
-        listaPersonajesUsuario.add(arquera);
-        listaPersonajesUsuario.add(arquera);
-        
-        campoBatalla_Juego frame = new campoBatalla_Juego(listaPersonajesUsuario);
-        frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
-        frame.pack();
-        frame.setLocation(290, 50);
-        frame.setVisible(true);
+
+        User usuario = new User();
+        escogerPersonajes_Juego seleccion = new escogerPersonajes_Juego(usuario);
+        seleccion.setVisible(true);
 
     }
 }

@@ -67,8 +67,8 @@
                     <Column editable="false" title="Imagen" type="java.lang.Object"/>
                     <Column editable="false" title="Ataque" type="java.lang.Integer"/>
                     <Column editable="false" title="Vida" type="java.lang.Integer"/>
-                    <Column editable="false" title="Tipo Guerrero" type="java.lang.String"/>
                     <Column editable="false" title="Campos" type="java.lang.Integer"/>
+                    <Column editable="true" title="Cantidad" type="java.lang.Integer"/>
                     <Column editable="true" title="Escogido" type="java.lang.Boolean"/>
                   </Table>
                 </Property>
@@ -130,7 +130,6 @@
               <Color blue="66" green="0" red="66" type="rgb"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Escoger personajes"/>
-            <Property name="opaque" type="boolean" value="false"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_EscogerActionPerformed"/>
@@ -168,11 +167,6 @@
           </Constraints>
         </Component>
         <Component class="javax.swing.JLabel" name="lbl_Fondo">
-          <Properties>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/herenciaAlTrono/imagenes_Juego/fondo_Juego.jpg"/>
-            </Property>
-          </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
               <AbsoluteConstraints x="-260" y="-150" width="-1" height="600"/>

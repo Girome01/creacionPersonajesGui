@@ -73,6 +73,7 @@ public class CharacterGame implements iPrototype {
         }
         enemyCharacter.cDamage(this.cHitPS);
         return this.cHitPS;
+        
     }  
     
     public ArrayList<Gear> cShowGearList(){
