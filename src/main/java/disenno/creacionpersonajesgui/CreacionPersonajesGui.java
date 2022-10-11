@@ -17,38 +17,10 @@ import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
 public class CreacionPersonajesGui {
 
     public static void main(String[] args) {
-        
-        //PRUEBA BUILDER
-        /*
-        Appearance aBarbara = new Appearance();
-        aBarbara.addAppearance("STOP", "C:\\Users\\Usuario\\Desktop\\TEC\\VI_semestre\\Diseno Software\\Proyecto 1\\ProyectoGui\\creacionPersonajesGui\\src\\main\\java\\imagenesJuego\\rojoD.png");
-        
-        HashMap<Integer, Appearance> cAppearance = new HashMap<>();
-        cAppearance.put(1, aBarbara);
-        
-        ContactWarrior arquera = new ContactWarrior.CharacterBuilder<ContactWarrior>
-                .setcName("arquera")
-                .setcCost(0)
-                .setcAppearance(cAppearance)
-                .setcLife(20)
-                .setcLevel(0)
-                .setcSpawnLevel(0)
-                .setcStorageSpace(0)
-                .setcHitPS(2)
-                .build();
-       
-        
-        //PRUEBA BATALLA
-        */
-        
+
         User usuario = new User();
         escogerPersonajes_Juego seleccion = new escogerPersonajes_Juego(usuario);
         seleccion.setVisible(true);
-        
-        
-        
-        
-
 
     }
 }
