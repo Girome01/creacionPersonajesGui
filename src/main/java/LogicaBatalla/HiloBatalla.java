@@ -6,9 +6,9 @@
 package LogicaBatalla;
 
 import InterfazJuego.campoBatalla_Juego;
-import LogicaJuego.AerialWarrior;
 import LogicaJuego.CharacterGame;
 import java.awt.Image;
+import java.io.IOException;
 import java.io.Serializable;
 import static java.lang.Thread.sleep;
 import java.util.logging.Level;
@@ -47,24 +47,33 @@ public class HiloBatalla extends Thread implements Serializable{
                     //if(this.guerrero.tipoGuerrero.equalsIgnoreCase("Guerrero aéreo"){
                     if(this.guerrero.getcName().equalsIgnoreCase("Guerrero aéreo")){
                       
-                    }else{  refPantalla.moveLabel(refLabel, refArma);}
+                    }else{
+                        
+                        String url = guerrero.getcAppearance(guerrero.getcLevel(),"WALKING");
+                        if(url != null){
+                            cambiarImagen(url, refLabel);
+                        }
+                        sleep(1000);
+                        refPantalla.moveLabel(refLabel, refArma);
+                        url = guerrero.getcAppearance(guerrero.getcLevel(),"STOP");
+                        if(url != null){
+                            cambiarImagen(url, refLabel);
+                        }
+                    }
                     enemigo = refPantalla.batalla.getEnemy(this);
                     refPantalla.escribirHilos("Soy "+this.guerrero.getcName()+" y lucho por mi bando con vida "+this.guerrero.getcLife()+" y ataque "+this.guerrero.getcHitPS());
                 }else{
                     enemigo = refPantalla.batalla.getGanador(this);
                     
-                    String imagen="C:\\Users\\Usuario\\Desktop\\TEC\\VI_semestre\\Diseno Software\\Proyecto 1\\ProyectoGui\\creacionPersonajesGui\\src\\main\\java\\imagenesJuego\\lapida.png";
-                    ImageIcon imageicon = new ImageIcon(imagen);
-                    int ancho=imageicon.getIconWidth();
-                    int alto=imageicon.getIconHeight();
-                    Image img = imageicon.getImage().getScaledInstance(ancho, alto, Image.SCALE_SMOOTH);
-                    this.refLabel.setIcon(new ImageIcon(img));
-                    this.refLabel.setSize(ancho, alto);
-                    this.refLabel.setOpaque(false);
+                    String imagen= guerrero.getcAppearance(0, "LAPIDA");
+                    if(imagen != null)
+                        cambiarImagen(imagen, refLabel);
                     
                 }
                 sleep(2000);
-            } catch (InterruptedException ex) { }
+            } catch (InterruptedException ex) { } catch (IOException ex) {
+                Logger.getLogger(HiloBatalla.class.getName()).log(Level.SEVERE, null, ex);
+            }
             
             
             
@@ -84,5 +93,15 @@ public class HiloBatalla extends Thread implements Serializable{
     
     public void setPaused(){
         paused = !paused;
+    }
+    
+    private void cambiarImagen(String url, JLabel refLabel){
+        ImageIcon imageicon = new ImageIcon(url);
+        int ancho=imageicon.getIconWidth();
+        int alto=imageicon.getIconHeight();
+        Image img = imageicon.getImage().getScaledInstance(ancho, alto, Image.SCALE_SMOOTH);
+        refLabel.setIcon(new ImageIcon(img));
+        refLabel.setSize(ancho, alto);
+        refLabel.setOpaque(false);
     }
 }

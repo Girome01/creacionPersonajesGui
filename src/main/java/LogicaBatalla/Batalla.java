@@ -5,12 +5,13 @@
  */
 package LogicaBatalla;
 import InterfazJuego.campoBatalla_Juego;
-import LogicaJuego.AerialWarrior;
 import LogicaJuego.CharacterGame;
+import java.awt.Image;
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
 import javax.swing.JLabel;
-import java.util.concurrent.ThreadLocalRandom;
+import javax.swing.ImageIcon;
 /**
  *
  * @author Jennifer
@@ -34,7 +35,7 @@ public class Batalla implements Serializable{
         //Recordar cambiar la listaEscogida para que este adeacuerdo con la clase Personajes
         //Utilizar el ArrayList de la calse Personajes solo si la calse existe
         for (int i = 0; i < listaEscogida.size(); i++) {
-            String nombreArchivo = listaEscogida.get(i).getcAppearance(1,"STOP");
+            String nombreArchivo = listaEscogida.get(i).getcAppearance(listaEscogida.get(i).getcLevel(),"STOP");
             JLabel labelForThread = refPantalla.generateLabel(nombreArchivo, 270, 20);
             JLabel labelForArma = null;
             for(int j=0; j< listaEscogida.get(i).cShowGearList().size(); j++){
@@ -44,11 +45,15 @@ public class Batalla implements Serializable{
                 }
             }
             if(labelForArma == null){
-                labelForArma = refPantalla.generateLabel("C:\\Users\\Usuario\\Desktop\\TEC\\VI_semestre\\Diseno Software\\Proyecto 1\\ProyectoGui\\creacionPersonajesGui\\src\\main\\java\\imagenesJuego\\puño.png", 135, 20);
+                String defArma = listaEscogida.get(i).getcAppearance(0, "PUÑO");
+                if(defArma != null)
+                    labelForArma = refPantalla.generateLabel(defArma, 135, 20);
             }
-            int x = labelForThread.getLocation().x;
-            int y = labelForThread.getLocation().y;
-            labelForArma.setLocation(x+20, y);
+            if(labelForArma != null){
+                int x = labelForThread.getLocation().x;
+                int y = labelForThread.getLocation().y;
+                labelForArma.setLocation(x+22, y);
+            }
             army.add(new HiloBatalla(refPantalla, labelForThread, labelForArma, (i+1), listaEscogida.get(i)));
         }
     }
@@ -62,7 +67,7 @@ public class Batalla implements Serializable{
         //Si se genera Personajes esto cambia
         
        for (int i = 0; i < listaEscogida.size(); i++) {
-            String nombreArchivo = listaEscogida.get(i).getcAppearance(1,"Stop");
+            String nombreArchivo = listaEscogida.get(i).getcAppearance(listaEscogida.get(i).getcLevel(),"Stop");
             JLabel labelForThread = refPantalla.generateLabel(nombreArchivo, 270, 20);
             JLabel labelForArma = null;
             for(int j=0; j< listaEscogida.get(i).cShowGearList().size(); j++){
@@ -72,11 +77,15 @@ public class Batalla implements Serializable{
                 }
             }
             if(labelForArma == null){
-                labelForArma = refPantalla.generateLabel("C:\\Users\\Usuario\\Desktop\\TEC\\VI_semestre\\Diseno Software\\Proyecto 1\\ProyectoGui\\creacionPersonajesGui\\src\\main\\java\\imagenesJuego\\puño.png", 135, 20);
+                String defArma = listaEscogida.get(i).getcAppearance(0, "PUÑO");
+                if(defArma != null)
+                    labelForArma = refPantalla.generateLabel(defArma, 135, 20);
             }
-            int x = labelForThread.getLocation().x;
-            int y = labelForThread.getLocation().y;
-            labelForArma.setLocation(x+20, y);
+            if(labelForArma != null){
+                int x = labelForThread.getLocation().x;
+                int y = labelForThread.getLocation().y;
+                labelForArma.setLocation(x+22, y);
+            }
             enemies.add(new HiloBatalla(refPantalla, labelForThread, labelForArma, (i+1), (CharacterGame)listaEscogida.get(i).clone()));
         }
     }
@@ -185,7 +194,7 @@ public class Batalla implements Serializable{
         return false;*/
     }
     
-    public HiloBatalla getEnemy(HiloBatalla guerrero) {
+    public HiloBatalla getEnemy(HiloBatalla guerrero) throws InterruptedException, IOException {
         int cercano = 800;
         int xGuerrero = guerrero.refLabel.getLocation().x;
         int yGuerrero = guerrero.refLabel.getLocation().y;
@@ -197,7 +206,6 @@ public class Batalla implements Serializable{
         int num = 0;
         String coordenada = "";
         boolean esArmy = army.contains(guerrero);
-         
         if (esArmy){
             for (int i = 0; i < enemies.size(); i++) {
                 if (xGuerrero > enemies.get(i).refLabel.getLocation().x) {
@@ -231,7 +239,16 @@ public class Batalla implements Serializable{
                     if (enemies.get(i).guerrero.getcLife() > 0){
                         
                         if (enRango(guerrero, cercano, num)){
+                            String url = guerrero.guerrero.getcAppearance(guerrero.guerrero.getcLevel(),"ATTACK");
+                            if(url != null){
+                                cambiarImagen(url, guerrero.refLabel);
+                            }
+                            guerrero.sleep(1000);
                             guerrero.guerrero.cAttack(enemies.get(i).guerrero);
+                            url = guerrero.guerrero.getcAppearance(guerrero.guerrero.getcLevel(),"STOP");
+                            if(url != null){
+                                cambiarImagen(url, guerrero.refLabel);
+                            }
                         }
                     return null;
                 }
@@ -273,7 +290,16 @@ public class Batalla implements Serializable{
                 if (army.get(i).refLabel.getLocation().x == xEnemigo && army.get(i).refLabel.getLocation().y == yEnemigo ){
                     if (army.get(i).guerrero.getcLife() > 0){
                         if (enRango(guerrero, cercano, num)){
+                            String url = guerrero.guerrero.getcAppearance(guerrero.guerrero.getcLevel(),"ATTACK");
+                            if(url != null){
+                                cambiarImagen(url, guerrero.refLabel);
+                            }
+                            guerrero.sleep(1000);
                             guerrero.guerrero.cAttack(army.get(i).guerrero);
+                            url = guerrero.guerrero.getcAppearance(guerrero.guerrero.getcLevel(),"STOP");
+                            if(url != null){
+                                cambiarImagen(url, guerrero.refLabel);
+                            }
                         }
                     return null;
                 }
@@ -282,5 +308,15 @@ public class Batalla implements Serializable{
     }
     return null;
 }
+    
+    private void cambiarImagen(String url, JLabel refLabel){
+        ImageIcon imageicon = new ImageIcon(url);
+        int ancho=imageicon.getIconWidth();
+        int alto=imageicon.getIconHeight();
+        Image img = imageicon.getImage().getScaledInstance(ancho, alto, Image.SCALE_SMOOTH);
+        refLabel.setIcon(new ImageIcon(img));
+        refLabel.setSize(ancho, alto);
+        refLabel.setOpaque(false);
+    }
  
 }

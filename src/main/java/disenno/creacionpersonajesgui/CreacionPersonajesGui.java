@@ -19,8 +19,15 @@ public class CreacionPersonajesGui {
         
         Appearance aBarbara = new Appearance();
         aBarbara.addAppearance("STOP", "C:\\Users\\Usuario\\Desktop\\TEC\\VI_semestre\\Diseno Software\\Proyecto 1\\ProyectoGui\\creacionPersonajesGui\\src\\main\\java\\imagenesJuego\\rojoD.png");
+        aBarbara.addAppearance("WALKING", "C:\\Users\\Usuario\\Desktop\\TEC\\VI_semestre\\Diseno Software\\Proyecto 1\\ProyectoGui\\creacionPersonajesGui\\src\\main\\java\\imagenesJuego\\dragonI.png");
+        aBarbara.addAppearance("ATTACK", "C:\\Users\\Usuario\\Desktop\\TEC\\VI_semestre\\Diseno Software\\Proyecto 1\\ProyectoGui\\creacionPersonajesGui\\src\\main\\java\\imagenesJuego\\heroeD.png");
+        
+        Appearance defAppearance = new Appearance();
+        defAppearance.addAppearance("LAPIDA", "C:\\Users\\Usuario\\Desktop\\TEC\\VI_semestre\\Diseno Software\\Proyecto 1\\ProyectoGui\\creacionPersonajesGui\\src\\main\\java\\imagenesJuego\\lapida.png");
+        defAppearance.addAppearance("PUÑO", "C:\\Users\\Usuario\\Desktop\\TEC\\VI_semestre\\Diseno Software\\Proyecto 1\\ProyectoGui\\creacionPersonajesGui\\src\\main\\java\\imagenesJuego\\puño.png");
         
         HashMap<Integer, Appearance> cAppearance = new HashMap<>();
+        cAppearance.put(0,defAppearance);
         cAppearance.put(1, aBarbara);
         
         HalfRangeWarrior arquera = (HalfRangeWarrior) new HalfRangeWarrior.HalfRangeWarriorBuilder()
@@ -28,14 +35,14 @@ public class CreacionPersonajesGui {
                 .setcCost(0)
                 .setcAppearance(cAppearance)
                 .setcLife(20)
-                .setcLevel(0)
+                .setcLevel(1)
                 .setcSpawnLevel(0)
                 .setcStorageSpace(0)
                 .setcHitPS(2)
                 .build();
         
         Gear newGear = new Gear("Arco", 3, 2, 0, 0, "C:\\Users\\Usuario\\Desktop\\TEC\\VI_semestre\\Diseno Software\\Proyecto 1\\ProyectoGui\\creacionPersonajesGui\\src\\main\\java\\imagenesJuego\\arco.png", true);
-        //arquera.cAddGear("Arco", newGear);
+        arquera.cAddGear("Arco", newGear);
         
         ArrayList<CharacterGame> listaPersonajesUsuario = new ArrayList<>();
         listaPersonajesUsuario.add(arquera);

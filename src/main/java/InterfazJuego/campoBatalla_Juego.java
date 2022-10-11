@@ -84,7 +84,8 @@ public class campoBatalla_Juego extends javax.swing.JFrame implements Serializab
         }
         if (batalla.isAvailable(x, y)){
             label.setLocation(x, y);
-            arma.setLocation(x+20, y);
+            if(arma != null)
+                arma.setLocation(x+22, y);
         }
               
     }
