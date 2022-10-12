@@ -125,7 +125,7 @@ public class campoBatalla_Juego extends javax.swing.JFrame implements Serializab
 
         btn_Start.setBackground(new java.awt.Color(0, 0, 0));
         btn_Start.setFont(new java.awt.Font("VCR OSD Mono", 0, 18)); // NOI18N
-        btn_Start.setForeground(new java.awt.Color(102, 0, 102));
+        btn_Start.setForeground(new java.awt.Color(204, 0, 204));
         btn_Start.setText("Iniciar");
         btn_Start.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -135,7 +135,7 @@ public class campoBatalla_Juego extends javax.swing.JFrame implements Serializab
 
         btn_Stop.setBackground(new java.awt.Color(0, 0, 0));
         btn_Stop.setFont(new java.awt.Font("VCR OSD Mono", 0, 18)); // NOI18N
-        btn_Stop.setForeground(new java.awt.Color(102, 0, 102));
+        btn_Stop.setForeground(new java.awt.Color(204, 0, 204));
         btn_Stop.setText("Detener");
         btn_Stop.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -145,7 +145,7 @@ public class campoBatalla_Juego extends javax.swing.JFrame implements Serializab
 
         btn_Pause.setBackground(new java.awt.Color(0, 0, 0));
         btn_Pause.setFont(new java.awt.Font("VCR OSD Mono", 0, 18)); // NOI18N
-        btn_Pause.setForeground(new java.awt.Color(102, 0, 102));
+        btn_Pause.setForeground(new java.awt.Color(204, 0, 204));
         btn_Pause.setText("Pausa");
         btn_Pause.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -154,8 +154,6 @@ public class campoBatalla_Juego extends javax.swing.JFrame implements Serializab
         });
 
         panelEscenario.setBackground(new java.awt.Color(204, 204, 204));
-        String imageDir = ("C:\\Users\\Usuario\\Desktop\\TEC\\VI_semestre\\Diseno Software\\Proyecto 1\\ProyectoGui\\creacionPersonajesGui\\src\\main\\java\\imagenesJuego\\fondoBatalla_1.png") ;
-        lbl_FondoBatalla.setIcon(new javax.swing.ImageIcon(imageDir)); // NOI18N
 
         javax.swing.GroupLayout panelEscenarioLayout = new javax.swing.GroupLayout(panelEscenario);
         panelEscenario.setLayout(panelEscenarioLayout);
@@ -170,7 +168,7 @@ public class campoBatalla_Juego extends javax.swing.JFrame implements Serializab
 
         btn_Guardar.setBackground(new java.awt.Color(0, 0, 0));
         btn_Guardar.setFont(new java.awt.Font("VCR OSD Mono", 0, 18)); // NOI18N
-        btn_Guardar.setForeground(new java.awt.Color(102, 0, 102));
+        btn_Guardar.setForeground(new java.awt.Color(204, 0, 204));
         btn_Guardar.setLabel("Guardar");
         btn_Guardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -180,7 +178,7 @@ public class campoBatalla_Juego extends javax.swing.JFrame implements Serializab
 
         btn_Next.setBackground(new java.awt.Color(0, 0, 0));
         btn_Next.setFont(new java.awt.Font("VCR OSD Mono", 0, 18)); // NOI18N
-        btn_Next.setForeground(new java.awt.Color(102, 0, 102));
+        btn_Next.setForeground(new java.awt.Color(204, 0, 204));
         btn_Next.setText("Next");
         btn_Next.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -229,19 +227,17 @@ public class campoBatalla_Juego extends javax.swing.JFrame implements Serializab
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(fondo_Juego, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(txtArea_hilos, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(fondo_Juego, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(txtArea_hilos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(fondo_Juego, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtArea_hilos, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(txtArea_hilos, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();

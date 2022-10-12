@@ -250,7 +250,7 @@ public class escogerPersonajes_Juego extends javax.swing.JFrame {
 
         btn_Escoger.setBackground(new java.awt.Color(0, 0, 0));
         btn_Escoger.setFont(new java.awt.Font("VCR OSD Mono", 0, 18)); // NOI18N
-        btn_Escoger.setForeground(new java.awt.Color(102, 0, 102));
+        btn_Escoger.setForeground(new java.awt.Color(204, 0, 204));
         btn_Escoger.setText("Escoger personajes");
         btn_Escoger.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -262,7 +262,7 @@ public class escogerPersonajes_Juego extends javax.swing.JFrame {
 
         lbl_userLevel.setBackground(new java.awt.Color(0, 0, 0));
         lbl_userLevel.setFont(new java.awt.Font("VCR OSD Mono", 0, 18)); // NOI18N
-        lbl_userLevel.setForeground(new java.awt.Color(102, 0, 102));
+        lbl_userLevel.setForeground(new java.awt.Color(204, 0, 204));
         lbl_userLevel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 0, 102), 2));
         lbl_userLevel.setOpaque(true);
         panel_Fondo.add(lbl_userLevel);
