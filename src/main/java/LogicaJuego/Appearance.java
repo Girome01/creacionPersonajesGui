@@ -7,7 +7,7 @@ public class Appearance {
 
 
     public void addAppearance(String key, String url) {
-        aAppearance.put(key.toUpperCase().strip(), url);
+        aAppearance.put(key.toUpperCase().strip(), url.strip());
     }
     public String getAppearance(String key){
         return aAppearance.get(key.toUpperCase().strip());

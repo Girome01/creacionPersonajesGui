@@ -98,10 +98,11 @@ public class ingreso_Juego extends javax.swing.JFrame {
         }
         //</editor-fold>
         //</editor-fold>
-
+        String imageDir = "src/main/java/imagenesJuego/";
+        
         /* Create and display the form */
         Appearance aBarbara = new Appearance();
-        aBarbara.addAppearance("STOP", "C:\\Users\\Usuario\\Desktop\\TEC\\VI_semestre\\Diseno Software\\Proyecto 1\\ProyectoGui\\creacionPersonajesGui\\src\\main\\java\\imagenesJuego\\rojoD.png");
+        aBarbara.addAppearance("STOP", imageDir+"rojoD.png");
         
         HashMap<Integer, Appearance> cAppearance = new HashMap<>();
         cAppearance.put(1, aBarbara);
@@ -117,8 +118,10 @@ public class ingreso_Juego extends javax.swing.JFrame {
                 .setcHitPS(2)
                 .build();
         
-        Gear newGear = new Gear("Arco", 4, 2, 0, 0, "http:\\", true);
+        Gear newGear = new Gear("Arco", 4, 2, 0, 0, imageDir+"arco.png", true);
         arquera.cAddGear("Arco", newGear);
+        
+        System.out.println(arquera.getcName());
         
         ArrayList<CharacterGame> listaPersonajesUsuario = new ArrayList<>();
         listaPersonajesUsuario.add(arquera);
@@ -137,7 +140,6 @@ public class ingreso_Juego extends javax.swing.JFrame {
                 frame.pack();
                 frame.setLocation(290, 50);
                 frame.setVisible(true);
-                System.out.println("Entro");
             }
         });
     }

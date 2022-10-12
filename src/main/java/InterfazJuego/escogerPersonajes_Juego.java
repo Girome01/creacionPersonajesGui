@@ -23,7 +23,7 @@ public class escogerPersonajes_Juego extends javax.swing.JFrame {
 
     //String imageDir = ("C:\\Users\\anagu\\OneDrive\\Documentos\\TEC\\SemestreII2022\\DiseñoAlgoritmos\\creacionPersonajesGui\\src\\main\\java\\imagenesJuego\\") ;
     
-    String imageDir = "C:\\Users\\Usuario\\Desktop\\TEC\\VI_semestre\\Diseno Software\\Proyecto 1\\ProyectoGui\\creacionPersonajesGui\\src\\main\\java\\imagenesJuego\\";
+    String imageDir = "src/main/java/imagenesJuego/";
     /**
      * Creates new form escogerPersonajes_Juego
      * @param user     
@@ -79,12 +79,12 @@ public class escogerPersonajes_Juego extends javax.swing.JFrame {
             int vida=PFCharacter.CharacterList().get(i).getcLife();  
          
          
-         JLabel imageLabel = new JLabel();
-        //ImageIcon imageicon = new ImageIcon(listaPersonajes.getListaPersonajes().get(i).getRutaImagenA());
-        //Image img = imageicon.getImage().getScaledInstance(60, 60, Image.SCALE_SMOOTH);
-        //imageLabel.setIcon(new ImageIcon(img));
+        JLabel imageLabel = new JLabel();
+        ImageIcon imageicon = new ImageIcon(PFCharacter.CharacterList().get(i).getcAppearance(PFCharacter.CharacterList().get(i).getcLevel(),"STOP"));
+        Image img = imageicon.getImage().getScaledInstance(60, 60, Image.SCALE_SMOOTH);
+        imageLabel.setIcon(new ImageIcon(img));
         //if(listaPersonajes.getListaPersonajes().get(i).getLvlAparicion()<=nuevo.getNivelUsuario())           //AGREGRAR LUEGO
-            model.addRow(new Object[]{nombre,imageLabel, ataque,vida,campos,0,false});
+         model.addRow(new Object[]{nombre,imageLabel, ataque,vida,campos,0,false});
 
         }   
      }
@@ -138,7 +138,7 @@ public class escogerPersonajes_Juego extends javax.swing.JFrame {
         //Barbaro Aspects
         Appearance cAppearance = new Appearance();
         cAppearance.addAppearance("STOP", imageDir+"rojoD.png");
-        cAppearance.addAppearance("walking", imageDir+"dragonI.png");
+        cAppearance.addAppearance("Walking", imageDir+"dragonI.png");
         cAppearance.addAppearance("attacking", imageDir+"heroeD.png");
 
         Appearance defaultAppearance = new Appearance();
@@ -218,6 +218,7 @@ public class escogerPersonajes_Juego extends javax.swing.JFrame {
         setResizable(false);
         setSize(new java.awt.Dimension(755, 456));
 
+        panel_Fondo.setBackground(new java.awt.Color(102, 0, 102));
         panel_Fondo.setLayout(null);
 
         table_Personajes.setModel(new javax.swing.table.DefaultTableModel(
