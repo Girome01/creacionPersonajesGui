@@ -49,7 +49,6 @@ public class campoBatalla_Juego extends javax.swing.JFrame implements Serializab
     public JLabel generateLabel(String imagen, int xTripulante, int limit){
         JLabel imageLabel = new JLabel();
         ImageIcon imageicon = new ImageIcon(imagen);
-        System.out.println(imagen);
         int ancho=imageicon.getIconWidth();
         int alto=imageicon.getIconHeight();
         Image img = imageicon.getImage().getScaledInstance(ancho, alto, Image.SCALE_SMOOTH);
@@ -156,7 +155,7 @@ public class campoBatalla_Juego extends javax.swing.JFrame implements Serializab
 
         panelEscenario.setBackground(new java.awt.Color(204, 204, 204));
 
-        lbl_FondoBatalla.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenesJuego/fondoBatalla_1.png"))); // NOI18N
+        lbl_FondoBatalla.setIcon(new javax.swing.ImageIcon("D:\\Documents\\GitHub\\creacionPersonajesGui\\src\\main\\java\\imagenesJuego\\fondoBatalla_1.png")); // NOI18N
 
         javax.swing.GroupLayout panelEscenarioLayout = new javax.swing.GroupLayout(panelEscenario);
         panelEscenario.setLayout(panelEscenarioLayout);
@@ -207,7 +206,7 @@ public class campoBatalla_Juego extends javax.swing.JFrame implements Serializab
                         .addComponent(btn_Next, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(btn_Guardar)))
-                .addContainerGap(104, Short.MAX_VALUE))
+                .addContainerGap(27, Short.MAX_VALUE))
         );
         fondo_JuegoLayout.setVerticalGroup(
             fondo_JuegoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
