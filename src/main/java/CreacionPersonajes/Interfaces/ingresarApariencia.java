@@ -55,9 +55,10 @@ public class ingresarApariencia extends javax.swing.JFrame {
         txt_NombreImagen = new javax.swing.JTextField();
         btn_ImagenApariencia = new javax.swing.JButton();
         lbl_ImagenApariencia = new javax.swing.JLabel();
+        btn_Ingresar = new javax.swing.JButton();
+        btn_Gear = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         table_Apariencias = new javax.swing.JTable();
-        btn_Ingresar1 = new javax.swing.JButton();
         fondo_Juego = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -134,6 +135,30 @@ public class ingresarApariencia extends javax.swing.JFrame {
         panel_Fondo.add(lbl_ImagenApariencia);
         lbl_ImagenApariencia.setBounds(70, 120, 180, 210);
 
+        btn_Ingresar.setBackground(new java.awt.Color(0, 0, 0));
+        btn_Ingresar.setFont(new java.awt.Font("VCR OSD Mono", 0, 18)); // NOI18N
+        btn_Ingresar.setForeground(new java.awt.Color(102, 0, 102));
+        btn_Ingresar.setText("Ingresar");
+        btn_Ingresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_IngresarActionPerformed(evt);
+            }
+        });
+        panel_Fondo.add(btn_Ingresar);
+        btn_Ingresar.setBounds(490, 260, 150, 40);
+
+        btn_Gear.setBackground(new java.awt.Color(0, 0, 0));
+        btn_Gear.setFont(new java.awt.Font("VCR OSD Mono", 0, 18)); // NOI18N
+        btn_Gear.setForeground(new java.awt.Color(102, 0, 102));
+        btn_Gear.setText("Gears");
+        btn_Gear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_GearActionPerformed(evt);
+            }
+        });
+        panel_Fondo.add(btn_Gear);
+        btn_Gear.setBounds(490, 310, 150, 40);
+
         table_Apariencias.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -146,19 +171,7 @@ public class ingresarApariencia extends javax.swing.JFrame {
         jScrollPane2.setViewportView(table_Apariencias);
 
         panel_Fondo.add(jScrollPane2);
-        jScrollPane2.setBounds(30, 350, 720, 130);
-
-        btn_Ingresar1.setBackground(new java.awt.Color(0, 0, 0));
-        btn_Ingresar1.setFont(new java.awt.Font("VCR OSD Mono", 0, 18)); // NOI18N
-        btn_Ingresar1.setForeground(new java.awt.Color(102, 0, 102));
-        btn_Ingresar1.setText("Ingresar");
-        btn_Ingresar1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_Ingresar1ActionPerformed(evt);
-            }
-        });
-        panel_Fondo.add(btn_Ingresar1);
-        btn_Ingresar1.setBounds(480, 290, 150, 40);
+        jScrollPane2.setBounds(30, 360, 720, 130);
 
         fondo_Juego.setIcon(new javax.swing.ImageIcon("D:\\Documents\\GitHub\\creacionPersonajesGui\\src\\main\\java\\CreacionPersonajes\\Interfaces\\ImagenesCreacionPersonajes\\FondoJuego.png")); // NOI18N
         panel_Fondo.add(fondo_Juego);
@@ -216,7 +229,7 @@ public class ingresarApariencia extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btn_ImagenAparienciaActionPerformed
 
-    private void btn_Ingresar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_Ingresar1ActionPerformed
+    private void btn_IngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_IngresarActionPerformed
         // TODO add your handling code here:
         /*Object valor=(Personajes) FileManager.readObject("C:\\Users\\monic\\OneDrive - Estudiantes ITCR\\Documentos\\NetBeansProjects\\proyecto_HerenciaALTrono\\src\\archivosSerializados\\personajes.juego");
         if(valor!=null){
@@ -243,7 +256,13 @@ public class ingresarApariencia extends javax.swing.JFrame {
         }else{
             JOptionPane.showMessageDialog(panel_Fondo,"Los campos están vacíos.","Precaución guerrero",JOptionPane.WARNING_MESSAGE);
         }
-    }//GEN-LAST:event_btn_Ingresar1ActionPerformed
+    }//GEN-LAST:event_btn_IngresarActionPerformed
+
+    private void btn_GearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_GearActionPerformed
+        // TODO add your handling code here:
+        ingresarGear juego = new ingresarGear();
+        juego.setVisible(true);
+    }//GEN-LAST:event_btn_GearActionPerformed
 DefaultTableModel model;
     
 //    byte imageJtable = new Byte(1024);
@@ -358,8 +377,9 @@ DefaultTableModel model;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btn_Gear;
     private javax.swing.JButton btn_ImagenApariencia;
-    private javax.swing.JButton btn_Ingresar1;
+    private javax.swing.JButton btn_Ingresar;
     private javax.swing.JLabel fondo_Juego;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lbl_ImagenApariencia;

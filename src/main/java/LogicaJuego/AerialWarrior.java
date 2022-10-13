@@ -20,6 +20,21 @@ public class AerialWarrior extends CharacterGame{
     public AerialWarrior(String cName, HashMap<Integer, Appearance> cAppearance, int cSpawnLevel, int cHitPS, int cLife, int cStorageSpace, double cCost, int cLevel) {
         super(cName, cAppearance, cSpawnLevel, cHitPS, cLife, cStorageSpace, cCost, cLevel);
     }
+    public AerialWarrior(AerialWarriorBuilder builder) {
+        super(builder);
+    }
+    
+     public static AerialWarriorBuilder builder() {
+          return new AerialWarriorBuilder();
+      }
+    
+    public static class AerialWarriorBuilder extends CharacterGame.CharacterBuilder<AerialWarriorBuilder>{
+
+        @Override
+        public AerialWarrior build() {
+            return new AerialWarrior(this);
+        }
+    }
     
 
     

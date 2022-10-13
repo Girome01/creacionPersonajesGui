@@ -17,8 +17,23 @@ import javax.swing.JLabel;
  */
 public class ContactWarrior extends CharacterGame{
 
-    public ContactWarrior(String cName, HashMap<Integer, Appearance> cAppearance, int cSpawnLevel, int cHitPS, int cLife, int cStorageSpace, double cCost, int cLevel) {
+     public ContactWarrior(String cName, HashMap<Integer, Appearance> cAppearance, int cSpawnLevel, int cHitPS, int cLife, int cStorageSpace, double cCost, int cLevel) {
         super(cName, cAppearance, cSpawnLevel, cHitPS, cLife, cStorageSpace, cCost, cLevel);
+    }
+    public ContactWarrior(ContactWarriorBuilder builder) {
+        super(builder);
+    }
+    
+     public static ContactWarriorBuilder builder() {
+          return new ContactWarriorBuilder();
+      }
+    
+    public static class ContactWarriorBuilder extends CharacterGame.CharacterBuilder<ContactWarriorBuilder>{
+
+        @Override
+        public ContactWarrior build() {
+            return new ContactWarrior(this);
+        }
     }
     
 

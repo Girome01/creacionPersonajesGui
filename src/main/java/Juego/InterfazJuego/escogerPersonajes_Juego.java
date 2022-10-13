@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package InterfazJuego;
+import LogicaJuego.ContactWarrior;
 import CreacionPersonajes.Logica.PFCharacter;
 import CreacionPersonajes.Logica.PFGear;
 import CreacionPersonajes.Logica.Gear;
