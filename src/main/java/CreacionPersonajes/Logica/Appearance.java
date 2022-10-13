@@ -1,4 +1,4 @@
-package LogicaJuego;
+package CreacionPersonajes.Logica;
 
 import java.util.HashMap;
 

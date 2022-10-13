@@ -1,4 +1,4 @@
-package LogicaJuego;
+package CreacionPersonajes.Logica;
 
 public class Gear implements iPrototype{
     private String gName;

@@ -4,6 +4,11 @@
  * and open the template in the editor.
  */
 package InterfazJuego;
+import CreacionPersonajes.Logica.PFCharacter;
+import CreacionPersonajes.Logica.PFGear;
+import CreacionPersonajes.Logica.Gear;
+import CreacionPersonajes.Logica.Appearance;
+import CreacionPersonajes.Logica.CharacterGame;
 import java.awt.Component;
 import java.awt.Image;
 import javax.swing.*;

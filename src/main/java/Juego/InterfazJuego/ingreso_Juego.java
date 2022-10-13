@@ -5,9 +5,9 @@
  */
 package InterfazJuego;
 
-import LogicaJuego.Appearance;
-import LogicaJuego.CharacterGame;
-import LogicaJuego.Gear;
+import CreacionPersonajes.Logica.Appearance;
+import CreacionPersonajes.Logica.CharacterGame;
+import CreacionPersonajes.Logica.Gear;
 import LogicaJuego.HalfRangeWarrior;
 import LogicaJuego.User;
 import java.util.ArrayList;

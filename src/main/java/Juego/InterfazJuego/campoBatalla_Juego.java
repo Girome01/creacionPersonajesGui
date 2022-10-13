@@ -5,7 +5,7 @@
  */
 package InterfazJuego;
 import LogicaBatalla.*;
-import LogicaJuego.CharacterGame;
+import CreacionPersonajes.Logica.CharacterGame;
 import java.awt.Image;
 import java.io.Serializable;
 import java.util.ArrayList;

@@ -1,4 +1,5 @@
-package LogicaJuego;
+package CreacionPersonajes.Logica;
+import CreacionPersonajes.Logica.CharacterGame;
 import java.util.ArrayList;
 import java.util.HashMap;
 

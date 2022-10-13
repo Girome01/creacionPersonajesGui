@@ -1,4 +1,4 @@
-package LogicaJuego;
+package CreacionPersonajes.Logica;
 
 
 public interface iBuilder<T> {

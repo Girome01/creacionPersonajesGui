@@ -4,6 +4,8 @@
  * and open the template in the editor.
  */
 package LogicaJuego;
+import CreacionPersonajes.Logica.Appearance;
+import CreacionPersonajes.Logica.CharacterGame;
 import java.util.HashMap;
 
 /**

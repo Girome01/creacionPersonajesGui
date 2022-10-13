@@ -1,4 +1,4 @@
-package LogicaJuego;
+package CreacionPersonajes.Logica;
 
 public interface iPrototype {
     public iPrototype clone();

@@ -4,6 +4,7 @@
  */
 package LogicaJuego;
 
+import CreacionPersonajes.Logica.CharacterGame;
 import java.util.ArrayList;
 
 /**
