@@ -20,8 +20,6 @@ import java.util.Iterator;
 public class escogerPersonajes_Juego extends javax.swing.JFrame {
     protected ArrayList<CharacterGame> listaPersonajesUsuario;
     protected User usuario;
-
-    //String imageDir = ("C:\\Users\\anagu\\OneDrive\\Documentos\\TEC\\SemestreII2022\\DiseñoAlgoritmos\\creacionPersonajesGui\\src\\main\\java\\imagenesJuego\\") ;
     
     String imageDir = "src/main/java/imagenesJuego/";
     /**
