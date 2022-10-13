@@ -1,4 +1,5 @@
 package CreacionPersonajes.Interfaces;
+import CreacionPersonajes.Logica.*;
 import LogicaJuego.*;
 import java.awt.Component;
 import java.util.ArrayList;
@@ -20,10 +21,8 @@ import javax.swing.table.TableColumn;
  * @author monic
  */
 public class ingresarPersonajes extends javax.swing.JFrame {
-     //protected Personajes listaPersonajes;
-    /**
-     * Creates new form ingresarPersonajes_Jugo
-     */
+    ArrayList<CharacterGame> personajes= new ArrayList<>();
+    
     public ingresarPersonajes() {
         initComponents();
         addTableHeader();
@@ -58,7 +57,8 @@ public class ingresarPersonajes extends javax.swing.JFrame {
         txt_Ataque = new javax.swing.JTextField();
         lbl_Costo1 = new javax.swing.JLabel();
         txt_Costo = new javax.swing.JTextField();
-        btn_Ingresar1 = new javax.swing.JButton();
+        btn_Ingresar = new javax.swing.JButton();
+        btn_Apariencia = new javax.swing.JButton();
         fondo_Juego = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -226,17 +226,31 @@ public class ingresarPersonajes extends javax.swing.JFrame {
         panel_Fondo.add(txt_Costo);
         txt_Costo.setBounds(190, 190, 170, 30);
 
-        btn_Ingresar1.setBackground(new java.awt.Color(0, 0, 0));
-        btn_Ingresar1.setFont(new java.awt.Font("VCR OSD Mono", 0, 18)); // NOI18N
-        btn_Ingresar1.setForeground(new java.awt.Color(102, 0, 102));
-        btn_Ingresar1.setText("Ingresar");
-        btn_Ingresar1.addActionListener(new java.awt.event.ActionListener() {
+        btn_Ingresar.setBackground(new java.awt.Color(0, 0, 0));
+        btn_Ingresar.setFont(new java.awt.Font("VCR OSD Mono", 0, 18)); // NOI18N
+        btn_Ingresar.setForeground(new java.awt.Color(102, 0, 102));
+        btn_Ingresar.setText("Ingresar");
+        btn_Ingresar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_Ingresar1ActionPerformed(evt);
+                btn_IngresarActionPerformed(evt);
             }
         });
-        panel_Fondo.add(btn_Ingresar1);
-        btn_Ingresar1.setBounds(330, 260, 150, 40);
+        panel_Fondo.add(btn_Ingresar);
+        btn_Ingresar.setBounds(220, 260, 150, 40);
+
+        btn_Apariencia.setBackground(new java.awt.Color(0, 0, 0));
+        btn_Apariencia.setFont(new java.awt.Font("VCR OSD Mono", 0, 18)); // NOI18N
+        btn_Apariencia.setForeground(new java.awt.Color(102, 0, 102));
+        btn_Apariencia.setText("Apariencia");
+        btn_Apariencia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_AparienciaActionPerformed(evt);
+            }
+        });
+        panel_Fondo.add(btn_Apariencia);
+        btn_Apariencia.setBounds(400, 260, 150, 40);
+
+        fondo_Juego.setIcon(new javax.swing.ImageIcon("D:\\Documents\\GitHub\\creacionPersonajesGui\\src\\main\\java\\CreacionPersonajes\\Interfaces\\ImagenesCreacionPersonajes\\FondoPantallas.png")); // NOI18N
         panel_Fondo.add(fondo_Juego);
         fondo_Juego.setBounds(0, -20, 790, 520);
 
@@ -282,10 +296,11 @@ public class ingresarPersonajes extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_combo_TiposActionPerformed
 
-    private void btn_Ingresar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_Ingresar1ActionPerformed
+    private void btn_IngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_IngresarActionPerformed
         // TODO add your handling code here:
-       ArrayList<Object> datosPersonaje; 
-       datosPersonaje = new ArrayList<>();
+       Object valor=(ArrayList<CharacterGame>) FileManager.readObject("src/main/java/CreacionPersonajes/Archivos/personajes.juego");   
+       if(valor!=null)
+            personajes=(ArrayList<CharacterGame>) FileManager.readObject("src/main/java/CreacionPersonajes/Archivos/personajes.juego");   
         
         String nombre=txt_Nombre.getText();
         String vidaStr=txt_Vida.getText();
@@ -316,6 +331,7 @@ public class ingresarPersonajes extends javax.swing.JFrame {
                         .setcStorageSpace(campos)
                         .setcSpawnLevel(nivel)
                         .setcLevel(nivel).build();
+                personajes.add(barbaro);
             }else if(guerreroEscogido==1){
                 HalfRangeWarrior arquera = (HalfRangeWarrior) new HalfRangeWarrior.HalfRangeWarriorBuilder()
                         .setcName(nombre)
@@ -325,8 +341,9 @@ public class ingresarPersonajes extends javax.swing.JFrame {
                         .setcStorageSpace(campos)
                         .setcSpawnLevel(nivel)
                         .setcLevel(nivel).build();
+                personajes.add(arquera);
             }else{
-                AerialWarrior arquera = (AerialWarrior) new AerialWarrior.AerialWarriorBuilder()
+                AerialWarrior dragon = (AerialWarrior) new AerialWarrior.AerialWarriorBuilder()
                         .setcName(nombre)
                         .setcLife(vida)
                         .setcHitPS(ataque)
@@ -334,10 +351,10 @@ public class ingresarPersonajes extends javax.swing.JFrame {
                         .setcStorageSpace(campos)
                         .setcSpawnLevel(nivel)
                         .setcLevel(nivel).build();
+                personajes.add(dragon);
             }
             
-            ingresarApariencia apariencia = new ingresarApariencia(datosPersonaje);
-            apariencia.setVisible(true);
+         
             
             //JLabel imageLabel = new JLabel();
             //ImageIcon imageicon = new ImageIcon(lbl_rutaA.getText());
@@ -348,7 +365,13 @@ public class ingresarPersonajes extends javax.swing.JFrame {
         }else{
             JOptionPane.showMessageDialog(panel_Fondo,"Los campos están vacíos.","Precaución, guerrero",JOptionPane.WARNING_MESSAGE);
         }
-    }//GEN-LAST:event_btn_Ingresar1ActionPerformed
+    }//GEN-LAST:event_btn_IngresarActionPerformed
+
+    private void btn_AparienciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_AparienciaActionPerformed
+        // TODO add your handling code here:
+           ingresarApariencia apariencia = new ingresarApariencia(personajes);
+           apariencia.setVisible(true);
+    }//GEN-LAST:event_btn_AparienciaActionPerformed
 DefaultTableModel model;
     
 //    byte imageJtable = new Byte(1024);
@@ -457,7 +480,8 @@ DefaultTableModel model;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btn_Ingresar1;
+    private javax.swing.JButton btn_Apariencia;
+    private javax.swing.JButton btn_Ingresar;
     private javax.swing.JComboBox<String> combo_Tipos;
     private javax.swing.JLabel fondo_Juego;
     private javax.swing.JScrollPane jScrollPane2;

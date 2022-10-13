@@ -1,5 +1,6 @@
 package CreacionPersonajes.Interfaces;
 //import Logica_Juego.FileManager;
+import CreacionPersonajes.Logica.*;
 import java.awt.Component;
 import java.awt.Image;
 import java.io.File;
@@ -9,7 +10,6 @@ import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
-import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableCellRenderer;
@@ -27,14 +27,14 @@ import javax.swing.table.TableColumn;
  * @author monic
  */
 public class ingresarApariencia extends javax.swing.JFrame {
-    private ArrayList<Object> datosPersonaje;
+    private ArrayList<CharacterGame> personajes;
     String imageDir = "src/main/java/Juego/ImagenesJuego/";
     
-    public ingresarApariencia(ArrayList<Object> personajesCaracteristicas) {
+    public ingresarApariencia(ArrayList<CharacterGame> personajesCaracteristicas) {
         initComponents();
         addTableHeader();
         generarTabla();
-        this.datosPersonaje=personajesCaracteristicas;
+        this.personajes=personajesCaracteristicas;
     }
 
     /**
