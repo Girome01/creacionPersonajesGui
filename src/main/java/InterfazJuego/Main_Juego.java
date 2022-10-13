@@ -14,7 +14,7 @@ import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
  *
  * @author Usuario
  */
-public class JuegoMain {
+public class Main_Juego {
 
     public static void main(String[] args) {
 

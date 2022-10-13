@@ -3,6 +3,7 @@ package InterfazCreacionPersonajes;
 import java.awt.Component;
 import java.awt.Image;
 import java.io.File;
+import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JLabel;
@@ -26,10 +27,7 @@ import javax.swing.table.TableColumn;
  * @author monic
  */
 public class ingresarApariencia extends javax.swing.JFrame {
-    /**
-     * Creates new form ingresarPersonajes_Jugo
-     */
-    public ingresarApariencia() {
+    public ingresarApariencia(ArrayList<Object> personajesCaracteristicas) {
         initComponents();
         addTableHeader();
         generarTabla();

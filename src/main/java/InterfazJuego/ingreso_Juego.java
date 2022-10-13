@@ -40,7 +40,7 @@ public class ingreso_Juego extends javax.swing.JFrame {
         PanelFondo = new javax.swing.JPanel();
         txt_NombreUsuario = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
-        btn_Ingresar1 = new javax.swing.JButton();
+        btn_IngresarJuego = new javax.swing.JButton();
         lblFondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -75,17 +75,17 @@ public class ingreso_Juego extends javax.swing.JFrame {
         PanelFondo.add(jLabel1);
         jLabel1.setBounds(170, 10, 470, 100);
 
-        btn_Ingresar1.setBackground(new java.awt.Color(0, 0, 0));
-        btn_Ingresar1.setFont(new java.awt.Font("VCR OSD Mono", 0, 18)); // NOI18N
-        btn_Ingresar1.setForeground(new java.awt.Color(102, 0, 102));
-        btn_Ingresar1.setText("Ingresar");
-        btn_Ingresar1.addActionListener(new java.awt.event.ActionListener() {
+        btn_IngresarJuego.setBackground(new java.awt.Color(0, 0, 0));
+        btn_IngresarJuego.setFont(new java.awt.Font("VCR OSD Mono", 0, 18)); // NOI18N
+        btn_IngresarJuego.setForeground(new java.awt.Color(102, 0, 102));
+        btn_IngresarJuego.setText("Ingresar");
+        btn_IngresarJuego.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_Ingresar1ActionPerformed(evt);
+                btn_IngresarJuegoActionPerformed(evt);
             }
         });
-        PanelFondo.add(btn_Ingresar1);
-        btn_Ingresar1.setBounds(320, 410, 150, 40);
+        PanelFondo.add(btn_IngresarJuego);
+        btn_IngresarJuego.setBounds(320, 410, 150, 40);
 
         lblFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenesJuego/fondoBienvenida.jpg"))); // NOI18N
         lblFondo.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -102,11 +102,15 @@ public class ingreso_Juego extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btn_Ingresar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_Ingresar1ActionPerformed
+    private void btn_IngresarJuegoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_IngresarJuegoActionPerformed
         // TODO add your handling code here:
-       /* User usuario = new User(txt_NombreUsuario.getText(), 1);
+        User usuario = new User(txt_NombreUsuario.getText(), 1);
+       
+        escogerPersonajes_Juego juegoPersonajes = new escogerPersonajes_Juego(usuario);
+        juegoPersonajes.setVisible(true);
         
-        Object valor=(Personajes) FileManager.readObject("C:\\Users\\monic\\OneDrive - Estudiantes ITCR\\Documentos\\NetBeansProjects\\proyecto_HerenciaALTrono\\src\\archivosSerializados\\personajes.juego");
+
+         /*Object valor=(Personajes) FileManager.readObject("C:\\Users\\monic\\OneDrive - Estudiantes ITCR\\Documentos\\NetBeansProjects\\proyecto_HerenciaALTrono\\src\\archivosSerializados\\personajes.juego");
         if(valor!=null){
             listaPersonajes=(Personajes) FileManager.readObject("C:\\Users\\monic\\OneDrive - Estudiantes ITCR\\Documentos\\NetBeansProjects\\proyecto_HerenciaALTrono\\src\\archivosSerializados\\personajes.juego");
         }else{
@@ -142,7 +146,7 @@ public class ingreso_Juego extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(panel_Fondo,"Los campos están vacíos.","Precaución guerrero",JOptionPane.WARNING_MESSAGE);
         }
         */
-    }//GEN-LAST:event_btn_Ingresar1ActionPerformed
+    }//GEN-LAST:event_btn_IngresarJuegoActionPerformed
 
     private void txt_NombreUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_NombreUsuarioActionPerformed
         // TODO add your handling code here:
@@ -223,7 +227,7 @@ public class ingreso_Juego extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel PanelFondo;
-    private javax.swing.JButton btn_Ingresar1;
+    private javax.swing.JButton btn_IngresarJuego;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lblFondo;
     private javax.swing.JTextField txt_NombreUsuario;
