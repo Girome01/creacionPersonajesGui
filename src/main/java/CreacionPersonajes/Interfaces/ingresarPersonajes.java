@@ -400,6 +400,7 @@ DefaultTableModel model;
         txt_Campos.setText("");
         txt_Aparicion.setText("");
         txt_Costo.setText("");
+        txt_Ataque.setText("");
         txt_Nivel.setText("");
         combo_Tipos.setSelectedIndex(0);
     }

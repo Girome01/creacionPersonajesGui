@@ -28,7 +28,7 @@ import javax.swing.table.TableColumn;
  */
 public class ingresarApariencia extends javax.swing.JFrame {
     private ArrayList<Object> datosPersonaje;
-    String imageDir = "src/main/java/imagenesJuego/";
+    String imageDir = "src/main/java/Juego/ImagenesJuego/";
     
     public ingresarApariencia(ArrayList<Object> personajesCaracteristicas) {
         initComponents();
