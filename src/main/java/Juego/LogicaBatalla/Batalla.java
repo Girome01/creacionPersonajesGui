@@ -3,14 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package LogicaBatalla;
-import InterfazJuego.campoBatalla_Juego;
+package Juego.LogicaBatalla;
+import Juego.InterfazJuego.campoBatalla_Juego;
 import CreacionPersonajes.Logica.CharacterGame;
 import java.awt.Image;
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Iterator;
 import javax.swing.JLabel;
 import javax.swing.ImageIcon;
 /**
@@ -21,8 +20,6 @@ public class Batalla implements Serializable{
     protected campoBatalla_Juego refPantalla;
     protected ArrayList<HiloBatalla> army;
     protected ArrayList<HiloBatalla> enemies;
-    protected ArrayList<CharacterGame> defensas;
-    //protected Personajes listaEscogida;
     protected ArrayList<CharacterGame> listaEscogida;
     
     public Batalla(campoBatalla_Juego refPantalla, ArrayList<CharacterGame> personajes) {

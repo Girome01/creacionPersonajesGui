@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package LogicaBatalla;
+package Juego.LogicaBatalla;
 
-import InterfazJuego.campoBatalla_Juego;
+import Juego.InterfazJuego.campoBatalla_Juego;
 import CreacionPersonajes.Logica.CharacterGame;
 import java.awt.Image;
 import java.io.IOException;

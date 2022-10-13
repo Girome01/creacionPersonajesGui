@@ -3,13 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Project/Maven2/JavaApp/src/main/java/${packagePath}/${mainClassName}.java to edit this template
  */
 
-package InterfazJuego;
-import InterfazJuego.campoBatalla_Juego;
-import LogicaJuego.*;
-import java.util.ArrayList;
-import java.util.HashMap;
-import InterfazJuego.*;
-import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
+package Juego.InterfazJuego;
 /**
  *
  * @author Usuario

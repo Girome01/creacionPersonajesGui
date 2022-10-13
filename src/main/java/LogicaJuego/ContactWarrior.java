@@ -6,7 +6,6 @@
 package LogicaJuego;
 import CreacionPersonajes.Logica.Appearance;
 import CreacionPersonajes.Logica.CharacterGame;
-import LogicaBatalla.Batalla;
 import java.util.HashMap;
 import java.util.Random;
 import javax.swing.JLabel;

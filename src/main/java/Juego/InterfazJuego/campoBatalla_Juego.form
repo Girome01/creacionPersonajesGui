@@ -173,11 +173,6 @@
           </Layout>
           <SubComponents>
             <Component class="javax.swing.JLabel" name="lbl_FondoBatalla">
-              <Properties>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="D:\Documents\GitHub\creacionPersonajesGui\src\main\java\imagenesJuego\fondoBatalla_1.png"/>
-                </Property>
-              </Properties>
             </Component>
           </SubComponents>
         </Container>

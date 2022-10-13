@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package InterfazJuego;
+package Juego.InterfazJuego;
 
 import CreacionPersonajes.Logica.Appearance;
 import CreacionPersonajes.Logica.CharacterGame;
@@ -97,7 +97,6 @@ public class ingreso_Juego extends javax.swing.JFrame {
 
         getContentPane().add(PanelFondo);
         PanelFondo.setBounds(0, 0, 780, 460);
-        PanelFondo.getAccessibleContext().setAccessibleParent(lblFondo);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

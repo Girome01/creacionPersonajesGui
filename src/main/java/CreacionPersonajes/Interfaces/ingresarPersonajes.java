@@ -1,16 +1,9 @@
 package CreacionPersonajes.Interfaces;
+import LogicaJuego.*;
 import java.awt.Component;
-import java.awt.Image;
-import java.io.File;
 import java.util.ArrayList;
-import java.util.List;
-import javax.swing.ImageIcon;
-import javax.swing.JFileChooser;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
-import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
-import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumn;
@@ -244,8 +237,6 @@ public class ingresarPersonajes extends javax.swing.JFrame {
         });
         panel_Fondo.add(btn_Ingresar1);
         btn_Ingresar1.setBounds(330, 260, 150, 40);
-
-        fondo_Juego.setIcon(new javax.swing.ImageIcon("D:\\Documents\\GitHub\\creacionPersonajesGui\\src\\main\\java\\CreacionPersonajes\\Interfaces\\ImagenesCreacionPersonajes\\FondoJuego.png")); // NOI18N
         panel_Fondo.add(fondo_Juego);
         fondo_Juego.setBounds(0, -20, 790, 520);
 
@@ -302,9 +293,10 @@ public class ingresarPersonajes extends javax.swing.JFrame {
         String costoStr=txt_Costo.getText();
         String camposStr=txt_Campos.getText();
         String aparicionStr=txt_Aparicion.getText();
+        String nivelStr=txt_Nivel.getText();
         int guerreroEscogido= combo_Tipos.getSelectedIndex();
         String guerreroEscogidoStr= combo_Tipos.getItemAt(guerreroEscogido);
-        String nivelStr=txt_Nivel.getText();
+        
 
         if(!nombre.isBlank() && !vidaStr.isBlank() && !ataqueStr.isBlank() && !camposStr.isBlank() &&
             !costoStr.isBlank() && !aparicionStr.isBlank() && !guerreroEscogidoStr.isBlank() && !nivelStr.isBlank()){
@@ -313,14 +305,36 @@ public class ingresarPersonajes extends javax.swing.JFrame {
             int campos=Integer.parseInt(camposStr);
             int aparicion=Integer.parseInt(aparicionStr);
             int nivel=Integer.parseInt(nivelStr);
+            double costo=Double.parseDouble(costoStr);
             
-            datosPersonaje.add(nombre);
-            datosPersonaje.add(vida);
-            datosPersonaje.add(ataque);
-            datosPersonaje.add(campos);
-            datosPersonaje.add(aparicion);
-            datosPersonaje.add(guerreroEscogido);
-            datosPersonaje.add(nivel);
+            if(guerreroEscogido==0){
+                ContactWarrior barbaro = (ContactWarrior) new ContactWarrior.ContactWarriorBuilder()
+                        .setcName(nombre)
+                        .setcLife(vida)
+                        .setcHitPS(ataque)
+                        .setcCost(costo)
+                        .setcStorageSpace(campos)
+                        .setcSpawnLevel(nivel)
+                        .setcLevel(nivel).build();
+            }else if(guerreroEscogido==1){
+                HalfRangeWarrior arquera = (HalfRangeWarrior) new HalfRangeWarrior.HalfRangeWarriorBuilder()
+                        .setcName(nombre)
+                        .setcLife(vida)
+                        .setcHitPS(ataque)
+                        .setcCost(costo)
+                        .setcStorageSpace(campos)
+                        .setcSpawnLevel(nivel)
+                        .setcLevel(nivel).build();
+            }else{
+                AerialWarrior arquera = (AerialWarrior) new AerialWarrior.AerialWarriorBuilder()
+                        .setcName(nombre)
+                        .setcLife(vida)
+                        .setcHitPS(ataque)
+                        .setcCost(costo)
+                        .setcStorageSpace(campos)
+                        .setcSpawnLevel(nivel)
+                        .setcLevel(nivel).build();
+            }
             
             ingresarApariencia apariencia = new ingresarApariencia(datosPersonaje);
             apariencia.setVisible(true);

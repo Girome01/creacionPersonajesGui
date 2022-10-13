@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package InterfazJuego;
+package Juego.InterfazJuego;
 import LogicaJuego.ContactWarrior;
 import CreacionPersonajes.Logica.PFCharacter;
 import CreacionPersonajes.Logica.PFGear;

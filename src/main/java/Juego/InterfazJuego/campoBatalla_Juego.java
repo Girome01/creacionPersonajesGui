@@ -3,8 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package InterfazJuego;
-import LogicaBatalla.*;
+package Juego.InterfazJuego;
+import Juego.LogicaBatalla.*;
 import CreacionPersonajes.Logica.CharacterGame;
 import java.awt.Image;
 import java.io.Serializable;
