@@ -368,7 +368,7 @@ public class ingresarPersonajes extends javax.swing.JFrame {
             model.addRow(new Object[]{nombre, aparicion, campos, guerreroEscogidoStr,ataque});
             limpiarFields();
         }else{
-            JOptionPane.showMessageDialog(panel_Fondo,"Los campos están vacíos.","Precaución, guerrero",JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(panel_Fondo,"Los campos están vacíos.","Atención",JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_btn_IngresarActionPerformed
 
@@ -384,7 +384,7 @@ DefaultTableModel model;
 //Adding table headers
     public void addTableHeader() {
         model = (DefaultTableModel) table_Personajes.getModel();
-        Object[] newIdentifiers = new Object[]{"Nombre", "Tipo", "Nivel", "Aparicion","Vida", "Ataque", "Campo","Costo"};
+        Object[] newIdentifiers = new Object[]{"Nombre","Nivel", "Aparicion","Vida", "Ataque", "Campo","Costo"};
         model.setColumnIdentifiers(newIdentifiers);
         //table_Personajes.setFillsViewportHeight(true);
         //table_Personajes.getColumn("Imagen").setCellRenderer(new CellRenderer());
@@ -413,27 +413,19 @@ DefaultTableModel model;
  
     }
     private void generarTabla(){
-        /*
-        for(int i=0;i<listaPersonajes.getListaPersonajes().size();i++){
-               String nombre=listaPersonajes.getListaPersonajes().get(i).getNombre();
-               int aparicion=listaPersonajes.getListaPersonajes().get(i).getLvlAparicion();
-               int campos=listaPersonajes.getListaPersonajes().get(i).getEspacios();
-               String guerreroEscogidoStr=listaPersonajes.getListaPersonajes().get(i).getTipoGuerrero();
-               int ataque=listaPersonajes.getListaPersonajes().get(i).getGolpes();
-               JLabel imageLabel = new JLabel();
-               ImageIcon imageicon = new ImageIcon(listaPersonajes.getListaPersonajes().get(i).getRutaImagenA());
-               Image img = imageicon.getImage().getScaledInstance(60, 60, Image.SCALE_SMOOTH);
-               imageLabel.setIcon(new ImageIcon(img));
+        for(int i=0;i<personajes.size();i++){
+               String nombre=personajes.get(i).getcName();
+               int nivel=personajes.get(i).getcLevel();
+               int aparicion=personajes.get(i).getcSpawnLevel();
+               int vida=personajes.get(i).getcLife();
+               int ataque=personajes.get(i).getcHitPS();
+               int campos=personajes.get(i).getcStorageSpace();
+               double costo=personajes.get(i).getcCost();
                 
-        
-               model.addRow(new Object[]{nombre,imageLabel, aparicion, campos, guerreroEscogidoStr,ataque});
-        
-    }
-        */
+               model.addRow(new Object[]{nombre, nivel, aparicion, vida, ataque, campos, costo});
+        }
   }
  
-   
-    
     private void limpiarFields() {
         txt_Nombre.setText("");
         txt_Vida.setText("");

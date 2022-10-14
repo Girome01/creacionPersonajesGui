@@ -273,8 +273,6 @@ public class ingresarApariencia extends javax.swing.JFrame {
         
         
         if(!nombre.isBlank() && !accionStr.isBlank() && !imagenStr.isBlank()){
-           
-           //FileManager.writeObject(listaPersonajes, "C:\\Users\\monic\\OneDrive - Estudiantes ITCR\\Documentos\\NetBeansProjects\\proyecto_HerenciaALTrono\\src\\archivosSerializados\\personajes.juego");
             //listaPersonajes=(Personajes) FileManager.readObject("C:\\Users\\monic\\OneDrive - Estudiantes ITCR\\Documentos\\NetBeansProjects\\proyecto_HerenciaALTrono\\src\\archivosSerializados\\personajes.juego");
             JLabel imageLabel = new JLabel();
             ImageIcon imageicon = new ImageIcon(imageDir+txt_NombreImagen.getText());
