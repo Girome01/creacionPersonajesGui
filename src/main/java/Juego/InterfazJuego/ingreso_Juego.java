@@ -44,6 +44,7 @@ public class ingreso_Juego extends javax.swing.JFrame {
         lblFondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Herencia al trono");
         setName("FrameBienvenida"); // NOI18N
         setPreferredSize(new java.awt.Dimension(755, 456));
         setResizable(false);

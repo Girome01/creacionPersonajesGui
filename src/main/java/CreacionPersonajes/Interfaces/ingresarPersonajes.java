@@ -71,6 +71,7 @@ public class ingresarPersonajes extends javax.swing.JFrame {
         fondo_Juego = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Ingresar personajes");
         setResizable(false);
         setSize(new java.awt.Dimension(755, 456));
 

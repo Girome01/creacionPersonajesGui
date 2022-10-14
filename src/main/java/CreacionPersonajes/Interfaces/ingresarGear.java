@@ -74,6 +74,7 @@ public class ingresarGear extends javax.swing.JFrame {
         fondo_Juego = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Ingresar gear");
         setResizable(false);
         setSize(new java.awt.Dimension(755, 456));
 
