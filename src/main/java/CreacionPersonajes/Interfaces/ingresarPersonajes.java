@@ -26,8 +26,8 @@ public class ingresarPersonajes extends javax.swing.JFrame {
     String imageDir = "src/main/java/Juego/ImagenesJuego/";
     
     public ingresarPersonajes() {
-        initComponents();
-        addTableHeader();
+       initComponents();
+       addTableHeader();
        Object valor=(ArrayList<CharacterGame>) FileManager.readObject("src/main/java/CreacionPersonajes/Archivos/personajes.juego");   
        if(valor!=null){
             personajes=(ArrayList<CharacterGame>) FileManager.readObject("src/main/java/CreacionPersonajes/Archivos/personajes.juego");  

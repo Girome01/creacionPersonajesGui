@@ -58,6 +58,7 @@ public class ingreso_Juego extends javax.swing.JFrame {
 
         txt_NombreUsuario.setBackground(new java.awt.Color(102, 0, 102));
         txt_NombreUsuario.setFont(new java.awt.Font("VCR OSD Mono", 0, 18)); // NOI18N
+        txt_NombreUsuario.setForeground(new java.awt.Color(255, 255, 255));
         txt_NombreUsuario.setToolTipText("Ingrese su nombre");
         txt_NombreUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -105,46 +106,11 @@ public class ingreso_Juego extends javax.swing.JFrame {
         // TODO add your handling code here:
         User usuario = new User(txt_NombreUsuario.getText(), 1);
        
-        escogerPersonajes_Juego juegoPersonajes = new escogerPersonajes_Juego(usuario);
-        juegoPersonajes.setVisible(true);
-        
-
-         /*Object valor=(Personajes) FileManager.readObject("C:\\Users\\monic\\OneDrive - Estudiantes ITCR\\Documentos\\NetBeansProjects\\proyecto_HerenciaALTrono\\src\\archivosSerializados\\personajes.juego");
-        if(valor!=null){
-            listaPersonajes=(Personajes) FileManager.readObject("C:\\Users\\monic\\OneDrive - Estudiantes ITCR\\Documentos\\NetBeansProjects\\proyecto_HerenciaALTrono\\src\\archivosSerializados\\personajes.juego");
-        }else{
-            listaPersonajes=new Personajes();
-        }
-        String nombre=txt_NivelApariencia.getText();
-        String vidaStr=txt_Vida.getText();
-        String ataqueStr=txt_NombreImagen.getText();
-        String camposStr=txt_AccionApariencia.getText();
-        String aparicionStr=txt_Aparicion.getText();
-        String rutaImagenE=lbl_rutaE.getText();
-        String rutaImagenA=lbl_rutaA.getText();
-        int guerreroEscogido= combo_Tipos.getSelectedIndex();
-        String guerreroEscogidoStr= combo_Tipos.getItemAt(guerreroEscogido);
-
-        if(!nombre.isBlank() && !vidaStr.isBlank() && !ataqueStr.isBlank() && !camposStr.isBlank() &&
-            !aparicionStr.isBlank() && !rutaImagenE.isBlank() && !rutaImagenA.isBlank()){
-            int vida=Integer.parseInt(vidaStr);
-            int ataque=Integer.parseInt(ataqueStr);
-            int campos=Integer.parseInt(camposStr);
-            int aparicion=Integer.parseInt(aparicionStr);
-            guerrero = listaPersonajes.generarGuerreros(guerreroEscogido, nombre, vida, ataque,aparicion,campos,1,rutaImagenA, rutaImagenE, guerreroEscogidoStr);
-            listaPersonajes.agregarPersonajes(guerrero);
-            FileManager.writeObject(listaPersonajes, "C:\\Users\\monic\\OneDrive - Estudiantes ITCR\\Documentos\\NetBeansProjects\\proyecto_HerenciaALTrono\\src\\archivosSerializados\\personajes.juego");
-            listaPersonajes=(Personajes) FileManager.readObject("C:\\Users\\monic\\OneDrive - Estudiantes ITCR\\Documentos\\NetBeansProjects\\proyecto_HerenciaALTrono\\src\\archivosSerializados\\personajes.juego");
-            JLabel imageLabel = new JLabel();
-            ImageIcon imageicon = new ImageIcon(lbl_rutaA.getText());
-            Image img = imageicon.getImage().getScaledInstance(60, 60, Image.SCALE_SMOOTH);
-            imageLabel.setIcon(new ImageIcon(img));
-            model.addRow(new Object[]{nombre,imageLabel, aparicion, campos, guerreroEscogidoStr,ataque});
-            limpiarFields();
-        }else{
-            JOptionPane.showMessageDialog(panel_Fondo,"Los campos están vacíos.","Precaución guerrero",JOptionPane.WARNING_MESSAGE);
-        }
-        */
+        escogerPersonajes_Juego frame = new escogerPersonajes_Juego(usuario);
+        frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        frame.pack();
+        frame.setLocation(290, 50);
+        frame.setVisible(true);    
     }//GEN-LAST:event_btn_IngresarJuegoActionPerformed
 
     private void txt_NombreUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_NombreUsuarioActionPerformed
@@ -178,39 +144,7 @@ public class ingreso_Juego extends javax.swing.JFrame {
         }
         //</editor-fold>
         //</editor-fold>
-        String imageDir = "src/main/java/imagenesJuego/";
         
-        /* Create and display the form */
-        Appearance aBarbara = new Appearance();
-        aBarbara.addAppearance("STOP", imageDir+"rojoD.png");
-        
-        HashMap<Integer, Appearance> cAppearance = new HashMap<>();
-        cAppearance.put(1, aBarbara);
-        
-        HalfRangeWarrior arquera = (HalfRangeWarrior) new HalfRangeWarrior.HalfRangeWarriorBuilder()
-                .setcName("arquera")
-                .setcCost(0)
-                .setcAppearance(cAppearance)
-                .setcLife(10)
-                .setcLevel(0)
-                .setcSpawnLevel(0)
-                .setcStorageSpace(0)
-                .setcHitPS(2)
-                .build();
-        
-        Gear newGear = new Gear("Arco", 4, 2, 0, 0, imageDir+"arco.png", true);
-        arquera.cAddGear("Arco", newGear);
-        
-        System.out.println(arquera.getcName());
-        
-        ArrayList<CharacterGame> listaPersonajesUsuario = new ArrayList<>();
-        listaPersonajesUsuario.add(arquera);
-        
-        /*campoBatalla_Juego frame = new campoBatalla_Juego(listaPersonajesUsuario);
-        frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
-        frame.pack();
-        frame.setLocation(290, 50);
-        frame.setVisible(true);*/
         SwingUtilities.invokeLater(new Runnable() {
             
             @Override
