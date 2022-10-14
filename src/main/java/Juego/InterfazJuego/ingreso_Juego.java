@@ -24,6 +24,9 @@ public class ingreso_Juego extends javax.swing.JFrame {
     /**
      * Creates new form ingreso_Juego
      */
+
+    String imageDir = "src/main/java/Juego/ImagenesJuego/";
+
     public ingreso_Juego() {
         initComponents();
     }
@@ -56,7 +59,7 @@ public class ingreso_Juego extends javax.swing.JFrame {
         PanelFondo.setVerifyInputWhenFocusTarget(false);
         PanelFondo.setLayout(null);
 
-        txt_NombreUsuario.setBackground(new java.awt.Color(102, 0, 102));
+        txt_NombreUsuario.setBackground(new java.awt.Color(194, 18, 194));
         txt_NombreUsuario.setFont(new java.awt.Font("VCR OSD Mono", 0, 18)); // NOI18N
         txt_NombreUsuario.setToolTipText("Ingrese su nombre");
         txt_NombreUsuario.addActionListener(new java.awt.event.ActionListener() {
@@ -87,7 +90,7 @@ public class ingreso_Juego extends javax.swing.JFrame {
         PanelFondo.add(btn_IngresarJuego);
         btn_IngresarJuego.setBounds(320, 410, 150, 40);
 
-        lblFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenesJuego/fondoBienvenida.jpg"))); // NOI18N
+        lblFondo.setIcon(new javax.swing.ImageIcon("C:\\Users\\anagu\\OneDrive\\Documentos\\TEC\\SemestreII2022\\DiseñoAlgoritmos\\creacionPersonajesGui\\src\\main\\java\\Juego\\ImagenesJuego\\fondoBienvenida.jpg")); // NOI18N
         lblFondo.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         lblFondo.setMaximumSize(new java.awt.Dimension(755, 456));
         lblFondo.setMinimumSize(new java.awt.Dimension(755, 456));
@@ -109,7 +112,7 @@ public class ingreso_Juego extends javax.swing.JFrame {
         juegoPersonajes.setVisible(true);
         
 
-         /*Object valor=(Personajes) FileManager.readObject("C:\\Users\\monic\\OneDrive - Estudiantes ITCR\\Documentos\\NetBeansProjects\\proyecto_HerenciaALTrono\\src\\archivosSerializados\\personajes.juego");
+         /*Object valor=(Personajes) FileManager.readObject("C:/Users\\monic\\OneDrive - Estudiantes ITCR\\Documentos\\NetBeansProjects\\proyecto_HerenciaALTrono\\src\\archivosSerializados\\personajes.juego");
         if(valor!=null){
             listaPersonajes=(Personajes) FileManager.readObject("C:\\Users\\monic\\OneDrive - Estudiantes ITCR\\Documentos\\NetBeansProjects\\proyecto_HerenciaALTrono\\src\\archivosSerializados\\personajes.juego");
         }else{
@@ -215,7 +218,7 @@ public class ingreso_Juego extends javax.swing.JFrame {
             
             @Override
             public void run() {
-                campoBatalla_Juego frame = new campoBatalla_Juego(listaPersonajesUsuario);
+                ingreso_Juego frame = new ingreso_Juego();
                 frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
                 frame.pack();
                 frame.setLocation(290, 50);
