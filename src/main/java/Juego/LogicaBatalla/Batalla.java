@@ -52,7 +52,7 @@ public class Batalla implements Serializable{
                 int y = labelForThread.getLocation().y;
                 labelForArma.setLocation(x+22, y);
             }
-            army.add(new HiloBatalla(refPantalla, labelForThread, labelForArma, (i+1), listaEscogida.get(i)));
+            army.add(new HiloBatalla(refPantalla, labelForThread, labelForArma, (i+1), listaEscogida.get(i), "Aliado"));
         }
     }
     
@@ -84,7 +84,7 @@ public class Batalla implements Serializable{
                 int y = labelForThread.getLocation().y;
                 labelForArma.setLocation(x+22, y);
             }
-            enemies.add(new HiloBatalla(refPantalla, labelForThread, labelForArma, (i+1), (CharacterGame)listaEscogida.get(i).clone()));
+            enemies.add(new HiloBatalla(refPantalla, labelForThread, labelForArma, (i+1), (CharacterGame)listaEscogida.get(i).clone(), "Enemigo"));
         }
     }
     
