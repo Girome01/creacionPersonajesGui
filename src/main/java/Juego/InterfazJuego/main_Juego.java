@@ -4,7 +4,6 @@
  */
 
 package Juego.InterfazJuego;
-
 /**
  *
  * @author Usuario
@@ -14,7 +13,7 @@ public class main_Juego {
     public static void main(String[] args) {
 
         seleccionarGear juego = new seleccionarGear();
-        main_Juego.main(); //setVisible(true);
+        juego.setVisible(true);
 
     }
 }
