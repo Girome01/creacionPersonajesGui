@@ -21,10 +21,17 @@ import javax.swing.table.TableColumn;
  * @author monic
  */
 public class ingresarPersonajes extends javax.swing.JFrame {
-    ArrayList<CharacterGame> personajes= new ArrayList<>();
+    ArrayList<CharacterGame> personajes;
     
     public ingresarPersonajes() {
-        initComponents();
+       initComponents();
+        
+       Object valor=(ArrayList<CharacterGame>) FileManager.readObject("src/main/java/CreacionPersonajes/Archivos/personajes.juego");   
+       if(valor!=null){
+            personajes=(ArrayList<CharacterGame>) FileManager.readObject("src/main/java/CreacionPersonajes/Archivos/personajes.juego");  
+       }else{
+           personajes=new ArrayList<>();
+       }
         addTableHeader();
         generarTabla();
     }
@@ -70,7 +77,7 @@ public class ingresarPersonajes extends javax.swing.JFrame {
         panel_Fondo.setLayout(null);
 
         lbl_Titulo0.setBackground(new java.awt.Color(0, 0, 0));
-        lbl_Titulo0.setFont(new java.awt.Font("VCR OSD Mono", 0, 48)); // NOI18N
+        lbl_Titulo0.setFont(new java.awt.Font("Monospaced", 1, 24)); // NOI18N
         lbl_Titulo0.setForeground(new java.awt.Color(102, 0, 102));
         lbl_Titulo0.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbl_Titulo0.setText("Ingresar personajes");
@@ -227,7 +234,7 @@ public class ingresarPersonajes extends javax.swing.JFrame {
         txt_Costo.setBounds(190, 190, 170, 30);
 
         btn_Ingresar.setBackground(new java.awt.Color(0, 0, 0));
-        btn_Ingresar.setFont(new java.awt.Font("VCR OSD Mono", 0, 18)); // NOI18N
+        btn_Ingresar.setFont(new java.awt.Font("Monospaced", 1, 18)); // NOI18N
         btn_Ingresar.setForeground(new java.awt.Color(102, 0, 102));
         btn_Ingresar.setText("Ingresar");
         btn_Ingresar.addActionListener(new java.awt.event.ActionListener() {
@@ -239,7 +246,7 @@ public class ingresarPersonajes extends javax.swing.JFrame {
         btn_Ingresar.setBounds(220, 260, 150, 40);
 
         btn_Apariencia.setBackground(new java.awt.Color(0, 0, 0));
-        btn_Apariencia.setFont(new java.awt.Font("VCR OSD Mono", 0, 18)); // NOI18N
+        btn_Apariencia.setFont(new java.awt.Font("Monospaced", 1, 18)); // NOI18N
         btn_Apariencia.setForeground(new java.awt.Color(102, 0, 102));
         btn_Apariencia.setText("Apariencia");
         btn_Apariencia.addActionListener(new java.awt.event.ActionListener() {
@@ -298,9 +305,7 @@ public class ingresarPersonajes extends javax.swing.JFrame {
 
     private void btn_IngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_IngresarActionPerformed
         // TODO add your handling code here:
-       Object valor=(ArrayList<CharacterGame>) FileManager.readObject("src/main/java/CreacionPersonajes/Archivos/personajes.juego");   
-       if(valor!=null)
-            personajes=(ArrayList<CharacterGame>) FileManager.readObject("src/main/java/CreacionPersonajes/Archivos/personajes.juego");   
+        
         
         String nombre=txt_Nombre.getText();
         String vidaStr=txt_Vida.getText();
@@ -353,7 +358,7 @@ public class ingresarPersonajes extends javax.swing.JFrame {
                         .setcLevel(nivel).build();
                 personajes.add(dragon);
             }
-            
+            FileManager.writeObject(personajes,"src/main/java/CreacionPersonajes/Archivos/personajes.juego");
          
             
             //JLabel imageLabel = new JLabel();

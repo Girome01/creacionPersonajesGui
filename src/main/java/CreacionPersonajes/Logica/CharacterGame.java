@@ -1,10 +1,11 @@
 package CreacionPersonajes.Logica;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 
 
-public class CharacterGame implements iPrototype {
+public class CharacterGame implements iPrototype, Serializable {
     protected String cName; 
     protected HashMap<Integer, Appearance> cAppearance;
     protected int cSpawnLevel;

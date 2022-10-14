@@ -6,6 +6,7 @@
 package LogicaJuego;
 import CreacionPersonajes.Logica.Appearance;
 import CreacionPersonajes.Logica.CharacterGame;
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Random;
 import javax.swing.JLabel;
@@ -14,7 +15,7 @@ import javax.swing.JLabel;
  *
  * @author monic
  */
-public class ContactWarrior extends CharacterGame{
+public class ContactWarrior extends CharacterGame implements Serializable{
 
      public ContactWarrior(String cName, HashMap<Integer, Appearance> cAppearance, int cSpawnLevel, int cHitPS, int cLife, int cStorageSpace, double cCost, int cLevel) {
         super(cName, cAppearance, cSpawnLevel, cHitPS, cLife, cStorageSpace, cCost, cLevel);

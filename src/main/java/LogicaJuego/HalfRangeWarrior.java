@@ -6,13 +6,14 @@
 package LogicaJuego;
 import CreacionPersonajes.Logica.Appearance;
 import CreacionPersonajes.Logica.CharacterGame;
+import java.io.Serializable;
 import java.util.HashMap;
 
 /**
  *
  * @author monic
  */
-public class HalfRangeWarrior extends CharacterGame{
+public class HalfRangeWarrior extends CharacterGame implements Serializable{
 
     public HalfRangeWarrior(String cName, HashMap<Integer, Appearance> cAppearance, int cSpawnLevel, int cHitPS, int cLife, int cStorageSpace, double cCost, int cLevel) {
         super(cName, cAppearance, cSpawnLevel, cHitPS, cLife, cStorageSpace, cCost, cLevel);
