@@ -422,16 +422,16 @@ DefaultTableModel model;
         //</editor-fold>
         //</editor-fold>
 
-        /* Create and display the form */
+        /* Create and display the form 
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                ingresarGear frame = new ingresarGear();
+                /*ingresarApariencia frame = new ingresarApariencia(personajesAgregados);
                 frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
                 frame.pack();
                 frame.setLocation(290, 50);
-                frame.setVisible(true);
+                frame.setVisible(true); 
             }
-        });
+        }); */
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -37,7 +37,7 @@ public class escogerPersonajes_Juego extends javax.swing.JFrame {
         initComponents();
         this.usuario = user;
         mostrarNivel();
-        //subirNivel(user);
+        subirNivel(user);
         generarTabla();
         
     }
@@ -81,7 +81,7 @@ public class escogerPersonajes_Juego extends javax.swing.JFrame {
             int ataque=personajes.get(i).getcHitPS();
             int campos=personajes.get(i).getcStorageSpace();
             double costo=personajes.get(i).getcCost();
-            String imageUrl=personajes.get(i).getcAppearance(1, "STOP");
+            String imageUrl=personajes.get(i).getcAppearance3(aparicion, "WALKING");
             characterFP.addPrototype(nombre, personajes.get(i));
          
             JLabel imageLabel = new JLabel();
@@ -95,10 +95,7 @@ public class escogerPersonajes_Juego extends javax.swing.JFrame {
      }
         
     public void subirNivel(User user){
-        
-        //SOLO AUMENTA EL NIVEL, ACTUALIZAR SI SE OCUPA SUBIR OTRAS ESTADISTICAS EN CharacterGame
         PFCharacter.setLevels(user.getuLevel());
-        
     }
     
     public void mostrarNivel(){
@@ -116,7 +113,7 @@ public class escogerPersonajes_Juego extends javax.swing.JFrame {
               ArrayList<CharacterGame> guerreros = PFCharacter.getPrototype(nombre,cantidad);
               if(guerreros!=null){
                   for (int j = 0; j < guerreros.size(); j++) {
-                      listaPersonajesUsuario.add(guerreros.get(j));
+                      listaPersonajesUsuario.add((CharacterGame)guerreros.get(j).clone());
                   }
                   
                   //nuevo.agregarColeccion(listaPersonajesUsuario);

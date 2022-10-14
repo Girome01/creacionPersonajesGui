@@ -33,7 +33,7 @@ public class Batalla implements Serializable{
         //Recordar cambiar la listaEscogida para que este adeacuerdo con la clase Personajes
         //Utilizar el ArrayList de la calse Personajes solo si la calse existe
         for (int i = 0; i < listaEscogida.size(); i++) {
-            String nombreArchivo = listaEscogida.get(i).getcAppearance(listaEscogida.get(i).getcLevel(),"STOP");
+            String nombreArchivo = listaEscogida.get(i).getcAppearance(0,"STOP");
             JLabel labelForThread = refPantalla.generateLabel(nombreArchivo, 270, 20);
             JLabel labelForArma = null;
             for(int j=0; j< listaEscogida.get(i).cShowGearList().size(); j++){
@@ -43,7 +43,7 @@ public class Batalla implements Serializable{
                 }
             }
             if(labelForArma == null){
-                String defArma = listaEscogida.get(i).getcAppearance(0, "PUÑO");
+                String defArma = listaEscogida.get(i).getcAppearance3(0, "PUÑO");
                 if(defArma != null)
                     labelForArma = refPantalla.generateLabel(defArma, 135, 20);
             }
@@ -65,7 +65,7 @@ public class Batalla implements Serializable{
         //Si se genera Personajes esto cambia
         
        for (int i = 0; i < listaEscogida.size(); i++) {
-            String nombreArchivo = listaEscogida.get(i).getcAppearance(listaEscogida.get(i).getcLevel(),"Stop");
+            String nombreArchivo = "src/main/java/Juego/ImagenesJuego/bestiaI.png";
             JLabel labelForThread = refPantalla.generateLabel(nombreArchivo, 270, 20);
             JLabel labelForArma = null;
             for(int j=0; j< listaEscogida.get(i).cShowGearList().size(); j++){
@@ -75,7 +75,7 @@ public class Batalla implements Serializable{
                 }
             }
             if(labelForArma == null){
-                String defArma = listaEscogida.get(i).getcAppearance(0, "PUÑO");
+                String defArma = listaEscogida.get(i).getcAppearance3(0, "PUÑO");
                 if(defArma != null)
                     labelForArma = refPantalla.generateLabel(defArma, 135, 20);
             }
@@ -161,35 +161,6 @@ public class Batalla implements Serializable{
        //Cambiar getName por get tipo de guerrero si se agrega
        // Se necesita que se devuelva el rango de ataque 
        return (cercano/num <= guerrero.guerrero.cgetRange());
-       /*if (guerrero.guerrero.tipoGuerrero.equalsIgnoreCase("Guerrero aéreo")){
-            AerialWarrior guerreroA = new GuerreroAereo(guerrero.guerrero.nombre, guerrero.guerrero.vida, guerrero.guerrero.golpes, guerrero.guerrero.lvlAparicion, guerrero.guerrero.espacios, guerrero.guerrero.nivel, guerrero.guerrero.rutaImagenA, guerrero.guerrero.rutaImagenE, guerrero.guerrero.tipoGuerrero);
-            guerreroA.sonarGuerrero();
-            if (cercano/num <= guerreroA.alcance){
-                return true;}
-        }
-        else if (guerrero.guerrero.tipoGuerrero.equalsIgnoreCase("Guerrero de mediano alcance")){
-            GuerreroMedioAlcance guerreroMA = new GuerreroMedioAlcance(guerrero.guerrero.nombre, guerrero.guerrero.vida, guerrero.guerrero.golpes, guerrero.guerrero.lvlAparicion, guerrero.guerrero.espacios, guerrero.guerrero.nivel, guerrero.guerrero.rutaImagenA, guerrero.guerrero.rutaImagenE, guerrero.guerrero.tipoGuerrero);
-            if (cercano/num <= guerreroMA.alcance)
-                return true;
-        }
-        else if (guerrero.guerrero.tipoGuerrero.equalsIgnoreCase("Gran Bestia")){
-            GrandeBestia guerreroGB = new GrandeBestia(guerrero.guerrero.nombre, guerrero.guerrero.vida, guerrero.guerrero.golpes, guerrero.guerrero.lvlAparicion, guerrero.guerrero.espacios, guerrero.guerrero.nivel, guerrero.guerrero.rutaImagenA, guerrero.guerrero.rutaImagenE, guerrero.guerrero.tipoGuerrero);
-            if (cercano/num <= guerreroGB.alcance)
-                return true;
-        }
-        else{
-            if (cercano==23 || cercano==30 || cercano==num){
-                if (guerrero.guerrero.tipoGuerrero.equalsIgnoreCase("Guerrero de contacto")){
-                    GuerreroContacto guerreroC = new GuerreroContacto(guerrero.guerrero.nombre, guerrero.guerrero.vida, guerrero.guerrero.golpes, guerrero.guerrero.lvlAparicion, guerrero.guerrero.espacios, guerrero.guerrero.nivel, guerrero.guerrero.rutaImagenA, guerrero.guerrero.rutaImagenE, guerrero.guerrero.tipoGuerrero);
-                    guerreroC.sonarGuerrero();
-                }
-                else{
-                    Heroe guerreroH = new Heroe(guerrero.guerrero.nombre, guerrero.guerrero.vida, guerrero.guerrero.golpes, guerrero.guerrero.lvlAparicion, guerrero.guerrero.espacios, guerrero.guerrero.nivel, guerrero.guerrero.rutaImagenA, guerrero.guerrero.rutaImagenE, guerrero.guerrero.tipoGuerrero);
-                    guerreroH.sonarGuerrero();
-                }
-            return true;
-        }}
-        return false;*/
     }
     
     public HiloBatalla getEnemy(HiloBatalla guerrero) throws InterruptedException, IOException {
@@ -239,13 +210,13 @@ public class Batalla implements Serializable{
                         if (enRango(guerrero, cercano, num)){
                             String url = guerrero.guerrero.getcAppearance(guerrero.guerrero.getcLevel(),"ATTACK");
                             if(url != null){
-                                cambiarImagen(url, guerrero.refLabel);
+                                //cambiarImagen(url, guerrero.refLabel);
                             }
                             guerrero.sleep(1000);
                             guerrero.guerrero.cAttack(enemies.get(i).guerrero);
                             url = guerrero.guerrero.getcAppearance(guerrero.guerrero.getcLevel(),"STOP");
                             if(url != null){
-                                cambiarImagen(url, guerrero.refLabel);
+                                //cambiarImagen(url, guerrero.refLabel);
                             }
                         }
                     return null;
@@ -294,7 +265,7 @@ public class Batalla implements Serializable{
                             }
                             guerrero.sleep(1000);
                             guerrero.guerrero.cAttack(army.get(i).guerrero);
-                            url = guerrero.guerrero.getcAppearance(guerrero.guerrero.getcLevel(),"STOP");
+                            url = guerrero.guerrero.getcAppearance(0,"STOP");
                             if(url != null){
                                 cambiarImagen(url, guerrero.refLabel);
                             }
