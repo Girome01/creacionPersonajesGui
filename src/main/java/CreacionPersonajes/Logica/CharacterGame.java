@@ -185,9 +185,13 @@ public class CharacterGame implements iPrototype, Serializable {
     public String getcAppearance(int lvl, String actApearance) {
         return cAppearance.get(lvl).getAppearance(actApearance.toUpperCase().strip());
     }
+    
+    public HashMap<Integer, Appearance> getcAppearance2() {
+        return cAppearance;
+    }
 
-    public void setcAppearance(HashMap<Integer, Appearance> cAppearance) {
-        this.cAppearance = cAppearance;
+    public void setcAppearance(int lvl, Appearance appearance) {
+        cAppearance.put(lvl, appearance);
     }
 
     public int getcSpawnLevel() {

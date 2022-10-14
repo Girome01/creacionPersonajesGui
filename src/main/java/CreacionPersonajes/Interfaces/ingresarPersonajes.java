@@ -180,6 +180,7 @@ public class ingresarPersonajes extends javax.swing.JFrame {
         combo_Tipos.setFont(new java.awt.Font("VCR OSD Mono", 0, 18)); // NOI18N
         combo_Tipos.setForeground(new java.awt.Color(102, 0, 102));
         combo_Tipos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Guerrero de contacto", "Guerrero de mediano alcance", "Guerrero aéreo" }));
+        combo_Tipos.setSelectedIndex(-1);
         combo_Tipos.setToolTipText("Tipo guerrero");
         combo_Tipos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -365,7 +366,7 @@ public class ingresarPersonajes extends javax.swing.JFrame {
             //ImageIcon imageicon = new ImageIcon(lbl_rutaA.getText());
             //Image img = imageicon.getImage().getScaledInstance(60, 60, Image.SCALE_SMOOTH);
             //imageLabel.setIcon(new ImageIcon(img));
-            model.addRow(new Object[]{nombre, aparicion, campos, guerreroEscogidoStr,ataque});
+            model.addRow(new Object[]{nombre,nivel, aparicion, vida, ataque, campos, costo});
             limpiarFields();
         }else{
             JOptionPane.showMessageDialog(panel_Fondo,"Los campos están vacíos.","Atención",JOptionPane.WARNING_MESSAGE);

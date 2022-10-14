@@ -338,6 +338,7 @@
                 <StringItem index="2" value="Guerrero a&#xe9;reo"/>
               </StringArray>
             </Property>
+            <Property name="selectedIndex" type="int" value="-1"/>
             <Property name="toolTipText" type="java.lang.String" value="Tipo guerrero"/>
           </Properties>
           <Events>

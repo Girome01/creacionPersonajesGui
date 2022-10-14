@@ -34,10 +34,7 @@ public class ingresarApariencia extends javax.swing.JFrame {
     public ingresarApariencia(ArrayList<CharacterGame> personajesAgregados) {
         initComponents();
         addTableHeader();
-       
-        Object valor=(ArrayList<CharacterGame>) FileManager.readObject("src/main/java/CreacionPersonajes/Archivos/personajes.juego");   
-       if(valor!=null)
-            personajes=(ArrayList<CharacterGame>) FileManager.readObject("src/main/java/CreacionPersonajes/Archivos/personajes.juego");   
+        personajes=(ArrayList<CharacterGame>) FileManager.readObject("src/main/java/CreacionPersonajes/Archivos/personajes.juego");   
         generarTabla();
         generarComboBox();
     }
@@ -62,7 +59,7 @@ public class ingresarApariencia extends javax.swing.JFrame {
         lbl_ImagenApariencia = new javax.swing.JLabel();
         btn_Ingresar = new javax.swing.JButton();
         btn_Gear = new javax.swing.JButton();
-        combo_Tipos = new javax.swing.JComboBox<>();
+        combo_Personajes = new javax.swing.JComboBox<>();
         jScrollPane2 = new javax.swing.JScrollPane();
         table_Apariencias = new javax.swing.JTable();
         lbl_Usuario1 = new javax.swing.JLabel();
@@ -89,7 +86,7 @@ public class ingresarApariencia extends javax.swing.JFrame {
         txt_AccionPersonaje.setBackground(new java.awt.Color(102, 0, 102));
         txt_AccionPersonaje.setFont(new java.awt.Font("VCR OSD Mono", 0, 18)); // NOI18N
         panel_Fondo.add(txt_AccionPersonaje);
-        txt_AccionPersonaje.setBounds(570, 70, 170, 30);
+        txt_AccionPersonaje.setBounds(590, 70, 170, 30);
 
         lbl_NivelPersonaje.setBackground(new java.awt.Color(255, 255, 255));
         lbl_NivelPersonaje.setFont(new java.awt.Font("VCR OSD Mono", 0, 18)); // NOI18N
@@ -109,7 +106,7 @@ public class ingresarApariencia extends javax.swing.JFrame {
         lbl_AccionPersonaje.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 0, 102)));
         lbl_AccionPersonaje.setOpaque(true);
         panel_Fondo.add(lbl_AccionPersonaje);
-        lbl_AccionPersonaje.setBounds(400, 70, 160, 30);
+        lbl_AccionPersonaje.setBounds(410, 70, 160, 30);
 
         txt_NivelApariencia.setBackground(new java.awt.Color(102, 0, 102));
         txt_NivelApariencia.setFont(new java.awt.Font("VCR OSD Mono", 0, 18)); // NOI18N
@@ -119,7 +116,7 @@ public class ingresarApariencia extends javax.swing.JFrame {
             }
         });
         panel_Fondo.add(txt_NivelApariencia);
-        txt_NivelApariencia.setBounds(220, 70, 170, 30);
+        txt_NivelApariencia.setBounds(220, 70, 180, 30);
 
         txt_NombreImagen.setBackground(new java.awt.Color(102, 0, 102));
         txt_NombreImagen.setFont(new java.awt.Font("VCR OSD Mono", 0, 18)); // NOI18N
@@ -140,7 +137,7 @@ public class ingresarApariencia extends javax.swing.JFrame {
         lbl_ImagenApariencia.setToolTipText("Imagen enemigo");
         lbl_ImagenApariencia.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         panel_Fondo.add(lbl_ImagenApariencia);
-        lbl_ImagenApariencia.setBounds(130, 170, 160, 180);
+        lbl_ImagenApariencia.setBounds(130, 160, 160, 180);
 
         btn_Ingresar.setBackground(new java.awt.Color(0, 0, 0));
         btn_Ingresar.setFont(new java.awt.Font("Monospaced", 1, 18)); // NOI18N
@@ -152,7 +149,7 @@ public class ingresarApariencia extends javax.swing.JFrame {
             }
         });
         panel_Fondo.add(btn_Ingresar);
-        btn_Ingresar.setBounds(490, 230, 150, 40);
+        btn_Ingresar.setBounds(400, 250, 150, 40);
 
         btn_Gear.setBackground(new java.awt.Color(0, 0, 0));
         btn_Gear.setFont(new java.awt.Font("Monospaced", 1, 18)); // NOI18N
@@ -164,19 +161,19 @@ public class ingresarApariencia extends javax.swing.JFrame {
             }
         });
         panel_Fondo.add(btn_Gear);
-        btn_Gear.setBounds(490, 290, 150, 40);
+        btn_Gear.setBounds(600, 250, 150, 40);
 
-        combo_Tipos.setBackground(new java.awt.Color(0, 0, 0));
-        combo_Tipos.setFont(new java.awt.Font("VCR OSD Mono", 0, 18)); // NOI18N
-        combo_Tipos.setForeground(new java.awt.Color(102, 0, 102));
-        combo_Tipos.setToolTipText("Tipo guerrero");
-        combo_Tipos.addActionListener(new java.awt.event.ActionListener() {
+        combo_Personajes.setBackground(new java.awt.Color(0, 0, 0));
+        combo_Personajes.setFont(new java.awt.Font("VCR OSD Mono", 0, 18)); // NOI18N
+        combo_Personajes.setForeground(new java.awt.Color(102, 0, 102));
+        combo_Personajes.setToolTipText("");
+        combo_Personajes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                combo_TiposActionPerformed(evt);
+                combo_PersonajesActionPerformed(evt);
             }
         });
-        panel_Fondo.add(combo_Tipos);
-        combo_Tipos.setBounds(220, 120, 180, 30);
+        panel_Fondo.add(combo_Personajes);
+        combo_Personajes.setBounds(220, 120, 180, 30);
 
         table_Apariencias.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -260,25 +257,26 @@ public class ingresarApariencia extends javax.swing.JFrame {
 
     private void btn_IngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_IngresarActionPerformed
         // TODO add your handling code here:
-        /*Object valor=(Personajes) FileManager.readObject("C:\\Users\\monic\\OneDrive - Estudiantes ITCR\\Documentos\\NetBeansProjects\\proyecto_HerenciaALTrono\\src\\archivosSerializados\\personajes.juego");
-        if(valor!=null){
-            listaPersonajes=(Personajes) FileManager.readObject("C:\\Users\\monic\\OneDrive - Estudiantes ITCR\\Documentos\\NetBeansProjects\\proyecto_HerenciaALTrono\\src\\archivosSerializados\\personajes.juego");
-        }else{
-            listaPersonajes=new Personajes();
-        }*/
-        String nombre=txt_NivelApariencia.getText();
+        String nivel=txt_NivelApariencia.getText();
         String accionStr=txt_AccionPersonaje.getText();
         String imagenStr=txt_NombreImagen.getText();
+        int personajeEscogido= combo_Personajes.getSelectedIndex();
+        String personajeEscogidoStr= combo_Personajes.getItemAt(personajeEscogido);
         
         
-        
-        if(!nombre.isBlank() && !accionStr.isBlank() && !imagenStr.isBlank()){
-            //listaPersonajes=(Personajes) FileManager.readObject("C:\\Users\\monic\\OneDrive - Estudiantes ITCR\\Documentos\\NetBeansProjects\\proyecto_HerenciaALTrono\\src\\archivosSerializados\\personajes.juego");
+        if(!nivel.isBlank() && !accionStr.isBlank() && !imagenStr.isBlank() && !personajeEscogidoStr.isBlank()){
+           for(int i=0;i<personajes.size();i++){
+               if(personajes.get(i).getcName()==personajeEscogidoStr.strip()){
+                   Appearance nuevaApariencia=new Appearance();
+                   nuevaApariencia.addAppearance(nivel, accionStr);
+                   personajes.get(i).setcAppearance(Integer.parseInt(nivel), nuevaApariencia);
+               }
+           }
             JLabel imageLabel = new JLabel();
             ImageIcon imageicon = new ImageIcon(imageDir+txt_NombreImagen.getText());
             Image img = imageicon.getImage().getScaledInstance(60, 60, Image.SCALE_SMOOTH);
             imageLabel.setIcon(new ImageIcon(img));
-            //model.addRow(new Object[]{nombre,imageLabel, aparicion, campos, guerreroEscogidoStr,ataque});
+            model.addRow(new Object[]{personajeEscogido, nivel, accionStr, imageLabel});
             limpiarFields();
             
         }else{
@@ -292,9 +290,9 @@ public class ingresarApariencia extends javax.swing.JFrame {
         juego.setVisible(true);
     }//GEN-LAST:event_btn_GearActionPerformed
 
-    private void combo_TiposActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_combo_TiposActionPerformed
+    private void combo_PersonajesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_combo_PersonajesActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_combo_TiposActionPerformed
+    }//GEN-LAST:event_combo_PersonajesActionPerformed
 DefaultTableModel model;
     
 //    byte imageJtable = new Byte(1024);
@@ -302,7 +300,7 @@ DefaultTableModel model;
 //Adding table headers
     public void addTableHeader() {
         model = (DefaultTableModel) table_Apariencias.getModel();
-        Object[] newIdentifiers = new Object[]{"Nombre", "Imagen","Nivel aparicion", "Campo","Tipo","Ataque"};
+        Object[] newIdentifiers = new Object[]{"Nombre", "Nivel", "Acción", "Imagen"};
         model.setColumnIdentifiers(newIdentifiers);
         table_Apariencias.setFillsViewportHeight(true);
         table_Apariencias.getColumn("Imagen").setCellRenderer(new CellRenderer());
@@ -331,32 +329,29 @@ DefaultTableModel model;
  
     }
     private void generarTabla(){
-        /*
-        for(int i=0;i<listaPersonajes.getListaPersonajes().size();i++){
-               String nombre=listaPersonajes.getListaPersonajes().get(i).getNombre();
-               int aparicion=listaPersonajes.getListaPersonajes().get(i).getLvlAparicion();
-               int campos=listaPersonajes.getListaPersonajes().get(i).getEspacios();
-               String guerreroEscogidoStr=listaPersonajes.getListaPersonajes().get(i).getTipoGuerrero();
-               int ataque=listaPersonajes.getListaPersonajes().get(i).getGolpes();
-               JLabel imageLabel = new JLabel();
-               ImageIcon imageicon = new ImageIcon(listaPersonajes.getListaPersonajes().get(i).getRutaImagenA());
-               Image img = imageicon.getImage().getScaledInstance(60, 60, Image.SCALE_SMOOTH);
-               imageLabel.setIcon(new ImageIcon(img));
+        for(int i=0;i<personajes.size();i++){
+          /* for(int j=0; j<personajes.get(i);i++){
+                String nombre=personajes.get(i).getcName();
+                int nivel=personajes.get(i).getcAppearance2().
+            } 
+        }
+            
+            JLabel imageLabel = new JLabel();
+            ImageIcon imageicon = new ImageIcon(listaPersonajes.getListaPersonajes().get(i).getRutaImagenA());
+            Image img = imageicon.getImage().getScaledInstance(60, 60, Image.SCALE_SMOOTH);
+            imageLabel.setIcon(new ImageIcon(img));
                 
         
                model.addRow(new Object[]{nombre,imageLabel, aparicion, campos, guerreroEscogidoStr,ataque});
-    }
-        */
+   */ 
+        }
   }
  
     private void generarComboBox(){
         ArrayList<String> listaNombres=new ArrayList<>();
         for(int i=0; i<personajes.size(); i++){
-            combo_Tipos.addItem(personajes.get(i).getcName().toString());
+            combo_Personajes.addItem(personajes.get(i).getcName().toString());
         }
-        
-     
-    
     }
    
     
@@ -421,7 +416,7 @@ DefaultTableModel model;
     private javax.swing.JButton btn_Gear;
     private javax.swing.JButton btn_ImagenApariencia;
     private javax.swing.JButton btn_Ingresar;
-    private javax.swing.JComboBox<String> combo_Tipos;
+    private javax.swing.JComboBox<String> combo_Personajes;
     private javax.swing.JLabel fondo_Juego;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lbl_AccionPersonaje;
