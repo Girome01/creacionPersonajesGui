@@ -21,5 +21,9 @@ public class main_Juego {
         frame.setLocation(290, 50);
         frame.setVisible(true);
 
+        //pruebas frame
+        /*seleccionarGear juego = new seleccionarGear();
+        juego.setVisible(true);*/
+
     }
 }

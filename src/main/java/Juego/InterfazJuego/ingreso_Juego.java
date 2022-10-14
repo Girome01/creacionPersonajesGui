@@ -149,7 +149,7 @@ public class ingreso_Juego extends javax.swing.JFrame {
             
             @Override
             public void run() {
-                ingreso_Juego frame = new ingreso_Juego();
+                campoBatalla_Juego frame = new campoBatalla_Juego(listaPersonajesUsuario);
                 frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
                 frame.pack();
                 frame.setLocation(290, 50);
