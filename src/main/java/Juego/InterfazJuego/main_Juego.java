@@ -15,15 +15,15 @@ public class main_Juego {
 
     public static void main(String[] args) {
 
-        ingreso_Juego frame = new ingreso_Juego();
+        /*ingreso_Juego frame = new ingreso_Juego();
         frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
         frame.pack();
         frame.setLocation(290, 50);
-        frame.setVisible(true);
+        frame.setVisible(true);*/
 
         //pruebas frame
-        /*seleccionarGear juego = new seleccionarGear();
-        juego.setVisible(true);*/
+        seleccionarGear juego = new seleccionarGear();
+        juego.setVisible(true);
 
     }
 }
