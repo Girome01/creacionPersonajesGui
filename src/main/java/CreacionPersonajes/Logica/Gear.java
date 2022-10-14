@@ -1,6 +1,8 @@
 package CreacionPersonajes.Logica;
 
-public class Gear implements iPrototype{
+import java.io.Serializable;
+
+public class Gear implements iPrototype, Serializable{
     private String gName;
     private int gRange;
     private int gDamage;
@@ -19,6 +21,7 @@ public class Gear implements iPrototype{
         this.gAppearanceURL = gAppearanceURL;
         this.gActive = gActive;
     }
+    
 
     public String getgName() {
         return gName;
@@ -89,10 +92,5 @@ public class Gear implements iPrototype{
     public void levelUp(){
         this.gLevel+=1;
     }
-
-    public void useGear(){
-        
-    }
-
 }
     

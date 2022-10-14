@@ -155,7 +155,7 @@ public class campoBatalla_Juego extends javax.swing.JFrame implements Serializab
 
         panelEscenario.setBackground(new java.awt.Color(204, 204, 204));
 
-        lbl_FondoBatalla.setIcon(new javax.swing.ImageIcon("D:\\Documents\\GitHub\\creacionPersonajesGui\\src\\main\\java\\imagenesJuego\\fondoBatalla_1.png")); // NOI18N
+        lbl_FondoBatalla.setIcon(new javax.swing.ImageIcon("D:\\Documents\\GitHub\\creacionPersonajesGui\\src\\main\\java\\Juego\\ImagenesJuego\\fondoBatalla_1.png")); // NOI18N
 
         javax.swing.GroupLayout panelEscenarioLayout = new javax.swing.GroupLayout(panelEscenario);
         panelEscenario.setLayout(panelEscenarioLayout);
@@ -248,8 +248,8 @@ public class campoBatalla_Juego extends javax.swing.JFrame implements Serializab
     private void btn_StartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_StartActionPerformed
         batalla.generateArmy();
         batalla.generateEnemy();
-        batalla.startArmy();
-        batalla.startEnemy();
+        //batalla.startArmy();
+        //batalla.startEnemy();
 
     }//GEN-LAST:event_btn_StartActionPerformed
 

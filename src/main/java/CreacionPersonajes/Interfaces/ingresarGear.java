@@ -1,8 +1,9 @@
 package CreacionPersonajes.Interfaces;
-//import Logica_Juego.FileManager;
+import CreacionPersonajes.Logica.*;
 import java.awt.Component;
 import java.awt.Image;
 import java.io.File;
+import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JLabel;
@@ -26,17 +27,19 @@ import javax.swing.table.TableColumn;
  * @author monic
  */
 public class ingresarGear extends javax.swing.JFrame {
-    /**
-     * Creates new form ingresarPersonajes_Jugo
-     */
+    private ArrayList<Gear> gears;
+    String imageDir = "src/main/java/Juego/ImagenesJuego/";
+    
     public ingresarGear() {
-        /*listaPersonajes=new Personajes();
         initComponents();
         addTableHeader();
-        Object valor=(Personajes) FileManager.readObject("C:\\Users\\monic\\OneDrive - Estudiantes ITCR\\Documentos\\NetBeansProjects\\proyecto_HerenciaALTrono\\src\\archivosSerializados\\personajes.juego");   
-        if(valor!=null)
-            listaPersonajes=(Personajes) FileManager.readObject("C:\\Users\\monic\\OneDrive - Estudiantes ITCR\\Documentos\\NetBeansProjects\\proyecto_HerenciaALTrono\\src\\archivosSerializados\\personajes.juego");   
-        generarTabla();*/
+        Object valor=gears=(ArrayList<Gear>) FileManager.readObject("src/main/java/CreacionPersonajes/Archivos/gears.juego");  
+        if(valor!=null){
+            gears=(ArrayList<Gear>) FileManager.readObject("src/main/java/CreacionPersonajes/Archivos/gears.juego");  
+       }else{
+           gears=new ArrayList<>();
+       }
+        generarTabla();
     }
 
     /**
@@ -50,28 +53,24 @@ public class ingresarGear extends javax.swing.JFrame {
 
         panel_Fondo = new javax.swing.JPanel();
         lbl_Titulo0 = new javax.swing.JLabel();
-        txt_AccionApariencia = new javax.swing.JTextField();
-        lbl_Usuario = new javax.swing.JLabel();
-        lbl_Usuario6 = new javax.swing.JLabel();
-        txt_NivelApariencia = new javax.swing.JTextField();
-        lbl_Usuario5 = new javax.swing.JLabel();
-        lbl_Usuario1 = new javax.swing.JLabel();
-        txt_Aparicion = new javax.swing.JTextField();
-        lbl_Ruta = new javax.swing.JLabel();
-        lbl_Usuario3 = new javax.swing.JLabel();
-        txt_Vida = new javax.swing.JTextField();
-        lbl_Usuario4 = new javax.swing.JLabel();
-        txt_Ataque = new javax.swing.JTextField();
-        combo_Tipos = new javax.swing.JComboBox<>();
-        btn_ImagenOf = new javax.swing.JButton();
-        btn_ImagenAt = new javax.swing.JButton();
-        lbl_rutaA = new javax.swing.JLabel();
-        lbl_rutaE = new javax.swing.JLabel();
-        lbl_ImagenA = new javax.swing.JLabel();
-        lbl_ImagenE = new javax.swing.JLabel();
+        txt_Ola = new javax.swing.JTextField();
+        lbl_NivelPersonaje = new javax.swing.JLabel();
+        lbl_AccionPersonaje = new javax.swing.JLabel();
+        txt_Danno = new javax.swing.JTextField();
+        txt_NombreImagen = new javax.swing.JTextField();
+        btn_ImagenApariencia = new javax.swing.JButton();
+        lbl_ImagenApariencia = new javax.swing.JLabel();
+        btn_Ingresar = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
-        table_Personajes = new javax.swing.JTable();
-        btn_Ingresar1 = new javax.swing.JButton();
+        table_Gears = new javax.swing.JTable();
+        lbl_Usuario1 = new javax.swing.JLabel();
+        txt_Nombre = new javax.swing.JTextField();
+        lbl_NivelPersonaje1 = new javax.swing.JLabel();
+        txt_Rango = new javax.swing.JTextField();
+        lbl_NivelPersonaje2 = new javax.swing.JLabel();
+        lbl_NivelPersonaje3 = new javax.swing.JLabel();
+        txt_Nivel = new javax.swing.JTextField();
+        combo_Tipos = new javax.swing.JComboBox<>();
         fondo_Juego = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -83,187 +82,89 @@ public class ingresarGear extends javax.swing.JFrame {
         panel_Fondo.setLayout(null);
 
         lbl_Titulo0.setBackground(new java.awt.Color(0, 0, 0));
-        lbl_Titulo0.setFont(new java.awt.Font("VCR OSD Mono", 0, 48)); // NOI18N
+        lbl_Titulo0.setFont(new java.awt.Font("Monospaced", 1, 24)); // NOI18N
         lbl_Titulo0.setForeground(new java.awt.Color(102, 0, 102));
         lbl_Titulo0.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl_Titulo0.setText("Ingresar gear");
+        lbl_Titulo0.setText("Ingresar gears");
         lbl_Titulo0.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 0, 102)));
         lbl_Titulo0.setOpaque(true);
         panel_Fondo.add(lbl_Titulo0);
         lbl_Titulo0.setBounds(130, 10, 500, 50);
 
-        txt_AccionApariencia.setBackground(new java.awt.Color(102, 0, 102));
-        txt_AccionApariencia.setFont(new java.awt.Font("VCR OSD Mono", 0, 18)); // NOI18N
-        panel_Fondo.add(txt_AccionApariencia);
-        txt_AccionApariencia.setBounds(550, 70, 170, 30);
-
-        lbl_Usuario.setBackground(new java.awt.Color(255, 255, 255));
-        lbl_Usuario.setFont(new java.awt.Font("VCR OSD Mono", 0, 18)); // NOI18N
-        lbl_Usuario.setForeground(new java.awt.Color(102, 0, 102));
-        lbl_Usuario.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl_Usuario.setText("Nivel personaje:");
-        lbl_Usuario.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 0, 102)));
-        lbl_Usuario.setOpaque(true);
-        panel_Fondo.add(lbl_Usuario);
-        lbl_Usuario.setBounds(30, 70, 140, 30);
-
-        lbl_Usuario6.setBackground(new java.awt.Color(255, 255, 255));
-        lbl_Usuario6.setFont(new java.awt.Font("VCR OSD Mono", 0, 18)); // NOI18N
-        lbl_Usuario6.setForeground(new java.awt.Color(102, 0, 102));
-        lbl_Usuario6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl_Usuario6.setText("Acción personaje:");
-        lbl_Usuario6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 0, 102)));
-        lbl_Usuario6.setOpaque(true);
-        panel_Fondo.add(lbl_Usuario6);
-        lbl_Usuario6.setBounds(390, 70, 140, 30);
-
-        txt_NivelApariencia.setBackground(new java.awt.Color(102, 0, 102));
-        txt_NivelApariencia.setFont(new java.awt.Font("VCR OSD Mono", 0, 18)); // NOI18N
-        txt_NivelApariencia.addActionListener(new java.awt.event.ActionListener() {
+        txt_Ola.setBackground(new java.awt.Color(102, 0, 102));
+        txt_Ola.setFont(new java.awt.Font("VCR OSD Mono", 0, 18)); // NOI18N
+        txt_Ola.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_NivelAparienciaActionPerformed(evt);
+                txt_OlaActionPerformed(evt);
             }
         });
-        panel_Fondo.add(txt_NivelApariencia);
-        txt_NivelApariencia.setBounds(190, 70, 170, 30);
+        panel_Fondo.add(txt_Ola);
+        txt_Ola.setBounds(590, 170, 170, 30);
 
-        lbl_Usuario5.setBackground(new java.awt.Color(255, 255, 255));
-        lbl_Usuario5.setFont(new java.awt.Font("VCR OSD Mono", 0, 18)); // NOI18N
-        lbl_Usuario5.setForeground(new java.awt.Color(102, 0, 102));
-        lbl_Usuario5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl_Usuario5.setText("Aparición:");
-        lbl_Usuario5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 0, 102)));
-        lbl_Usuario5.setOpaque(true);
-        panel_Fondo.add(lbl_Usuario5);
-        lbl_Usuario5.setBounds(390, 110, 140, 30);
+        lbl_NivelPersonaje.setBackground(new java.awt.Color(255, 255, 255));
+        lbl_NivelPersonaje.setFont(new java.awt.Font("VCR OSD Mono", 0, 18)); // NOI18N
+        lbl_NivelPersonaje.setForeground(new java.awt.Color(102, 0, 102));
+        lbl_NivelPersonaje.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbl_NivelPersonaje.setText("Activa:");
+        lbl_NivelPersonaje.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 0, 102)));
+        lbl_NivelPersonaje.setOpaque(true);
+        panel_Fondo.add(lbl_NivelPersonaje);
+        lbl_NivelPersonaje.setBounds(410, 220, 160, 30);
 
-        lbl_Usuario1.setBackground(new java.awt.Color(255, 255, 255));
-        lbl_Usuario1.setFont(new java.awt.Font("VCR OSD Mono", 0, 18)); // NOI18N
-        lbl_Usuario1.setForeground(new java.awt.Color(102, 0, 102));
-        lbl_Usuario1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl_Usuario1.setText("Ruta imagen aliado:");
-        lbl_Usuario1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 0, 102)));
-        lbl_Usuario1.setOpaque(true);
-        panel_Fondo.add(lbl_Usuario1);
-        lbl_Usuario1.setBounds(30, 190, 240, 30);
+        lbl_AccionPersonaje.setBackground(new java.awt.Color(255, 255, 255));
+        lbl_AccionPersonaje.setFont(new java.awt.Font("VCR OSD Mono", 0, 18)); // NOI18N
+        lbl_AccionPersonaje.setForeground(new java.awt.Color(102, 0, 102));
+        lbl_AccionPersonaje.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbl_AccionPersonaje.setText("Rango:");
+        lbl_AccionPersonaje.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 0, 102)));
+        lbl_AccionPersonaje.setOpaque(true);
+        panel_Fondo.add(lbl_AccionPersonaje);
+        lbl_AccionPersonaje.setBounds(410, 70, 160, 30);
 
-        txt_Aparicion.setBackground(new java.awt.Color(102, 0, 102));
-        txt_Aparicion.setFont(new java.awt.Font("VCR OSD Mono", 0, 18)); // NOI18N
-        txt_Aparicion.addActionListener(new java.awt.event.ActionListener() {
+        txt_Danno.setBackground(new java.awt.Color(102, 0, 102));
+        txt_Danno.setFont(new java.awt.Font("VCR OSD Mono", 0, 18)); // NOI18N
+        txt_Danno.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_AparicionActionPerformed(evt);
+                txt_DannoActionPerformed(evt);
             }
         });
-        panel_Fondo.add(txt_Aparicion);
-        txt_Aparicion.setBounds(550, 110, 170, 30);
+        panel_Fondo.add(txt_Danno);
+        txt_Danno.setBounds(220, 120, 180, 30);
 
-        lbl_Ruta.setBackground(new java.awt.Color(255, 255, 255));
-        lbl_Ruta.setFont(new java.awt.Font("VCR OSD Mono", 0, 18)); // NOI18N
-        lbl_Ruta.setForeground(new java.awt.Color(102, 0, 102));
-        lbl_Ruta.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl_Ruta.setText("Ruta imagen enemigo:");
-        lbl_Ruta.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 0, 102)));
-        lbl_Ruta.setOpaque(true);
-        panel_Fondo.add(lbl_Ruta);
-        lbl_Ruta.setBounds(30, 230, 240, 30);
+        txt_NombreImagen.setBackground(new java.awt.Color(102, 0, 102));
+        txt_NombreImagen.setFont(new java.awt.Font("VCR OSD Mono", 0, 18)); // NOI18N
+        panel_Fondo.add(txt_NombreImagen);
+        txt_NombreImagen.setBounds(70, 260, 350, 30);
 
-        lbl_Usuario3.setBackground(new java.awt.Color(255, 255, 255));
-        lbl_Usuario3.setFont(new java.awt.Font("VCR OSD Mono", 0, 18)); // NOI18N
-        lbl_Usuario3.setForeground(new java.awt.Color(102, 0, 102));
-        lbl_Usuario3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl_Usuario3.setText("Vida:");
-        lbl_Usuario3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 0, 102)));
-        lbl_Usuario3.setOpaque(true);
-        panel_Fondo.add(lbl_Usuario3);
-        lbl_Usuario3.setBounds(30, 110, 140, 30);
-
-        txt_Vida.setBackground(new java.awt.Color(102, 0, 102));
-        txt_Vida.setFont(new java.awt.Font("VCR OSD Mono", 0, 18)); // NOI18N
-        txt_Vida.addActionListener(new java.awt.event.ActionListener() {
+        btn_ImagenApariencia.setFont(new java.awt.Font("VCR OSD Mono", 0, 18)); // NOI18N
+        btn_ImagenApariencia.setForeground(new java.awt.Color(102, 0, 102));
+        btn_ImagenApariencia.setText("Seleccionar imagen de apariencia");
+        btn_ImagenApariencia.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_VidaActionPerformed(evt);
+                btn_ImagenAparienciaActionPerformed(evt);
             }
         });
-        panel_Fondo.add(txt_Vida);
-        txt_Vida.setBounds(190, 110, 170, 30);
+        panel_Fondo.add(btn_ImagenApariencia);
+        btn_ImagenApariencia.setBounds(70, 300, 350, 50);
 
-        lbl_Usuario4.setBackground(new java.awt.Color(255, 255, 255));
-        lbl_Usuario4.setFont(new java.awt.Font("VCR OSD Mono", 0, 18)); // NOI18N
-        lbl_Usuario4.setForeground(new java.awt.Color(102, 0, 102));
-        lbl_Usuario4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl_Usuario4.setText("Ataque:");
-        lbl_Usuario4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 0, 102)));
-        lbl_Usuario4.setOpaque(true);
-        panel_Fondo.add(lbl_Usuario4);
-        lbl_Usuario4.setBounds(30, 150, 140, 30);
+        lbl_ImagenApariencia.setToolTipText("Imagen enemigo");
+        lbl_ImagenApariencia.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        panel_Fondo.add(lbl_ImagenApariencia);
+        lbl_ImagenApariencia.setBounds(70, 160, 100, 90);
 
-        txt_Ataque.setBackground(new java.awt.Color(102, 0, 102));
-        txt_Ataque.setFont(new java.awt.Font("VCR OSD Mono", 0, 18)); // NOI18N
-        panel_Fondo.add(txt_Ataque);
-        txt_Ataque.setBounds(190, 150, 170, 30);
-
-        combo_Tipos.setBackground(new java.awt.Color(0, 0, 0));
-        combo_Tipos.setFont(new java.awt.Font("VCR OSD Mono", 0, 18)); // NOI18N
-        combo_Tipos.setForeground(new java.awt.Color(102, 0, 102));
-        combo_Tipos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Guerrero de contacto", "Guerrero de mediano alcance", "Guerrero aéreo" }));
-        combo_Tipos.setToolTipText("Tipo guerrero");
-        combo_Tipos.addActionListener(new java.awt.event.ActionListener() {
+        btn_Ingresar.setBackground(new java.awt.Color(0, 0, 0));
+        btn_Ingresar.setFont(new java.awt.Font("Monospaced", 1, 18)); // NOI18N
+        btn_Ingresar.setForeground(new java.awt.Color(102, 0, 102));
+        btn_Ingresar.setText("Ingresar");
+        btn_Ingresar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                combo_TiposActionPerformed(evt);
+                btn_IngresarActionPerformed(evt);
             }
         });
-        panel_Fondo.add(combo_Tipos);
-        combo_Tipos.setBounds(390, 150, 330, 30);
+        panel_Fondo.add(btn_Ingresar);
+        btn_Ingresar.setBounds(520, 310, 150, 40);
 
-        btn_ImagenOf.setFont(new java.awt.Font("VCR OSD Mono", 0, 18)); // NOI18N
-        btn_ImagenOf.setForeground(new java.awt.Color(102, 0, 102));
-        btn_ImagenOf.setText("Seleccionar imagen de enemigo ");
-        btn_ImagenOf.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_ImagenOfActionPerformed(evt);
-            }
-        });
-        panel_Fondo.add(btn_ImagenOf);
-        btn_ImagenOf.setBounds(280, 230, 460, 30);
-
-        btn_ImagenAt.setFont(new java.awt.Font("VCR OSD Mono", 0, 18)); // NOI18N
-        btn_ImagenAt.setForeground(new java.awt.Color(102, 0, 102));
-        btn_ImagenAt.setText("Seleccionar imagen de aliado");
-        btn_ImagenAt.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_ImagenAtActionPerformed(evt);
-            }
-        });
-        panel_Fondo.add(btn_ImagenAt);
-        btn_ImagenAt.setBounds(280, 190, 460, 30);
-
-        lbl_rutaA.setBackground(new java.awt.Color(0, 0, 0));
-        lbl_rutaA.setFont(new java.awt.Font("VCR OSD Mono", 0, 18)); // NOI18N
-        lbl_rutaA.setForeground(new java.awt.Color(102, 0, 102));
-        lbl_rutaA.setText("Ruta imagen aliado");
-        lbl_rutaA.setOpaque(true);
-        panel_Fondo.add(lbl_rutaA);
-        lbl_rutaA.setBounds(30, 270, 350, 24);
-
-        lbl_rutaE.setBackground(new java.awt.Color(0, 0, 0));
-        lbl_rutaE.setFont(new java.awt.Font("VCR OSD Mono", 0, 18)); // NOI18N
-        lbl_rutaE.setForeground(new java.awt.Color(102, 0, 102));
-        lbl_rutaE.setText("Ruta imagen enemigo");
-        lbl_rutaE.setOpaque(true);
-        panel_Fondo.add(lbl_rutaE);
-        lbl_rutaE.setBounds(30, 294, 350, 20);
-
-        lbl_ImagenA.setToolTipText("Imagen aliado");
-        lbl_ImagenA.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        panel_Fondo.add(lbl_ImagenA);
-        lbl_ImagenA.setBounds(400, 270, 50, 60);
-
-        lbl_ImagenE.setToolTipText("Imagen enemigo");
-        lbl_ImagenE.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        panel_Fondo.add(lbl_ImagenE);
-        lbl_ImagenE.setBounds(470, 270, 50, 60);
-
-        table_Personajes.setModel(new javax.swing.table.DefaultTableModel(
+        table_Gears.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -271,25 +172,87 @@ public class ingresarGear extends javax.swing.JFrame {
 
             }
         ));
-        table_Personajes.setGridColor(new java.awt.Color(102, 0, 102));
-        jScrollPane2.setViewportView(table_Personajes);
+        table_Gears.setGridColor(new java.awt.Color(102, 0, 102));
+        jScrollPane2.setViewportView(table_Gears);
 
         panel_Fondo.add(jScrollPane2);
-        jScrollPane2.setBounds(30, 350, 720, 130);
+        jScrollPane2.setBounds(30, 360, 720, 130);
 
-        btn_Ingresar1.setBackground(new java.awt.Color(0, 0, 0));
-        btn_Ingresar1.setFont(new java.awt.Font("VCR OSD Mono", 0, 18)); // NOI18N
-        btn_Ingresar1.setForeground(new java.awt.Color(102, 0, 102));
-        btn_Ingresar1.setText("Ingresar");
-        btn_Ingresar1.addActionListener(new java.awt.event.ActionListener() {
+        lbl_Usuario1.setBackground(new java.awt.Color(255, 255, 255));
+        lbl_Usuario1.setFont(new java.awt.Font("VCR OSD Mono", 0, 18)); // NOI18N
+        lbl_Usuario1.setForeground(new java.awt.Color(102, 0, 102));
+        lbl_Usuario1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbl_Usuario1.setText("Nombre:");
+        lbl_Usuario1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 0, 102)));
+        lbl_Usuario1.setOpaque(true);
+        panel_Fondo.add(lbl_Usuario1);
+        lbl_Usuario1.setBounds(70, 70, 140, 30);
+
+        txt_Nombre.setBackground(new java.awt.Color(102, 0, 102));
+        txt_Nombre.setFont(new java.awt.Font("VCR OSD Mono", 0, 18)); // NOI18N
+        txt_Nombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_Ingresar1ActionPerformed(evt);
+                txt_NombreActionPerformed(evt);
             }
         });
-        panel_Fondo.add(btn_Ingresar1);
-        btn_Ingresar1.setBounds(580, 280, 150, 40);
+        panel_Fondo.add(txt_Nombre);
+        txt_Nombre.setBounds(220, 70, 180, 30);
 
-        fondo_Juego.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenesJuego/FondoJuego.png"))); // NOI18N
+        lbl_NivelPersonaje1.setBackground(new java.awt.Color(255, 255, 255));
+        lbl_NivelPersonaje1.setFont(new java.awt.Font("VCR OSD Mono", 0, 18)); // NOI18N
+        lbl_NivelPersonaje1.setForeground(new java.awt.Color(102, 0, 102));
+        lbl_NivelPersonaje1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbl_NivelPersonaje1.setText("Daño:");
+        lbl_NivelPersonaje1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 0, 102)));
+        lbl_NivelPersonaje1.setOpaque(true);
+        panel_Fondo.add(lbl_NivelPersonaje1);
+        lbl_NivelPersonaje1.setBounds(70, 120, 140, 30);
+
+        txt_Rango.setBackground(new java.awt.Color(102, 0, 102));
+        txt_Rango.setFont(new java.awt.Font("VCR OSD Mono", 0, 18)); // NOI18N
+        panel_Fondo.add(txt_Rango);
+        txt_Rango.setBounds(590, 70, 170, 30);
+
+        lbl_NivelPersonaje2.setBackground(new java.awt.Color(255, 255, 255));
+        lbl_NivelPersonaje2.setFont(new java.awt.Font("VCR OSD Mono", 0, 18)); // NOI18N
+        lbl_NivelPersonaje2.setForeground(new java.awt.Color(102, 0, 102));
+        lbl_NivelPersonaje2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbl_NivelPersonaje2.setText("Nivel:");
+        lbl_NivelPersonaje2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 0, 102)));
+        lbl_NivelPersonaje2.setOpaque(true);
+        panel_Fondo.add(lbl_NivelPersonaje2);
+        lbl_NivelPersonaje2.setBounds(410, 120, 160, 30);
+
+        lbl_NivelPersonaje3.setBackground(new java.awt.Color(255, 255, 255));
+        lbl_NivelPersonaje3.setFont(new java.awt.Font("VCR OSD Mono", 0, 18)); // NOI18N
+        lbl_NivelPersonaje3.setForeground(new java.awt.Color(102, 0, 102));
+        lbl_NivelPersonaje3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbl_NivelPersonaje3.setText("Ola expansiva:");
+        lbl_NivelPersonaje3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 0, 102)));
+        lbl_NivelPersonaje3.setOpaque(true);
+        panel_Fondo.add(lbl_NivelPersonaje3);
+        lbl_NivelPersonaje3.setBounds(410, 170, 160, 30);
+
+        txt_Nivel.setBackground(new java.awt.Color(102, 0, 102));
+        txt_Nivel.setFont(new java.awt.Font("VCR OSD Mono", 0, 18)); // NOI18N
+        panel_Fondo.add(txt_Nivel);
+        txt_Nivel.setBounds(590, 120, 170, 30);
+
+        combo_Tipos.setBackground(new java.awt.Color(0, 0, 0));
+        combo_Tipos.setFont(new java.awt.Font("VCR OSD Mono", 0, 18)); // NOI18N
+        combo_Tipos.setForeground(new java.awt.Color(102, 0, 102));
+        combo_Tipos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Activo", "Inactivo" }));
+        combo_Tipos.setSelectedIndex(-1);
+        combo_Tipos.setToolTipText("Tipo guerrero");
+        combo_Tipos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                combo_TiposActionPerformed(evt);
+            }
+        });
+        panel_Fondo.add(combo_Tipos);
+        combo_Tipos.setBounds(590, 220, 180, 30);
+
+        fondo_Juego.setIcon(new javax.swing.ImageIcon("D:\\Documents\\GitHub\\creacionPersonajesGui\\src\\main\\java\\CreacionPersonajes\\Interfaces\\ImagenesCreacionPersonajes\\FondoPantallas.png")); // NOI18N
         panel_Fondo.add(fondo_Juego);
         fondo_Juego.setBounds(0, -20, 790, 520);
 
@@ -319,15 +282,11 @@ public class ingresarGear extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txt_NivelAparienciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_NivelAparienciaActionPerformed
+    private void txt_DannoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_DannoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txt_NivelAparienciaActionPerformed
+    }//GEN-LAST:event_txt_DannoActionPerformed
 
-    private void txt_AparicionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_AparicionActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_AparicionActionPerformed
-
-    private void btn_ImagenOfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ImagenOfActionPerformed
+    private void btn_ImagenAparienciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ImagenAparienciaActionPerformed
         // TODO add your handling code here:
         JFileChooser chooser = new JFileChooser();
         FileNameExtensionFilter filter = new FileNameExtensionFilter(
@@ -336,102 +295,81 @@ public class ingresarGear extends javax.swing.JFrame {
 
         int returnVal = chooser.showOpenDialog(this);
         if(returnVal == JFileChooser.APPROVE_OPTION) {
-            lbl_rutaE.setText(chooser.getSelectedFile().getName());
+            txt_NombreImagen.setText(chooser.getSelectedFile().getName());
             File selectedImageFile = chooser.getSelectedFile();
-            String selectedImagePath = selectedImageFile.getAbsolutePath();
+            String selectedImagePath = imageDir+selectedImageFile.getName();
             JOptionPane.showMessageDialog(null, selectedImagePath);
             //Display image on jlable
             ImageIcon ii = new ImageIcon(selectedImagePath);
             //            Resize image to fit jlabel
-            Image image = ii.getImage().getScaledInstance(lbl_ImagenE.getWidth(), lbl_ImagenE.getHeight(), Image.SCALE_SMOOTH);
+            Image image = ii.getImage().getScaledInstance(lbl_ImagenApariencia.getWidth(), lbl_ImagenApariencia.getHeight(), Image.SCALE_SMOOTH);
 
-            lbl_ImagenE.setIcon(new ImageIcon(image));
+            lbl_ImagenApariencia.setIcon(new ImageIcon(image));
         }
-    }//GEN-LAST:event_btn_ImagenOfActionPerformed
+    }//GEN-LAST:event_btn_ImagenAparienciaActionPerformed
 
-    private void btn_ImagenAtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ImagenAtActionPerformed
+    private void btn_IngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_IngresarActionPerformed
         // TODO add your handling code here:
-        JFileChooser chooser = new JFileChooser();
-        FileNameExtensionFilter filter = new FileNameExtensionFilter(
-            "JPG & PNG Images", "png", "jpg", "jpeg");
-        chooser.setFileFilter(filter);
-
-        int returnVal = chooser.showOpenDialog(this);
-        if(returnVal == JFileChooser.APPROVE_OPTION) {
-            lbl_rutaA.setText(chooser.getSelectedFile().getAbsolutePath());
-            File selectedImageFile = chooser.getSelectedFile();
-            String selectedImagePath = selectedImageFile.getAbsolutePath();
-            JOptionPane.showMessageDialog(null, selectedImagePath);
-            //Display image on jlable
-            ImageIcon ii = new ImageIcon(selectedImagePath);
-            //            Resize image to fit jlabel
-            Image image = ii.getImage().getScaledInstance(lbl_ImagenA.getWidth(), lbl_ImagenA.getHeight(), Image.SCALE_SMOOTH);
-
-            lbl_ImagenA.setIcon(new ImageIcon(image));
-        }
-    }//GEN-LAST:event_btn_ImagenAtActionPerformed
-
-    private void btn_Ingresar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_Ingresar1ActionPerformed
-        // TODO add your handling code here:
-        /*Object valor=(Personajes) FileManager.readObject("C:\\Users\\monic\\OneDrive - Estudiantes ITCR\\Documentos\\NetBeansProjects\\proyecto_HerenciaALTrono\\src\\archivosSerializados\\personajes.juego");
-        if(valor!=null){
-            listaPersonajes=(Personajes) FileManager.readObject("C:\\Users\\monic\\OneDrive - Estudiantes ITCR\\Documentos\\NetBeansProjects\\proyecto_HerenciaALTrono\\src\\archivosSerializados\\personajes.juego");
-        }else{
-            listaPersonajes=new Personajes();
-        }
-        String nombre=txt_NivelApariencia.getText();
-        String vidaStr=txt_Vida.getText();
-        String ataqueStr=txt_Ataque.getText();
-        String camposStr=txt_AccionApariencia.getText();
-        String aparicionStr=txt_Aparicion.getText();
-        String rutaImagenE=lbl_rutaE.getText();
-        String rutaImagenA=lbl_rutaA.getText();
-        int guerreroEscogido= combo_Tipos.getSelectedIndex();
-        String guerreroEscogidoStr= combo_Tipos.getItemAt(guerreroEscogido);
+       String nombreStr=txt_Nombre.getText();
+       String dannoStr=txt_Danno.getText();
+       String rangoStr=txt_Rango.getText();
+       String nivelStr=txt_Nivel.getText();
+       String olaEStr=txt_Ola.getText();
+       String imageStr=imageDir+txt_NombreImagen.getText();
+       int activobtn= combo_Tipos.getSelectedIndex();
+       String activoStr= combo_Tipos.getItemAt(activobtn);
+       boolean activo=false;
         
-        if(!nombre.isBlank() && !vidaStr.isBlank() && !ataqueStr.isBlank() && !camposStr.isBlank() &&
-            !aparicionStr.isBlank() && !rutaImagenE.isBlank() && !rutaImagenA.isBlank()){
-            int vida=Integer.parseInt(vidaStr);
-            int ataque=Integer.parseInt(ataqueStr);
-            int campos=Integer.parseInt(camposStr);
-            int aparicion=Integer.parseInt(aparicionStr);
-            guerrero = listaPersonajes.generarGuerreros(guerreroEscogido, nombre, vida, ataque,aparicion,campos,1,rutaImagenA, rutaImagenE, guerreroEscogidoStr);
-            listaPersonajes.agregarPersonajes(guerrero);
-            FileManager.writeObject(listaPersonajes, "C:\\Users\\monic\\OneDrive - Estudiantes ITCR\\Documentos\\NetBeansProjects\\proyecto_HerenciaALTrono\\src\\archivosSerializados\\personajes.juego");
-            listaPersonajes=(Personajes) FileManager.readObject("C:\\Users\\monic\\OneDrive - Estudiantes ITCR\\Documentos\\NetBeansProjects\\proyecto_HerenciaALTrono\\src\\archivosSerializados\\personajes.juego");
+        if(!nombreStr.isBlank() && !dannoStr.isBlank() && !rangoStr.isBlank() 
+           && !nivelStr.isBlank() && !olaEStr.isBlank() && !imageStr.isBlank() && !activoStr.isBlank()){
+            int danno=Integer.parseInt(dannoStr);
+            int rango=Integer.parseInt(rangoStr);
+            int nivel=Integer.parseInt(nivelStr);
+            int olaE=Integer.parseInt(olaEStr);
+            if(activoStr=="Activo")
+                activo=true;
+            
+            Gear gearItem=new Gear(nombreStr, rango, danno, nivel, olaE, imageStr,activo);
+            gears.add(gearItem);
+            FileManager.writeObject(gears,"src/main/java/CreacionPersonajes/Archivos/gears.juego");
+            
             JLabel imageLabel = new JLabel();
-            ImageIcon imageicon = new ImageIcon(lbl_rutaA.getText());
+            ImageIcon imageicon = new ImageIcon(imageDir+txt_NombreImagen.getText());
             Image img = imageicon.getImage().getScaledInstance(60, 60, Image.SCALE_SMOOTH);
             imageLabel.setIcon(new ImageIcon(img));
-            model.addRow(new Object[]{nombre,imageLabel, aparicion, campos, guerreroEscogidoStr,ataque});
+            model.addRow(new Object[]{nombreStr,rango,danno,nivel,olaE,activoStr,imageLabel});
             limpiarFields();
+            
         }else{
-            JOptionPane.showMessageDialog(panel_Fondo,"Los campos están vacíos.","Precaución guerrero",JOptionPane.WARNING_MESSAGE);
-        } */
-    }//GEN-LAST:event_btn_Ingresar1ActionPerformed
+            JOptionPane.showMessageDialog(panel_Fondo,"Los campos están vacíos.","Atención",JOptionPane.WARNING_MESSAGE);
+        }
+    }//GEN-LAST:event_btn_IngresarActionPerformed
 
-    private void txt_VidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_VidaActionPerformed
+    private void txt_NombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_NombreActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txt_VidaActionPerformed
+    }//GEN-LAST:event_txt_NombreActionPerformed
+
+    private void txt_OlaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_OlaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_OlaActionPerformed
 
     private void combo_TiposActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_combo_TiposActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_combo_TiposActionPerformed
-DefaultTableModel model;
+    DefaultTableModel model;
     
 //    byte imageJtable = new Byte(1024);
  
 //Adding table headers
     public void addTableHeader() {
-        model = (DefaultTableModel) table_Personajes.getModel();
-        Object[] newIdentifiers = new Object[]{"Nombre", "Imagen","Nivel aparicion", "Campo","Tipo","Ataque"};
+        model = (DefaultTableModel) table_Gears.getModel();
+        Object[] newIdentifiers = new Object[]{"Nombre", "Rango", "Daño", "Nivel", "Ola expansiva", "Activo", "Imagen"};
         model.setColumnIdentifiers(newIdentifiers);
-        table_Personajes.setFillsViewportHeight(true);
-        table_Personajes.getColumn("Imagen").setCellRenderer(new CellRenderer());
+        table_Gears.setFillsViewportHeight(true);
+        table_Gears.getColumn("Imagen").setCellRenderer(new CellRenderer());
  
     }
 
- 
     class CellRenderer implements TableCellRenderer {
  
         @Override
@@ -442,48 +380,43 @@ DefaultTableModel model;
                 int row,
                 int column) {
  
-            TableColumn tb = table_Personajes.getColumn("Imagen");
+            TableColumn tb = table_Gears.getColumn("Imagen");
             tb.setMaxWidth(60);
             tb.setMinWidth(60);
  
-            table_Personajes.setRowHeight(60);
+            table_Gears.setRowHeight(60); 
  
             return (Component) value;
         }
- 
     }
     private void generarTabla(){
-       /* for(int i=0;i<listaPersonajes.getListaPersonajes().size();i++){
-               String nombre=listaPersonajes.getListaPersonajes().get(i).getNombre();
-               int aparicion=listaPersonajes.getListaPersonajes().get(i).getLvlAparicion();
-               int campos=listaPersonajes.getListaPersonajes().get(i).getEspacios();
-               String guerreroEscogidoStr=listaPersonajes.getListaPersonajes().get(i).getTipoGuerrero();
-               int ataque=listaPersonajes.getListaPersonajes().get(i).getGolpes();
-               JLabel imageLabel = new JLabel();
-               ImageIcon imageicon = new ImageIcon(listaPersonajes.getListaPersonajes().get(i).getRutaImagenA());
-               Image img = imageicon.getImage().getScaledInstance(60, 60, Image.SCALE_SMOOTH);
-               imageLabel.setIcon(new ImageIcon(img));
-                
-        
-               model.addRow(new Object[]{nombre,imageLabel, aparicion, campos, guerreroEscogidoStr,ataque});
-    } */
+        for(int i=0;i<gears.size();i++){
+            String nombre=gears.get(i).getgName();
+            int rango=gears.get(i).getgRange();
+            int danno=gears.get(i).getgRange();
+            int nivel=gears.get(i).getgLevel();
+            int olaE=gears.get(i).getgGearBLast();
+            boolean activo=gears.get(i).isgActive();
+            String imagenStr=gears.get(i).getgAppearanceURL();
+            JLabel imageLabel = new JLabel();
+            ImageIcon imageicon = new ImageIcon(imagenStr);
+            Image img = imageicon.getImage().getScaledInstance(60, 60, Image.SCALE_SMOOTH);
+            imageLabel.setIcon(new ImageIcon(img));
+            
+            model.addRow(new Object[]{nombre,rango,danno,nivel,olaE,activo,imageLabel});
+        }
   }
- 
    
-    
     private void limpiarFields() {
-        lbl_ImagenA.setIcon(new ImageIcon());
-        lbl_ImagenE.setIcon(new ImageIcon());
-        
-        txt_NivelApariencia.setText("");
-        txt_Vida.setText("");
-        txt_Ataque.setText("");
-        txt_NivelApariencia.setText("");
-        txt_AccionApariencia.setText("");
-        txt_Aparicion.setText("");
-        lbl_rutaA.setText("Ruta imagen de aliado");
-        lbl_rutaE.setText("Ruta imagen de enemigo");
-        combo_Tipos.setSelectedIndex(0);
+       lbl_ImagenApariencia.setIcon(new ImageIcon());
+       txt_Nombre.setText("");
+       txt_Danno.setText("");
+       txt_Rango.setText("");
+       txt_Nivel.setText("");
+       txt_Ola.setText("");
+       txt_NombreImagen.setText("");
+       combo_Tipos.setSelectedIndex(-1);
+       txt_NombreImagen.setText("");
     }
     /**
      * @param args the command line arguments
@@ -502,30 +435,14 @@ DefaultTableModel model;
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ingresarGear.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ingresarApariencia.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ingresarGear.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ingresarApariencia.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ingresarGear.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ingresarApariencia.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ingresarGear.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ingresarApariencia.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -546,36 +463,36 @@ DefaultTableModel model;
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ingresarGear().setVisible(true);
+                ingresarGear frame = new ingresarGear();
+                frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
+                frame.pack();
+                frame.setLocation(290, 50);
+                frame.setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btn_ImagenAt;
-    private javax.swing.JButton btn_ImagenOf;
-    private javax.swing.JButton btn_Ingresar1;
+    private javax.swing.JButton btn_ImagenApariencia;
+    private javax.swing.JButton btn_Ingresar;
     private javax.swing.JComboBox<String> combo_Tipos;
     private javax.swing.JLabel fondo_Juego;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JLabel lbl_ImagenA;
-    private javax.swing.JLabel lbl_ImagenE;
-    private javax.swing.JLabel lbl_Ruta;
+    private javax.swing.JLabel lbl_AccionPersonaje;
+    private javax.swing.JLabel lbl_ImagenApariencia;
+    private javax.swing.JLabel lbl_NivelPersonaje;
+    private javax.swing.JLabel lbl_NivelPersonaje1;
+    private javax.swing.JLabel lbl_NivelPersonaje2;
+    private javax.swing.JLabel lbl_NivelPersonaje3;
     private javax.swing.JLabel lbl_Titulo0;
-    private javax.swing.JLabel lbl_Usuario;
     private javax.swing.JLabel lbl_Usuario1;
-    private javax.swing.JLabel lbl_Usuario3;
-    private javax.swing.JLabel lbl_Usuario4;
-    private javax.swing.JLabel lbl_Usuario5;
-    private javax.swing.JLabel lbl_Usuario6;
-    private javax.swing.JLabel lbl_rutaA;
-    private javax.swing.JLabel lbl_rutaE;
     private javax.swing.JPanel panel_Fondo;
-    private javax.swing.JTable table_Personajes;
-    private javax.swing.JTextField txt_AccionApariencia;
-    private javax.swing.JTextField txt_Aparicion;
-    private javax.swing.JTextField txt_Ataque;
-    private javax.swing.JTextField txt_NivelApariencia;
-    private javax.swing.JTextField txt_Vida;
+    private javax.swing.JTable table_Gears;
+    private javax.swing.JTextField txt_Danno;
+    private javax.swing.JTextField txt_Nivel;
+    private javax.swing.JTextField txt_Nombre;
+    private javax.swing.JTextField txt_NombreImagen;
+    private javax.swing.JTextField txt_Ola;
+    private javax.swing.JTextField txt_Rango;
     // End of variables declaration//GEN-END:variables
 }
