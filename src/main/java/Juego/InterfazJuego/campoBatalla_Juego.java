@@ -94,7 +94,7 @@ public class campoBatalla_Juego extends javax.swing.JFrame implements Serializab
     
     
     public void escribirHilos(String texto){
-        txtArea_hilos.append(texto+" \n");
+       txtArea_hilos.append(texto+" \n");
     }
     
     

@@ -28,14 +28,16 @@ public class HiloBatalla extends Thread implements Serializable{
     private boolean running = true;
     private boolean paused = false;
     public CharacterGame guerrero;
+    public String bando;
     HiloBatalla enemigo ;
 
-    public HiloBatalla(campoBatalla_Juego refPantalla, JLabel refLabel, JLabel refArma, int numero, CharacterGame guerrero) {
+    public HiloBatalla(campoBatalla_Juego refPantalla, JLabel refLabel, JLabel refArma, int numero, CharacterGame guerrero, String bando) {
         this.refPantalla = refPantalla;
         this.refLabel = refLabel;
         this.refArma = refArma;
         this.numero = numero;
         this.guerrero = guerrero;
+        this.bando = bando;
     }
 
      public void run(){
@@ -61,7 +63,9 @@ public class HiloBatalla extends Thread implements Serializable{
                         }
                     }
                     enemigo = refPantalla.batalla.getEnemy(this);
-                    refPantalla.escribirHilos("Soy "+this.guerrero.getcName()+" y lucho por mi bando con vida "+this.guerrero.getcLife()+" y ataque "+this.guerrero.getcHitPS());
+                    refPantalla.escribirHilos("Soy "+this.guerrero.getcName()+" y lucho por mi bando con vida "+this.guerrero.getcLife()+" y ataque "
+                            +this.guerrero.getcHitPS()+" lucho por el bando " + this.bando  );
+
                 }else{
                     enemigo = refPantalla.batalla.getGanador(this);
                     
