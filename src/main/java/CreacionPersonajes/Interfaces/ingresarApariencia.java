@@ -276,7 +276,7 @@ public class ingresarApariencia extends javax.swing.JFrame {
                    FileManager.writeObject(personajes,"src/main/java/CreacionPersonajes/Archivos/personajes.juego");
                    
                }
-           }
+            }
             JLabel imageLabel = new JLabel();
             ImageIcon imageicon = new ImageIcon(imageDir+txt_NombreImagen.getText());
             Image img = imageicon.getImage().getScaledInstance(60, 60, Image.SCALE_SMOOTH);
@@ -291,8 +291,11 @@ public class ingresarApariencia extends javax.swing.JFrame {
 
     private void btn_GearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_GearActionPerformed
         // TODO add your handling code here:
-        ingresarGear juego = new ingresarGear();
-        juego.setVisible(true);
+        ingresarGear frame = new ingresarGear();
+        frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        frame.pack();
+        frame.setLocation(290, 50);
+        frame.setVisible(true);
     }//GEN-LAST:event_btn_GearActionPerformed
 
     private void combo_PersonajesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_combo_PersonajesActionPerformed
@@ -346,7 +349,7 @@ DefaultTableModel model;
                     String accion=entry2.getKey();
                     String url=entry2.getValue();
 
-                     JLabel imageLabel = new JLabel();
+                    JLabel imageLabel = new JLabel();
                     ImageIcon imageicon = new ImageIcon(url);
                     Image img = imageicon.getImage().getScaledInstance(60, 60, Image.SCALE_SMOOTH);
                     imageLabel.setIcon(new ImageIcon(img));
@@ -422,7 +425,11 @@ DefaultTableModel model;
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                //new ingresarApariencia().setVisible(true);
+                ingresarGear frame = new ingresarGear();
+                frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
+                frame.pack();
+                frame.setLocation(290, 50);
+                frame.setVisible(true);
             }
         });
     }

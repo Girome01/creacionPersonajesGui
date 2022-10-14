@@ -26,15 +26,15 @@ public class ingresarPersonajes extends javax.swing.JFrame {
     String imageDir = "src/main/java/Juego/ImagenesJuego/";
     
     public ingresarPersonajes() {
-       initComponents();
-        
+        initComponents();
+        addTableHeader();
        Object valor=(ArrayList<CharacterGame>) FileManager.readObject("src/main/java/CreacionPersonajes/Archivos/personajes.juego");   
        if(valor!=null){
             personajes=(ArrayList<CharacterGame>) FileManager.readObject("src/main/java/CreacionPersonajes/Archivos/personajes.juego");  
        }else{
            personajes=new ArrayList<>();
        }
-        addTableHeader();
+        
         generarTabla();
     }
 
@@ -387,8 +387,13 @@ public class ingresarPersonajes extends javax.swing.JFrame {
 
     private void btn_AparienciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_AparienciaActionPerformed
         // TODO add your handling code here:
-           ingresarApariencia apariencia = new ingresarApariencia(personajes);
-           apariencia.setVisible(true);
+            ingresarPersonajes window=this;
+            window.setVisible(false);
+            ingresarApariencia frame = new ingresarApariencia(personajes);
+            frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
+            frame.pack();
+            frame.setLocation(290, 50);
+            frame.setVisible(true);
     }//GEN-LAST:event_btn_AparienciaActionPerformed
 DefaultTableModel model;
     
@@ -427,15 +432,15 @@ DefaultTableModel model;
     }
     private void generarTabla(){
         for(int i=0;i<personajes.size();i++){
-               String nombre=personajes.get(i).getcName();
-               int nivel=personajes.get(i).getcLevel();
-               int aparicion=personajes.get(i).getcSpawnLevel();
-               int vida=personajes.get(i).getcLife();
-               int ataque=personajes.get(i).getcHitPS();
-               int campos=personajes.get(i).getcStorageSpace();
-               double costo=personajes.get(i).getcCost();
-                
-               model.addRow(new Object[]{nombre, nivel, aparicion, vida, ataque, campos, costo});
+            String nombre=personajes.get(i).getcName();
+            int nivel=personajes.get(i).getcLevel();
+            int aparicion=personajes.get(i).getcSpawnLevel();
+            int vida=personajes.get(i).getcLife();
+            int ataque=personajes.get(i).getcHitPS();
+            int campos=personajes.get(i).getcStorageSpace();
+            double costo=personajes.get(i).getcCost();
+
+            model.addRow(new Object[]{nombre, nivel, aparicion, vida, ataque, campos, costo});
         }
   }
  
@@ -449,7 +454,7 @@ DefaultTableModel model;
         txt_Costo.setText("");
         txt_Ataque.setText("");
         txt_Nivel.setText("");
-        combo_Tipos.setSelectedIndex(0);
+        combo_Tipos.setSelectedIndex(-1);
     }
     /**
      * @param args the command line arguments
@@ -484,7 +489,11 @@ DefaultTableModel model;
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ingresarPersonajes().setVisible(true);
+                ingresarPersonajes frame = new ingresarPersonajes();
+                frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
+                frame.pack();
+                frame.setLocation(290, 50);
+                frame.setVisible(true);
             }
         });
     }
