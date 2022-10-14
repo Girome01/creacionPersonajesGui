@@ -3,6 +3,7 @@ import CreacionPersonajes.Logica.*;
 import LogicaJuego.*;
 import java.awt.Component;
 import java.util.ArrayList;
+import java.util.HashMap;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -22,6 +23,7 @@ import javax.swing.table.TableColumn;
  */
 public class ingresarPersonajes extends javax.swing.JFrame {
     ArrayList<CharacterGame> personajes;
+    String imageDir = "src/main/java/Juego/ImagenesJuego/";
     
     public ingresarPersonajes() {
        initComponents();
@@ -328,6 +330,13 @@ public class ingresarPersonajes extends javax.swing.JFrame {
             int nivel=Integer.parseInt(nivelStr);
             double costo=Double.parseDouble(costoStr);
             
+            Appearance defaultAppearance = new Appearance();
+            defaultAppearance.addAppearance("lapida", imageDir+"lapida.png");
+            defaultAppearance.addAppearance("puño", imageDir+"puño.png");
+            
+            HashMap<Integer, Appearance> defaultAppearanceHM = new HashMap<>();
+            defaultAppearanceHM.put(0, defaultAppearance);
+            
             if(guerreroEscogido==0){
                 ContactWarrior barbaro = (ContactWarrior) new ContactWarrior.ContactWarriorBuilder()
                         .setcName(nombre)
@@ -336,6 +345,7 @@ public class ingresarPersonajes extends javax.swing.JFrame {
                         .setcCost(costo)
                         .setcStorageSpace(campos)
                         .setcSpawnLevel(nivel)
+                        .setcAppearance(defaultAppearanceHM)
                         .setcLevel(nivel).build();
                 personajes.add(barbaro);
             }else if(guerreroEscogido==1){
@@ -346,6 +356,7 @@ public class ingresarPersonajes extends javax.swing.JFrame {
                         .setcCost(costo)
                         .setcStorageSpace(campos)
                         .setcSpawnLevel(nivel)
+                        .setcAppearance(defaultAppearanceHM)
                         .setcLevel(nivel).build();
                 personajes.add(arquera);
             }else{
@@ -356,6 +367,7 @@ public class ingresarPersonajes extends javax.swing.JFrame {
                         .setcCost(costo)
                         .setcStorageSpace(campos)
                         .setcSpawnLevel(nivel)
+                        .setcAppearance(defaultAppearanceHM)
                         .setcLevel(nivel).build();
                 personajes.add(dragon);
             }

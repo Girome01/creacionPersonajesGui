@@ -7,7 +7,7 @@ import java.util.HashMap;
 
 public class CharacterGame implements iPrototype, Serializable {
     protected String cName; 
-    protected HashMap<Integer, Appearance> cAppearance;
+    protected HashMap<Integer, Appearance> cAppearance = new HashMap<>();
     protected int cSpawnLevel;
     protected int cHitPS;
     protected int cLife;

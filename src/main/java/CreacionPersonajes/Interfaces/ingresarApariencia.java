@@ -267,16 +267,21 @@ public class ingresarApariencia extends javax.swing.JFrame {
         if(!nivel.isBlank() && !accionStr.isBlank() && !imagenStr.isBlank() && !personajeEscogidoStr.isBlank()){
            for(int i=0;i<personajes.size();i++){
                if(personajes.get(i).getcName()==personajeEscogidoStr.strip()){
+                   CharacterGame personajeCopia=personajes.get(i);
                    Appearance nuevaApariencia=new Appearance();
-                   nuevaApariencia.addAppearance(nivel, accionStr);
+                   nuevaApariencia.addAppearance(accionStr,imageDir+imagenStr);
                    personajes.get(i).setcAppearance(Integer.parseInt(nivel), nuevaApariencia);
+                   personajes.remove(i);
+                   personajes.add(personajeCopia);
+                   FileManager.writeObject(personajes,"src/main/java/CreacionPersonajes/Archivos/personajes.juego");
+                   
                }
            }
             JLabel imageLabel = new JLabel();
             ImageIcon imageicon = new ImageIcon(imageDir+txt_NombreImagen.getText());
             Image img = imageicon.getImage().getScaledInstance(60, 60, Image.SCALE_SMOOTH);
             imageLabel.setIcon(new ImageIcon(img));
-            model.addRow(new Object[]{personajeEscogido, nivel, accionStr, imageLabel});
+            model.addRow(new Object[]{personajeEscogidoStr, nivel, accionStr, imageLabel});
             limpiarFields();
             
         }else{
@@ -330,21 +335,31 @@ DefaultTableModel model;
     }
     private void generarTabla(){
         for(int i=0;i<personajes.size();i++){
-          /* for(int j=0; j<personajes.get(i);i++){
-                String nombre=personajes.get(i).getcName();
-                int nivel=personajes.get(i).getcAppearance2().
-            } 
+            String nombre=personajes.get(i).getcName();
+            if(personajes.get(i).getcAppearance2()!=null){
+                personajes.get(i).getcAppearance2().entrySet().forEach(entry -> {
+                int nivel=entry.getKey();
+                Appearance apariencia1=new Appearance();
+                apariencia1=entry.getValue();
+
+                    apariencia1.getAppearance2().entrySet().forEach(entry2 -> {
+                    String accion=entry2.getKey();
+                    String url=entry2.getValue();
+
+                     JLabel imageLabel = new JLabel();
+                    ImageIcon imageicon = new ImageIcon(url);
+                    Image img = imageicon.getImage().getScaledInstance(60, 60, Image.SCALE_SMOOTH);
+                    imageLabel.setIcon(new ImageIcon(img));
+
+
+               model.addRow(new Object[]{nombre, nivel, accion, imageLabel});
+               
+                    });
+                });
+            }
         }
-            
-            JLabel imageLabel = new JLabel();
-            ImageIcon imageicon = new ImageIcon(listaPersonajes.getListaPersonajes().get(i).getRutaImagenA());
-            Image img = imageicon.getImage().getScaledInstance(60, 60, Image.SCALE_SMOOTH);
-            imageLabel.setIcon(new ImageIcon(img));
-                
         
-               model.addRow(new Object[]{nombre,imageLabel, aparicion, campos, guerreroEscogidoStr,ataque});
-   */ 
-        }
+
   }
  
     private void generarComboBox(){

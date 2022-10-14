@@ -32,12 +32,7 @@ public class HalfRangeWarrior extends CharacterGame implements Serializable{
         public HalfRangeWarrior build() {
             return new HalfRangeWarrior(this);
         }
-    }
-
-
-    
-    
-     
+    }     
 }
 
     
