@@ -4,6 +4,9 @@
  */
 
 package Juego.InterfazJuego;
+
+import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
+
 /**
  *
  * @author Usuario
@@ -12,8 +15,11 @@ public class main_Juego {
 
     public static void main(String[] args) {
 
-        ingreso_Juego juego = new ingreso_Juego();
-        juego.setVisible(true);
+        ingreso_Juego frame = new ingreso_Juego();
+        frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        frame.pack();
+        frame.setLocation(290, 50);
+        frame.setVisible(true);
 
     }
 }

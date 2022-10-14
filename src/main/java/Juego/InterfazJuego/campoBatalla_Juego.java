@@ -6,6 +6,7 @@
 package Juego.InterfazJuego;
 import Juego.LogicaBatalla.*;
 import CreacionPersonajes.Logica.CharacterGame;
+import LogicaJuego.User;
 import java.awt.Image;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -24,12 +25,13 @@ public class campoBatalla_Juego extends javax.swing.JFrame implements Serializab
     // Si javi agrega la clase personajes descomentar eso y pasarla por referencia en el contructor
     public Batalla batalla;
     public ArrayList<CharacterGame> listaPersonajesUsuario;
+    protected User usuario;
 
   
-   public campoBatalla_Juego(ArrayList<CharacterGame> listaPersonajesUsuario) {
+   public campoBatalla_Juego(ArrayList<CharacterGame> listaPersonajesUsuario, User usuario) {
        this.listaPersonajesUsuario = listaPersonajesUsuario;
         batalla = new Batalla(this,listaPersonajesUsuario);
-        //Agregar una referencia a personajes aqui
+        this.usuario=usuario;
         initComponents();
     }
    public void mostrarGanador(String ganador){
@@ -113,7 +115,6 @@ public class campoBatalla_Juego extends javax.swing.JFrame implements Serializab
         btn_Pause = new javax.swing.JButton();
         panelEscenario = new javax.swing.JPanel();
         lbl_FondoBatalla = new javax.swing.JLabel();
-        btn_Guardar = new javax.swing.JButton();
         btn_Next = new javax.swing.JButton();
         txtArea_hilos = new java.awt.TextArea();
 
@@ -168,16 +169,6 @@ public class campoBatalla_Juego extends javax.swing.JFrame implements Serializab
             .addComponent(lbl_FondoBatalla, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        btn_Guardar.setBackground(new java.awt.Color(0, 0, 0));
-        btn_Guardar.setFont(new java.awt.Font("VCR OSD Mono", 0, 18)); // NOI18N
-        btn_Guardar.setForeground(new java.awt.Color(204, 0, 204));
-        btn_Guardar.setLabel("Guardar");
-        btn_Guardar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_GuardarActionPerformed(evt);
-            }
-        });
-
         btn_Next.setBackground(new java.awt.Color(0, 0, 0));
         btn_Next.setFont(new java.awt.Font("VCR OSD Mono", 0, 18)); // NOI18N
         btn_Next.setForeground(new java.awt.Color(204, 0, 204));
@@ -203,10 +194,9 @@ public class campoBatalla_Juego extends javax.swing.JFrame implements Serializab
                         .addGap(28, 28, 28)
                         .addComponent(btn_Stop, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btn_Next, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btn_Guardar)))
-                .addContainerGap(27, Short.MAX_VALUE))
+                        .addComponent(btn_Next, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(72, Short.MAX_VALUE))
+            .addComponent(txtArea_hilos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         fondo_JuegoLayout.setVerticalGroup(
             fondo_JuegoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -218,28 +208,22 @@ public class campoBatalla_Juego extends javax.swing.JFrame implements Serializab
                     .addComponent(btn_Start, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(fondo_JuegoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(btn_Stop, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btn_Guardar, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(btn_Next, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(btn_Pause, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(68, 68, 68))
+                .addGap(67, 67, 67)
+                .addComponent(txtArea_hilos, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(txtArea_hilos, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(fondo_Juego, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(fondo_Juego, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(fondo_Juego, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtArea_hilos, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addComponent(fondo_Juego, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -248,8 +232,8 @@ public class campoBatalla_Juego extends javax.swing.JFrame implements Serializab
     private void btn_StartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_StartActionPerformed
         batalla.generateArmy();
         batalla.generateEnemy();
-        //batalla.startArmy();
-        //batalla.startEnemy();
+        batalla.startArmy();
+        batalla.startEnemy();
 
     }//GEN-LAST:event_btn_StartActionPerformed
 
@@ -261,22 +245,16 @@ public class campoBatalla_Juego extends javax.swing.JFrame implements Serializab
         batalla.pauseArmy();
     }//GEN-LAST:event_btn_PauseActionPerformed
 
-    private void btn_GuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_GuardarActionPerformed
-        // TODO add your handling code here:
- 
-    }//GEN-LAST:event_btn_GuardarActionPerformed
-
     private void btn_NextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_NextActionPerformed
         batalla.stopArmy();
-        /*JOptionPane.showMessageDialog(fondo_Juego,"Ganador: Aliados","Resultado de la batalla",JOptionPane.OK_OPTION);
-        nuevo.subirNivel();
+        JOptionPane.showMessageDialog(fondo_Juego,"Ganador: Aliados","Resultado de la batalla",JOptionPane.OK_OPTION);
+        usuario.setuLevel(usuario.getuLevel()+1);
         this.setVisible(false);
-        escogerPersonajes_Juego frame = new escogerPersonajes_Juego(nuevo);
+        escogerPersonajes_Juego frame = new escogerPersonajes_Juego(usuario);
         frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
         frame.pack();
         frame.setLocation(290, 150);
-        frame.setVisible(true);*/
-
+        frame.setVisible(true);
     }//GEN-LAST:event_btn_NextActionPerformed
                         
     /**
@@ -285,7 +263,6 @@ public class campoBatalla_Juego extends javax.swing.JFrame implements Serializab
      */
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btn_Guardar;
     private javax.swing.JButton btn_Next;
     private javax.swing.JButton btn_Pause;
     private javax.swing.JButton btn_Start;

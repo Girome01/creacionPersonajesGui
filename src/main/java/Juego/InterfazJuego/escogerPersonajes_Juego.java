@@ -10,13 +10,13 @@ import CreacionPersonajes.Logica.PFGear;
 import CreacionPersonajes.Logica.Gear;
 import CreacionPersonajes.Logica.Appearance;
 import CreacionPersonajes.Logica.CharacterGame;
+import CreacionPersonajes.Logica.FileManager;
 import java.awt.Component;
 import java.awt.Image;
 import javax.swing.*;
 import javax.swing.table.*;
 import LogicaJuego.*;
 import java.util.ArrayList;
-import java.util.HashMap;
 
 /**
  *
@@ -24,6 +24,8 @@ import java.util.HashMap;
  */
 public class escogerPersonajes_Juego extends javax.swing.JFrame {
     protected ArrayList<CharacterGame> listaPersonajesUsuario;
+    ArrayList<CharacterGame> personajes;
+    PFCharacter characterFP = new PFCharacter();
     protected User usuario;
     
     String imageDir = "src/main/java/imagenesJuego/";
@@ -34,20 +36,11 @@ public class escogerPersonajes_Juego extends javax.swing.JFrame {
     public escogerPersonajes_Juego(User user) {
         initComponents();
         this.usuario = user;
-        crearPersonajesBase();
-        subirNivel(user);
-        tabla();
+        mostrarNivel();
+        //subirNivel(user);
+        generarTabla();
         
     }
-    /*
-    public boolean creceNivel(String tipoGuerrero){
-        if(tipoGuerrero.equalsIgnoreCase("Guerrero de Contacto") || tipoGuerrero.equalsIgnoreCase("Guerrero de mediano alcance") || tipoGuerrero.equalsIgnoreCase("Guerrero aéreo")){
-            return true;
-        }else{
-            return false;
-        }
-    }
-    */
     
     class CellRenderer implements TableCellRenderer {
  
@@ -70,31 +63,37 @@ public class escogerPersonajes_Juego extends javax.swing.JFrame {
 
     }
     
-    public void tabla(){
-        DefaultTableModel model;
+    public void generarTabla(){
+       Object valor=(ArrayList<CharacterGame>) FileManager.readObject("src/main/java/CreacionPersonajes/Archivos/personajes.juego");   
+       if(valor!=null){
+            personajes=(ArrayList<CharacterGame>) FileManager.readObject("src/main/java/CreacionPersonajes/Archivos/personajes.juego");  
+       }else{
+           personajes=new ArrayList<>();
+       }
+       DefaultTableModel model;
         model = (DefaultTableModel) table_Personajes.getModel();
         table_Personajes.getColumn("Imagen").setCellRenderer(new CellRenderer());
-         for(int i=0;i<PFCharacter.CharacterList().size();i++){
-            String nombre=PFCharacter.CharacterList().get(i).getcName();
-            int aparicion=PFCharacter.CharacterList().get(i).getcSpawnLevel();
-            int campos=PFCharacter.CharacterList().get(i).getcStorageSpace();
-            int ataque=PFCharacter.CharacterList().get(i).getcHitPS();
-            int vida=PFCharacter.CharacterList().get(i).getcLife();  
+        for(int i=0;i<personajes.size();i++){
+            String nombre=personajes.get(i).getcName();
+            int nivel=personajes.get(i).getcLevel();
+            int aparicion=personajes.get(i).getcSpawnLevel();
+            int vida=personajes.get(i).getcLife();
+            int ataque=personajes.get(i).getcHitPS();
+            int campos=personajes.get(i).getcStorageSpace();
+            double costo=personajes.get(i).getcCost();
+            String imageUrl=personajes.get(i).getcAppearance(1, "STOP");
+            characterFP.addPrototype(nombre, personajes.get(i));
          
-         
-        JLabel imageLabel = new JLabel();
-        ImageIcon imageicon = new ImageIcon(PFCharacter.CharacterList().get(i).getcAppearance(PFCharacter.CharacterList().get(i).getcLevel(),"STOP"));
-        Image img = imageicon.getImage().getScaledInstance(60, 60, Image.SCALE_SMOOTH);
-        imageLabel.setIcon(new ImageIcon(img));
-        //if(listaPersonajes.getListaPersonajes().get(i).getLvlAparicion()<=nuevo.getNivelUsuario())           //AGREGRAR LUEGO
-         model.addRow(new Object[]{nombre,imageLabel, ataque,vida,campos,0,false});
+            JLabel imageLabel = new JLabel();
+            ImageIcon imageicon = new ImageIcon(imageUrl);
+            Image img = imageicon.getImage().getScaledInstance(60, 60, Image.SCALE_SMOOTH);
+            imageLabel.setIcon(new ImageIcon(img));
+            if(personajes.get(i).getcLevel()<=usuario.getuLevel())          
+                model.addRow(new Object[]{nombre,imageLabel,ataque,vida,costo,campos,0,false});
 
         }   
      }
-         
-   
-    
-    
+        
     public void subirNivel(User user){
         
         //SOLO AUMENTA EL NIVEL, ACTUALIZAR SI SE OCUPA SUBIR OTRAS ESTADISTICAS EN CharacterGame
@@ -102,86 +101,18 @@ public class escogerPersonajes_Juego extends javax.swing.JFrame {
         
     }
     
-    public void crearArmas(){
-        /*
-            private String gName;
-            private int gRange;
-            private int gDamage;
-            private int gLevel;
-            private int gGearBLast;
-            private String gAppearanceURL;
-            private boolean gActive; 
-        */
-        Gear espada = new Gear("espada",1, 10, 1, 0, imageDir+"arco.png", true);
-        Gear bomba = new Gear("bomba",2, 20, 1,4 , "", true);
-        Gear arco = new Gear("arco",5,5,1,0, "", true);
-        
-        PFGear.addPrototype("espada", espada);
-        PFGear.addPrototype("bomba", bomba);
-        PFGear.addPrototype("arco", arco);
-        
+    public void mostrarNivel(){
+        lbl_userLevel.setText("Nivel de "+usuario.getName()+": "+usuario.getuLevel());
     }
-    
-    public void crearPersonajesBase(){
-        
-        crearArmas();
-        /*
-            protected String cName; 
-            protected HashMap<Integer, Appearance> cAppearance;
-            protected int cSpawnLevel;
-            protected int cHitPS;
-            protected int cLife;
-            //private int[][] cStorageSpace;
-            protected int cStorageSpace;
-            protected double cCost;
-            protected int cLevel;
-            protected HashMap<String, Gear> cGear = new HashMap<>();
-        */
-        
-        //Barbaro Aspects
-        Appearance cAppearance = new Appearance();
-        cAppearance.addAppearance("STOP", imageDir+"rojoD.png");
-        cAppearance.addAppearance("Walking", imageDir+"dragonI.png");
-        cAppearance.addAppearance("attacking", imageDir+"heroeD.png");
-
-        Appearance defaultAppearance = new Appearance();
-        defaultAppearance.addAppearance("lapida", imageDir+"lapida.png");
-        defaultAppearance.addAppearance("puño", imageDir+"puño.png");
-
-/*
-        Appearance arqueraAppearance = new Appearance();
-        arqueraAppearance.addAppearance("lapida", imageDir+"lapida.png");
-        arqueraAppearance.addAppearance("puño", imageDir+"puño.png");*/
-
-        HashMap<Integer, Appearance> barbaroAppearance = new HashMap<>();
-        barbaroAppearance.put(1, cAppearance);
-        barbaroAppearance.put(0, defaultAppearance);
-
-
-        //fin Barbaro aspects
-        ContactWarrior barbaro = new ContactWarrior("barbaro", barbaroAppearance, 1, 5, 100, 2, 3, 1);
-        barbaro.cAddGear("espada", PFGear.getPrototype("espada"));
-
-        //Arquera
-        /*HalfRangeWarrior arquera = new HalfRangeWarrior("arquera", barbaroAppearance, 1, 3, 80, 2, 2, 1);
-        arquera.cAddGear("arco", PFGear.getPrototype("arco"));*/
-        
-        //Bombardera
-        /*AerialWarrior bombardera = new AerialWarrior("bombardera", barbaroAppearance, 1, 10, 100, 6, 4, 1);
-        bombardera.cAddGear("bomba", PFGear.getPrototype("bomba"));*/
-        
-        PFCharacter.addPrototype("barbaro", barbaro);
-        /*PFCharacter.addPrototype("arquera", arquera);
-        PFCharacter.addPrototype("bombardera", bombardera);*/
-    }
-    
+         
     public boolean getValues(){
         listaPersonajesUsuario = new ArrayList<>();
         
         for(int i=0;i<table_Personajes.getModel().getRowCount();i++){
-            if ((Boolean) table_Personajes.getModel().getValueAt(i,6)){
+            if ((Boolean) table_Personajes.getModel().getValueAt(i,7)){
               String nombre=table_Personajes.getModel().getValueAt(i, 0).toString();
-              int cantidad = (int) table_Personajes.getModel().getValueAt(i,5);
+              System.out.println(nombre);
+              int cantidad = (int) table_Personajes.getModel().getValueAt(i,6);
               ArrayList<CharacterGame> guerreros = PFCharacter.getPrototype(nombre,cantidad);
               if(guerreros!=null){
                   for (int j = 0; j < guerreros.size(); j++) {
@@ -229,14 +160,14 @@ public class escogerPersonajes_Juego extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Nombre", "Imagen", "Ataque", "Vida", "Campos", "Cantidad", "Escogido"
+                "Nombre", "Imagen", "Ataque", "Vida", "Costo", "Campos", "Cantidad", "Escogido"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.Object.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Boolean.class
+                java.lang.String.class, java.lang.Object.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Double.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Boolean.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, true, true
+                false, false, false, false, false, false, true, true
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -295,7 +226,7 @@ public class escogerPersonajes_Juego extends javax.swing.JFrame {
         
         this.setVisible(false);
         
-        campoBatalla_Juego frame = new campoBatalla_Juego(listaPersonajesUsuario);
+        campoBatalla_Juego frame = new campoBatalla_Juego(listaPersonajesUsuario, usuario);
         frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
         frame.pack();
         frame.setLocation(290, 50);
