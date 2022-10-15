@@ -331,8 +331,9 @@ public class seleccionarGear extends javax.swing.JFrame {
         // TODO add your handling code here:
         Gear selectedGear = listaGears.get(gearComboBox.getSelectedIndex());
         CharacterGame selectedChar = listaPersonajesUsuario.get(characterComboBox.getSelectedIndex());
-        /*HashMap<String,Gear> gearMap = new HashMap<String,Gear>(selectedGear.getgName(),selectedGear);
-        selectedChar.setcGear(gearMap);*/
+        HashMap<String,Gear> gearMap = new HashMap<String,Gear>();
+        gearMap.put(selectedGear.getgName(),selectedGear);
+        selectedChar.setcGear(gearMap);
 
 
     }//GEN-LAST:event_selectGearActionPerformed
