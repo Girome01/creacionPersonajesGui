@@ -9,7 +9,7 @@ import CreacionPersonajes.Logica.Appearance;
 import CreacionPersonajes.Logica.CharacterGame;
 import CreacionPersonajes.Logica.Gear;
 import LogicaJuego.HalfRangeWarrior;
-import LogicaJuego.User;
+import Juego.LogicaJuego.User;
 import java.util.ArrayList;
 import java.util.HashMap;
 import javax.swing.SwingUtilities;
@@ -106,7 +106,7 @@ public class ingreso_Juego extends javax.swing.JFrame {
     private void btn_IngresarJuegoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_IngresarJuegoActionPerformed
         // TODO add your handling code here:
         User usuario = new User(txt_NombreUsuario.getText(), 1);
-       
+        this.setVisible(false);
         escogerPersonajes_Juego frame = new escogerPersonajes_Juego(usuario);
         frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
         frame.pack();

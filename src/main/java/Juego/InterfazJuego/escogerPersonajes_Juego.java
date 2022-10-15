@@ -4,18 +4,14 @@
  * and open the template in the editor.
  */
 package Juego.InterfazJuego;
-import LogicaJuego.ContactWarrior;
 import CreacionPersonajes.Logica.PFCharacter;
-import CreacionPersonajes.Logica.PFGear;
-import CreacionPersonajes.Logica.Gear;
-import CreacionPersonajes.Logica.Appearance;
 import CreacionPersonajes.Logica.CharacterGame;
 import CreacionPersonajes.Logica.FileManager;
+import Juego.LogicaJuego.User;
 import java.awt.Component;
 import java.awt.Image;
 import javax.swing.*;
 import javax.swing.table.*;
-import LogicaJuego.*;
 import java.util.ArrayList;
 
 /**

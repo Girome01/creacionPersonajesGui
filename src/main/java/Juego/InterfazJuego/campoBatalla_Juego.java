@@ -6,11 +6,10 @@
 package Juego.InterfazJuego;
 import Juego.LogicaBatalla.*;
 import CreacionPersonajes.Logica.CharacterGame;
-import LogicaJuego.User;
+import Juego.LogicaJuego.User;
 import java.awt.Image;
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.Random;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
@@ -37,15 +36,15 @@ public class campoBatalla_Juego extends javax.swing.JFrame implements Serializab
    public void mostrarGanador(String ganador){
         JOptionPane.showMessageDialog(fondo_Juego,"Ganador: "+ganador,"Resultado de la batalla",JOptionPane.OK_OPTION);
         if(ganador.equalsIgnoreCase("Aliados")){
-            
+            usuario.setuLevel(usuario.getuLevel()+1);
         }
         
         this.setVisible(false);
-        /*escogerPersonajes_Juego frame = new escogerPersonajes_Juego(nuevo);
+        escogerPersonajes_Juego frame = new escogerPersonajes_Juego(usuario);
         frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
         frame.pack();
         frame.setLocation(290, 150);
-        frame.setVisible(true);*/
+        frame.setVisible(true);
     } 
    
     public JLabel generateLabel(String imagen, int xTripulante, int limit){
@@ -249,7 +248,9 @@ public class campoBatalla_Juego extends javax.swing.JFrame implements Serializab
     private void btn_NextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_NextActionPerformed
         batalla.stopArmy();
         JOptionPane.showMessageDialog(fondo_Juego,"Ganador: Aliados","Resultado de la batalla",JOptionPane.OK_OPTION);
+        
         usuario.setuLevel(usuario.getuLevel()+1);
+        
         this.setVisible(false);
         escogerPersonajes_Juego frame = new escogerPersonajes_Juego(usuario);
         frame.setDefaultCloseOperation(EXIT_ON_CLOSE);

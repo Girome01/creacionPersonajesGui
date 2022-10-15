@@ -4,16 +4,12 @@
  */
 package Juego.InterfazJuego;
 
-import LogicaJuego.ContactWarrior;
 import CreacionPersonajes.Logica.*;
-import java.awt.Component;
+import Juego.LogicaJuego.User;
 import java.awt.Image;
 import javax.swing.*;
-import javax.swing.table.*;
-import LogicaJuego.*;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 /**
  *
  * @author anagu
@@ -35,6 +31,7 @@ public class seleccionarGear extends javax.swing.JFrame {
         }else{
             listaGears =new ArrayList<>();
         }
+        this.usuario=usuario;
 
         generarComboBoxGears();
         generarComboBoxCharacters();
@@ -371,7 +368,7 @@ public class seleccionarGear extends javax.swing.JFrame {
 
     private void startGameBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startGameBtnActionPerformed
         // TODO add your handling code here:
-
+        this.setVisible(false);
         campoBatalla_Juego frame = new campoBatalla_Juego(listaPersonajesUsuario, usuario);
         frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
         frame.pack();
