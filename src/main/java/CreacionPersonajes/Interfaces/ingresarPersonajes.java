@@ -71,6 +71,7 @@ public class ingresarPersonajes extends javax.swing.JFrame {
         fondo_Juego = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Ingresar personajes");
         setResizable(false);
         setSize(new java.awt.Dimension(755, 456));
 
@@ -333,6 +334,7 @@ public class ingresarPersonajes extends javax.swing.JFrame {
             Appearance defaultAppearance = new Appearance();
             defaultAppearance.addAppearance("lapida", imageDir+"lapida.png");
             defaultAppearance.addAppearance("puño", imageDir+"puño.png");
+            defaultAppearance.addAppearance("STOP", imageDir+"rojoD.png");
             
             HashMap<Integer, Appearance> defaultAppearanceHM = new HashMap<>();
             defaultAppearanceHM.put(0, defaultAppearance);

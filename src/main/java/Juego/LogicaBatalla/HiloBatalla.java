@@ -52,13 +52,13 @@ public class HiloBatalla extends Thread implements Serializable{
                     }else{
                         
                         String url = guerrero.getcAppearance(guerrero.getcLevel(),"WALKING");
-                        if(url != null){
+                        if(url != null && this.bando!="Enemigo"){
                             cambiarImagen(url, refLabel);
                         }
                         sleep(1000);
                         refPantalla.moveLabel(refLabel, refArma);
-                        url = guerrero.getcAppearance(guerrero.getcLevel(),"STOP");
-                        if(url != null){
+                        url = guerrero.getcAppearance3(0,"STOP");
+                        if(url != null && this.bando!="Enemigo"){
                             cambiarImagen(url, refLabel);
                         }
                     }
@@ -69,7 +69,7 @@ public class HiloBatalla extends Thread implements Serializable{
                 }else{
                     enemigo = refPantalla.batalla.getGanador(this);
                     
-                    String imagen= guerrero.getcAppearance(0, "LAPIDA");
+                    String imagen= guerrero.getcAppearance3(0, "LAPIDA");
                     if(imagen != null)
                         cambiarImagen(imagen, refLabel);
                     

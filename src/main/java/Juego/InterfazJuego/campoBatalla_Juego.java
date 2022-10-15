@@ -121,6 +121,7 @@ public class campoBatalla_Juego extends javax.swing.JFrame implements Serializab
         jLabel1.setText("jLabel1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Herencia al trono");
 
         fondo_Juego.setBackground(new java.awt.Color(102, 0, 102));
 
