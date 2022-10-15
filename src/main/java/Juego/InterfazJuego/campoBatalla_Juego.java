@@ -157,7 +157,7 @@ public class campoBatalla_Juego extends javax.swing.JFrame implements Serializab
 
         panelEscenario.setBackground(new java.awt.Color(204, 204, 204));
 
-        lbl_FondoBatalla.setIcon(new javax.swing.ImageIcon("D:\\Documents\\GitHub\\creacionPersonajesGui\\src\\main\\java\\Juego\\ImagenesJuego\\fondoBatalla_1.png")); // NOI18N
+        lbl_FondoBatalla.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Juego/ImagenesJuego/fondoBatalla_1.png"))); // NOI18N
 
         javax.swing.GroupLayout panelEscenarioLayout = new javax.swing.GroupLayout(panelEscenario);
         panelEscenario.setLayout(panelEscenarioLayout);
