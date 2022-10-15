@@ -89,7 +89,7 @@ public class ingreso_Juego extends javax.swing.JFrame {
         PanelFondo.add(btn_IngresarJuego);
         btn_IngresarJuego.setBounds(320, 330, 150, 40);
 
-        lblFondo.setIcon(new javax.swing.ImageIcon("C:\\Users\\anagu\\OneDrive\\Documentos\\TEC\\SemestreII2022\\DiseñoAlgoritmos\\creacionPersonajesGui\\src\\main\\java\\Juego\\ImagenesJuego\\fondoBienvenida.jpg")); // NOI18N
+        lblFondo.setIcon(new javax.swing.ImageIcon("D:\\Documents\\GitHub\\creacionPersonajesGui\\src\\main\\java\\Juego\\ImagenesJuego\\fondoBienvenida.jpg")); // NOI18N
         lblFondo.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         lblFondo.setMaximumSize(new java.awt.Dimension(755, 456));
         lblFondo.setMinimumSize(new java.awt.Dimension(755, 456));
