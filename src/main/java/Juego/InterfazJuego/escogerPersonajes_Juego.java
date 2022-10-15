@@ -222,8 +222,9 @@ public class escogerPersonajes_Juego extends javax.swing.JFrame {
         System.out.println(listaPersonajesUsuario);
         
         this.setVisible(false);
-        
-        campoBatalla_Juego frame = new campoBatalla_Juego(listaPersonajesUsuario, usuario);
+
+
+        seleccionarGear frame = new seleccionarGear(listaPersonajesUsuario, usuario);
         frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
         frame.pack();
         frame.setLocation(290, 50);
