@@ -4,7 +4,9 @@
  * and open the template in the editor.
  */
 package LogicaJuego;
-import LogicaBatalla.Batalla;
+import CreacionPersonajes.Logica.Appearance;
+import CreacionPersonajes.Logica.CharacterGame;
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Random;
 import javax.swing.JLabel;
@@ -13,35 +15,27 @@ import javax.swing.JLabel;
  *
  * @author monic
  */
-public class ContactWarrior extends CharacterGame implements CharacterAction{
+public class ContactWarrior extends CharacterGame implements Serializable{
 
-    public ContactWarrior(String cName, HashMap<Integer, Appearance> cAppearance, int cSpawnLevel, int cHitPS, int cLife, int cStorageSpace, double cCost, int cLevel) {
+     public ContactWarrior(String cName, HashMap<Integer, Appearance> cAppearance, int cSpawnLevel, int cHitPS, int cLife, int cStorageSpace, double cCost, int cLevel) {
         super(cName, cAppearance, cSpawnLevel, cHitPS, cLife, cStorageSpace, cCost, cLevel);
     }
+    public ContactWarrior(ContactWarriorBuilder builder) {
+        super(builder);
+    }
     
-    //++++++++++IMPORTANTE++++++++++
-    //Lógica de movimiento podría ir aquí, pero también podría mantenerse en el archivo del campo de batalla.
-    //Implementé la interfaz CharacterAction por si ocupamos métodos abstractos para los personajes, por ejemplo MOVE. 
+     public static ContactWarriorBuilder builder() {
+          return new ContactWarriorBuilder();
+      }
+    
+    public static class ContactWarriorBuilder extends CharacterGame.CharacterBuilder<ContactWarriorBuilder>{
 
-    @Override
-    public void cMoveU() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        @Override
+        public ContactWarrior build() {
+            return new ContactWarrior(this);
+        }
     }
-
-    @Override
-    public void cMoveD() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void cMoveL() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void cMoveR() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    
 
     
     
